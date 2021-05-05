@@ -1,0 +1,8 @@
+
+1. String operations with const
+2. operator overloading in struct?
+3. genralization and specialization
+4. lambda expression
+5. multithreading in C++
+6. Boost library
+7. INterview questions
