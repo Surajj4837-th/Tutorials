@@ -17,7 +17,7 @@ public:
 	}
 
 	//Parameterized constructor
-	ToyCar(int num, char* clr)
+	ToyCar(int num, const char* clr)
 	{
 		cout <<"\nParameterized Constructor" << endl;
 		numOfWheels = num;
@@ -35,13 +35,13 @@ public:
 
 	}
 
-	void DisplayAttributes()
+	void DisplayAttributes() const
 	{
 		cout << numOfWheels << endl;
 		cout << ptrColor << endl;
 	}
 
-	void ChangeColor(char* clr)
+	void ChangeColor(const char* clr)
 	{
 		strcpy(ptrColor, clr);
 	}

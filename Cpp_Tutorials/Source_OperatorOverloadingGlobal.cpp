@@ -47,7 +47,7 @@ public:
 MyClass& operator--(MyClass &ob)
 {
 	cout << "Prefix Operator--()" << endl;
-	--ob.count;
+	--(ob.count);
 
 	return ob;
 }
@@ -56,7 +56,7 @@ MyClass& operator--(MyClass &ob)
 MyClass& operator--(MyClass &ob, int dummy)
 {
 	cout << "Postfix Operator--()" << endl;
-	--ob.count;
+	--(ob.count);
 
 	return ob;
 }

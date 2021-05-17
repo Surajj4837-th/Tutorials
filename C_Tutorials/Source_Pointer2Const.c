@@ -1,5 +1,5 @@
-//C code for Pointer to Constant
-// Value cannot be changed from accessing pointer
+//C code for pointer to a constant
+//Value cannot be changed by dereferencing pointer
 #include <conio.h>
 #include <stdio.h>
 
@@ -16,7 +16,7 @@ int main()
 
 	printf("%d",*i);
 
-	i = &b;			//Pointer to Constant can point to any variable
+	i = &b;			//Pointer to a constant can point to any variable
 	
 	printf("\n%d",*i);
 	*/
@@ -27,7 +27,7 @@ int main()
 	char *var1 = "MNPO";
 	char *var = "XyZ";
 	/*
-		This statement copies data "ABC" into text segment and thus cannot be updated.
+		This statement copies data "XyZ" into text segment and thus cannot be updated.
 		the address pointing to pointer can be updated.
 	//Invalid cases
 	// *var = "abc";	
@@ -47,14 +47,13 @@ int main()
 
 	printf("\n%s",ptr);
 
-	*var2 = 'M';			//Updating value through  variable is allowed
+	*var2 = 'M';			//Updating value through variable is allowed
 	*(var2 + 1) = 'i';
 
 	printf("\n%s",ptr);
 
 #endif	
 
-	getch();
 }
 
 /************************************Summary*****************************************

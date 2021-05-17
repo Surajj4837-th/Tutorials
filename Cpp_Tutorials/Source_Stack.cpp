@@ -1,23 +1,23 @@
 //Stack implementation using Structure
 
-#include "Header.h"
+#include "Header_Class.h"
 
 int main()
 {
 	Stack S1;
-	//In C, I will have to use keyword struct for a structure variable declaration
+	//In C, I will have to use keyword struct for a structure variable declaration.
 	//Even though there are functions declared in the structure the memory allocated 
-	//will be equal to the variables of the structure only
+	//will be equal to the variables of the structure only.
 
-	S1.initializeIndex();
+	S1.InitializeIndex();
 	//The code will crash if index is not initialized as it will have a random value 
-	//which may not point to anything iin the array
+	//which may not point to anything iin the array.
 
 	S1.Push(10);
 	S1.Push(20);
-	//Whichever variable calls the member function, the function.
+	//Whichever variable calls the member function, the function
 	//works with the data of that variable, here the variable is S1.
-	//The pointer of the variable is implicitly passed to the member function 
+	//The pointer of the variable is implicitly passed to the member function.
 
 	cout << S1.Top()<<endl;
 
@@ -34,7 +34,7 @@ int main()
 
 3. It's a partial encapsulation used in the code because encapsulation also suggests
    that when we create a variable, the data of the variable should not be accessed
-   directly rather it should be accessed through members functions only.
+   directly rather it should be accessed through members functions only(abstraction).
    We can also do a mistake here,
    S1.index = 100;
    technically and syntactically it is correct but it is not the concept of encapsulation.

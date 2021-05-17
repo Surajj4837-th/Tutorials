@@ -27,14 +27,16 @@ public:
 		cout << "Prefix Operator++()" << endl;
 
 		return *this;
+		/*
+		 We have used this prefix operator to create an object in main function so
+		 we are returning a reference to an object.
+		*/
 	}
 
-	MyClass& operator++(int x)		//x -> dummy argument just to differentiate the function definition
+	void operator++(int)		//x -> dummy argument just to differentiate the function definition
 	{
 		cout << "Postfix Operator++()" << endl;
 		++count;
-
-		return *this;
 	}
 
 };//End Of Class
@@ -47,13 +49,21 @@ int main()
 
 	//All following calls are valid
 	++Ob1;		//compiler converts this command into a function call: Ob1.operator++();
-	Ob1++;		//Gives warning if nonly prefix operator overloading is defined
+	Ob1++;		//Gives warning/error if only prefix operator overloading is defined.
 	Ob1.operator++();
 
 	cout << Ob1.GetCount() << endl;
 	
 	MyClass Ob2;
-	Ob2 = ++Ob1;			//Ob2 = Ob1.operator++()
+	Ob2 = ++Ob1;
+	/*
+	Ob2 = Ob1.operator++()
+	Here Ob1 calls the ++ operator hence 'this' pointer will point to Ob1 and the argument 
+	members accessed in function will be of Ob1.	
+	*/
+
+	cout << Ob1.GetCount() << endl;
+	cout << Ob2.GetCount() << endl;
 
 	cin.get();
 	return 0;
@@ -69,14 +79,13 @@ int main()
 
 4. Some operators cannot be overloaded:
    - dot (.), this operator is already being used with class, so cannot be overloaded.
-   - sizeof(), this also works with classes
+   - sizeof(), this also works with class
    - ::, already works with class
    - ->
-   - .*, pointer to member operator, already being used by classes.
-   - Ternary operators cannot be overloaded.
+   - Ternary operator(?:) cannot be overloaded.
    - typeid()
 
-5. Casting Operator:
+5. Type Casting Operators:
    C++ has 4 casting operators: reinterpret, static, const and dynamic cast are used 
    with classes and are not required to be overloaded.
 
@@ -101,11 +110,14 @@ int main()
 	because it is a replacement for if else condition.
 
 14. =, ->, [], () must be overloaded using non static member function of class. Why?
-	Because when we try Obj1 = Obj2, it takes Obj2 as parameter but in case of static functions,
-	no parameters are passed.
+	Because when we try Obj1 = Obj2, it takes Obj2 as parameter but in case of static 
+	functions, no parameters are passed.
 
 15. () is called as function call operator.
 
 16. Insertion (<<) and extraction (>>) operator must be overloaded as a friend because 
 	it would be called without creating an object.
+
+17. Operator overloading gives more flexibility to handle operations with user defined 
+	data types.
 ************************************************************************************/

@@ -40,7 +40,7 @@ Point Point ::operator+(const Point& ob)
 	return temp;
 }
 
-//GLobal operator function
+//Global operator function
 Point operator-(const Point& ob1, const Point& ob2)
 {
 	Point temp;
@@ -74,8 +74,8 @@ int main()
    as parameter.
 
 2.	Number of arguments as per operator function scope and type of operator:
-									Member Function				Friend Function (Global)
-	Unary Operator (Prefix)			0 Arguments					1 Argument
-	Unary Operator (Postfix)		1 Argument					2 Arguments
-	Binary Operator					1 Argument					2 Arguments
+								  Member Function				Friend Function (Global)
+	Unary Operator (Prefix)			0 Arguments						1 Argument
+	Unary Operator (Postfix)		1 Argument						2 Arguments
+	Binary Operator					1 Argument						2 Arguments
 ************************************************************************************/

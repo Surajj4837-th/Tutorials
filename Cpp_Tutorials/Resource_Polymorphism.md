@@ -1,12 +1,12 @@
 What is Polymorphism?
 - It is a concept called as single interface multiple methods.
-Here a single task can be done in multiple ways, not supported by C.
+	Here a single task can be done in multiple ways, not supported by C.
 
 											Polymorphism
-			          __________________________|_______________________________
-					  |															|
+			           _________________________|____________________________________
+					  |													       |
 				Compile Time												Runtime
-			__________|______________											|
+			__________|________________											 |
 			|						|									Virtual Functions	
 		Function				Operator
 		Overloading				Overloading
@@ -18,33 +18,33 @@ Here a single task can be done in multiple ways, not supported by C.
 	a. Function overloading-
 
 		There can be more than one function with the same name.
-
+		
 		How a compiler differentiates between different functions having same names?
 		Function definition selection depends on:
 		- Number of arguments
 		- Type of arguments
 		- Same arguments but different order
 		- const object invokes const function and non-const object invokes non-const function
-
+		
 		Which cases are invalid and create ambiguity for compiler in choosing the function definition?
 		- Example 1
 				void doSomething();
 				void doSomething(int x);
-
+		
 			Above declarations not allowed. 
-
+		
 		- Example 2
 				void doSomething(int x);
 				void doSomething(int& x);
-
+		
 			Above declarations not allowed.
-
+		
 		Why function overloading is not done by considering the change in return type of a function?
 		- Because the developer may or may not use the return type.
 		Example:
 				int sum(int a, int b);
 				void sum(int a, int b);
-
+		
 		In both the cases, it is not compulsory for the developer to use the returned data. This 
 		creates ambiguity for the compiler.
 
@@ -52,12 +52,14 @@ b. Operator Overloading
 
 	int a = 10;
 	++a;		//Compiler knows what to do
-
+	
 	class Trainee;
 	++Trainee;	//Compiler doesn't know what to do
-
+	
 	Operator overloading says if an operator with a primitive data type is allowed then it should 
 	also be allowed with an user defined data type.
 	i.e. if ++a is allowed then ++Trainee should also be allowed.
 
 2. Run Time Polymorphism
+
+   Virtual and pure virtual functions.

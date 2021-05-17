@@ -15,7 +15,7 @@ public:
 		strcpy(color, "White");
 	}
 
-	ToyCar(int num, char* clr)
+	ToyCar(int num, const char* clr)
 	{
 		cout <<"Parameterized Constructor" << endl;
 		numOfWheels = num;
@@ -56,7 +56,7 @@ int main()
 2. Inline functions save time of CPU, thus increasing speed of program. It is similar 
    to a preprocessor directive.
 
-3. When he compiler sees the declaration of an inline function, it replaces all the 
+3. When the compiler sees the declaration of an inline function, it replaces all the 
    instances of the function call with the fuction definition.
 
 4. Care should be taken while declaring the function inline:
@@ -73,7 +73,8 @@ int main()
    by which the function should be accepted as inline or not.
 
 6. Whichever functions defined in the class are automatically made inline. Thus big
-   functions should be defined outside to avoid automaatically being declared inline.
+   functions should be defined outside to avoid automatically being declared inline.
 
-7. How to verify if the function is made inline or not?
+7. How to verify if the function is made inline or not? By comparing the size of executable 
+   generated when function is declared as inline and otherwise.
 ************************************************************************************/

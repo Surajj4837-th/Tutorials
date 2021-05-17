@@ -17,7 +17,7 @@ public:
 	}
 
 	//Parameterized constructor
-	ToyCar(int num, char* clr)
+	ToyCar(int num, const char* clr)
 	{
 		cout <<"\nParameterized Constructor" << endl;
 		numOfWheels = num;
@@ -41,12 +41,12 @@ public:
 		cout << ptrColor << endl;
 	}
 
-	void ChangeColor(char* clr)
+	void ChangeColor(const char* clr)
 	{
 		//strcpy(ptrColor, clr);
 		/*
 		This will cause error if the memory available is less in ptrColor.
-		Example if the earlier string was Red, new string -> White
+		Example if the earlier string was "Red", new string -> "White".
 		More meory is required.
 		To solve this deallocate the earlier memory and reallocate a new memory as per requirement.
 		*/
@@ -70,7 +70,7 @@ public:
 			/*strcpy(this->ptrColor, Ob.ptrColor);
 
 			This will cause error if the memory available is less in ptrColor.
-			Example if the earlier string was Red, new string -> White
+			Example if the earlier string was "Red", new string -> "White".
 			More meory is required.
 			To solve this deallocate the earlier memory and reallocate a new memory as per requirement.
 			*/
@@ -114,13 +114,10 @@ int main()
 /************************************Summary*****************************************
 1. When we copy a string to a class pointer variable then the memory should be deleted 
    first, after that a new memory should be created of the size of new string and then
-   string copy can be done.
-   Otherwise there happens a crash.
+   string copy can be done, otherwise there happens a crash.
 
 2. In case of DMA following things should be defined:
-   a. Copy constructo
+   a. Copy constructor
    b. Destructor
    c. Assignment operator 
-
-
 ************************************************************************************/

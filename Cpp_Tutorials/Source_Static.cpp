@@ -140,4 +140,7 @@ int main()
 17. A non-static member function can call a static member function inside it. But a 
 	static member function cannot call a non-static member function as the static function 
 	does not have any object reference.
+
+18. Difference between global and global static variable is global variable can be 
+	called using 'extern' in another file whereas global static cannot be accessed.
 ************************************************************************************/

@@ -12,6 +12,7 @@ Inheritance
 
 4. The class which inherits the properties is called as derived class.
 
-5. Functions which are inherited can also be mmodifies in derived class.
+5. Functions which are inherited can also be modified in derived class.
 
 6. Constructors and destructors are not inherited.
+
