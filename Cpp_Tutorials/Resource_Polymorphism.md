@@ -1,4 +1,4 @@
-What is Polymorphism?
+## Polymorphism
 - It is a concept called as single interface multiple methods.
 	Here a single task can be done in multiple ways, not supported by C.
 

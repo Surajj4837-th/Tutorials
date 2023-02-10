@@ -1,4 +1,4 @@
-Inheritance
+## Inheritance
 
 1. The mechanism by which one class acquires the properties of other class.
 2. Why inheritance?
