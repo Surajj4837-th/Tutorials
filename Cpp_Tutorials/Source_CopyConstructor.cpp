@@ -1,5 +1,6 @@
 //Use of Copy Constructor and Destructor
 #include "Header_CopyConsturctor.h"
+#include <string.h>
 
 
 class ToyCar			//PascalCase
