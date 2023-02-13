@@ -4,6 +4,7 @@
 #define STATIC_CAST			0
 #define DYNAMIC_CAST		0
 #define CONST_CAST			0
+#define REINTERPRET_CAST	0
 
 using std::cout;
 using std::endl;
