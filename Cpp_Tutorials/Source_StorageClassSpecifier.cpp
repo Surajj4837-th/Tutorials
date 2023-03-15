@@ -1,4 +1,4 @@
-//Storagr class specifier
+//Storage class specifier
 
 #include "Header_StorageClassSpecifier.h"
 #include <iostream>

@@ -37,18 +37,4 @@ int main()
    This makes the execution faster.
 
 2. Rvalues are the objects which do not have any address.
-
-3. 
-
-4. 
-
-5. 
-
-6. 
-
-7. 
-
-8. 
-
-9. 
 ************************************************************************************/
