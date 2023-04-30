@@ -1,4 +1,4 @@
-#include "Header_Slicing.h"
+#include "Slicing.h"
 
 Employee::Employee(int var1, int var2)
 {

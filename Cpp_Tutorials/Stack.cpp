@@ -1,6 +1,6 @@
 //Stack implementation using Structure
 
-#include "Header_Class.h"
+#include "Class.h"
 
 int main()
 {

@@ -1,4 +1,12 @@
-#include "Header_DefaultValues.h"
+#include "Header.h"
+
+/****************Function Declaration***********/
+
+//void DoSomething(int x = 1);
+
+void Function(int a, int b , int c = 1);
+
+/********************************************/
 
 void DoSomething(int x = 1)		//Declaration not needed as this definition 
 								//is read before encountering function call.

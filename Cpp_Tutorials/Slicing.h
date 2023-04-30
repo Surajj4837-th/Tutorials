@@ -1,5 +1,6 @@
 #include <iostream>
 
+
 class Employee
 {
 public:
@@ -9,6 +10,7 @@ public:
 	Employee(int var1, int var2);
 	void show();
 };
+
 
 class Engineer : public Employee
 {

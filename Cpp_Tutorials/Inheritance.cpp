@@ -1,6 +1,6 @@
 #//Stack implementation using Class
 
-#include"Header_Class.h"
+#include"Class.h"
 
 class Counter
 {

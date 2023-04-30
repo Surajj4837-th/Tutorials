@@ -1,7 +1,14 @@
 //Use of Copy Constructor and Destructor
-#include "Header_CopyConsturctor.h"
 #include <string.h>
+#include "Header.h"
 
+/****************Macro Declaration***********/
+
+#define LEN					(12)
+#define ACTIVATE_COPY_CONSTRUCTOR					1
+#define ACTIVATE_COMPILER_COPY_CONSTRUCTOR			0
+
+/********************************************/
 
 class ToyCar			//PascalCase
 {			

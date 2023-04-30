@@ -1,5 +1,6 @@
 //Friend Function
-#include "Header_FriendFunction.h"
+#include "Header.h"
+#include <math.h>
 
 #if 0		//Friend global function declaration and use
 class Point

@@ -1,4 +1,4 @@
-#include "Header_VirtualFunction.h"
+#include "VirtualFunction.h"
 
 int main()
 {

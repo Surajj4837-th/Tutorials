@@ -1,5 +1,11 @@
 //Use of constructor continued
-#include "Header_Constructor1.h"
+#include "Header.h"
+
+/****************Macro Declaration***********/
+
+#define LEN					(12)
+
+/********************************************/
 
 class ToyCar			//PascalCase
 {			

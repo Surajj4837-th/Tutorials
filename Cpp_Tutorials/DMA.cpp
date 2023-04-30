@@ -1,6 +1,12 @@
 //Use of DMA
 
-#include"Header_DMA.h"
+#include "Header.h"
+
+/****************Macro Declaration***********/
+
+#define LEN					(12)
+
+/********************************************/
 
 class ToyCar			//PascalCase
 {			

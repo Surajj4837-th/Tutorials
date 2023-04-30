@@ -1,7 +1,7 @@
 //Stack implementation using Class
 
 #if 1
-#include"Header_Class.h"
+#include"Class.h"
 
 /******* Member function declarations and definitions *********/
 //Compiler sees the functions defined outside the class as global function and
