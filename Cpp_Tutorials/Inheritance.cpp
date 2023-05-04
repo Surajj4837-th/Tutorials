@@ -2,6 +2,9 @@
 
 #include"Class.h"
 
+using std::cout;
+using std::endl;
+
 class Counter
 {
 protected:

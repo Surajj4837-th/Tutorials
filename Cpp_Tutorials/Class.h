@@ -1,6 +1,8 @@
-#include "Header.h"
+#include <iostream>
 
 #if 1   //More readable class declaration
+
+#define MAX			10
 
 /************************Class Declaration************************/
 class Stack{

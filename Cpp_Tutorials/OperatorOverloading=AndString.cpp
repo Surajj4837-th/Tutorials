@@ -1,5 +1,8 @@
 //= operator overloading and string copy
-#include "Header.h"
+#include <iostream>
+
+using std::cout;
+using std::endl;
 
 /****************Macro Declaration***********/
 

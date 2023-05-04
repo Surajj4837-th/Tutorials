@@ -1,5 +1,8 @@
 #include <iostream>
 
+using std::cout;
+using std::endl;
+
 int main()
 {
 	int a = 0;	// a - l-value, 0 - r-value
@@ -44,7 +47,7 @@ int main()
    - A unary-indirection (*) expression that does not refer to an array
    - An l-value expression in parentheses.
    - A const object (a non-modifiable l-value).
-   - The result of indirection through a pointer, provided that it isn’t a function pointer.
+   - The result of indirection through a pointer, provided that it isn?t a function pointer.
    - The result of member access through pointer(-> or .)
 
 3. r-value refers to data value that is stored at some address in memory. 

@@ -1,5 +1,8 @@
 #include "Slicing.h"
 
+using std::cout;
+using std::endl;
+
 Employee::Employee(int var1, int var2)
 {
 	emp_id = var1;

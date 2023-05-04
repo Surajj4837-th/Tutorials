@@ -1,6 +1,9 @@
 //Friend Function
-#include "Header.h"
+#include <iostream>
 #include <math.h>
+
+using std::cout;
+using std::endl;
 
 #if 0		//Friend global function declaration and use
 class Point
@@ -235,7 +238,7 @@ int main()
    classes are declared as friends of a class with protected or private data, it lessens
    the value of encapsulation of separate classes in object-oriented programming.
 
-7. Friendship is not mutual. If a class A is friend of B, then B doesn’t become friend
+7. Friendship is not mutual. If a class A is friend of B, then B doesn?t become friend
    of A automatically.
 
 8. Friendship is not inherited.

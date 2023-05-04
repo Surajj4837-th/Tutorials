@@ -1,6 +1,9 @@
 //Use of this pointer
+#include <iostream>
 
-#include"Header.h"
+using std::cout;
+using std::endl;
+
 
 class Counter
 {

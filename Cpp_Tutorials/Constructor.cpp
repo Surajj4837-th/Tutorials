@@ -1,5 +1,8 @@
 //Use of constructor
-#include "Header.h"
+#include <iostream>
+
+using std::cout;
+using std::endl;
 
 /****************Macro Declaration***********/
 

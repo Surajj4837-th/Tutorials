@@ -1,6 +1,9 @@
 //Use of const data members
 
-#include"Header.h"
+#include <iostream>
+
+using std::cout;
+using std::endl;
 
 class BankCustomer{
 
@@ -107,20 +110,27 @@ int main()
 
 	C1.CalculateSum();
 
-	int a = 10;
-	const int b = 20;
-
-	/*
-	Invalid operations
-	const int c;
-	c = a;
-	b = a;
-	*/
-
 	const Trainee T1(1001, 30);
 
 	T1.display();
 	//T1.change_marks(4);		// Not allowed to update the values as the object is const
+
+
+
+	int a = 10;
+	const int b = 20;	//const is preferred before data type
+
+	/*
+	Invalid operations: const value has to be initialized during declaration.
+	const int c;
+	c = a;
+	b = a;*/
+
+	int d{10};	//compile time const
+	int e = d + a;	//run time const
+
+	constexpr int f = 11; //constexpr inform compiler to resolve this at compile time.
+	
 
 }
 /************************************Summary*****************************************
@@ -163,4 +173,9 @@ int main()
 13. static function of a class is not associated with any class object. So, THIS pointer 
 	is not passed to a static function as an internal parameter. So, a static function 
 	does not understand THIS pointer inside its body.
+
+14. const variables are prefixed with k or written in caps.
+
+15. constexpr is used to declare the const variables which are compile time constants.
+	This helps in optimization.
 ************************************************************************************/

@@ -1,5 +1,8 @@
 //Operator Overloading
-#include "Header.h"
+#include <iostream>
+
+using std::cout;
+using std::endl;
 
 class MyClass
 {

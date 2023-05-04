@@ -1,5 +1,8 @@
 //Requirement of = operator overloading
-#include "Header.h"
+#include <iostream>
+
+using std::cout;
+using std::endl;
 
 /****************Macro Declaration***********/
 

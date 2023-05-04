@@ -1,5 +1,8 @@
 //Use of rvalue reference
-#include "Header.h"
+#include <iostream>
+
+using std::cout;
+using std::endl;
 
 void printNumber(int& number)
 {

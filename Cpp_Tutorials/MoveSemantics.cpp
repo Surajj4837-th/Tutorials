@@ -146,7 +146,10 @@ int main()
 #include <iostream>
 #include <string.h>
 
-using namespace std;
+using std::cout;
+using std::endl;
+using std::string;
+
 
 class Class1
 {	

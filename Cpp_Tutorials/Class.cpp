@@ -3,6 +3,9 @@
 #if 1
 #include"Class.h"
 
+using std::cout;
+using std::endl;
+
 /******* Member function declarations and definitions *********/
 //Compiler sees the functions defined outside the class as global function and
 //thus the data members used inside the function definition will give errors.
@@ -75,7 +78,7 @@ int main()
 
 #else
 
-#include "Header.h"
+#include <iostream>
 
 /************************Class Declaration************************/
 class Stack{

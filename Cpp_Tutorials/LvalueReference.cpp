@@ -1,5 +1,8 @@
 //Use of Reference/alias
-#include "Header.h"
+#include <iostream>
+
+using std::cout;
+using std::endl;
 
 void swap(int *x, int *y)
 {

@@ -1,7 +1,10 @@
 //Use of Static data members
 //Static local variables in a function are initialised 
 //only once and remain alive even after loop ends.
-#include"Header.h"
+#include <iostream>
+
+using std::cout;
+using std::endl;
 
 #if 1		//Bank Alpplication
 

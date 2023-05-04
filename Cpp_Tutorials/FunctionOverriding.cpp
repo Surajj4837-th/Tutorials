@@ -1,5 +1,8 @@
 #include "FunctionOverriding.h"
 
+using std::cout;
+using std::endl;
+
 void animal::Sound()
 {
 	std::cout << "Animal Sound" << std::endl;

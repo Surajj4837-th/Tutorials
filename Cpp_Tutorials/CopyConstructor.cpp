@@ -1,6 +1,9 @@
 //Use of Copy Constructor and Destructor
 #include <string.h>
-#include "Header.h"
+#include <iostream>
+
+using std::cout;
+using std::endl;
 
 /****************Macro Declaration***********/
 
