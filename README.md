@@ -33,3 +33,7 @@
 10. ML
 11. Maths
     1.  Permutation combination
+    
+    
+# Resources
+1. https://pages.mtu.edu/~shene/COURSES/cs3621/NOTES/geometry/geo-tran.html
