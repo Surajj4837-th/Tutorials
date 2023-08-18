@@ -5,7 +5,7 @@ Instructor: Manish Kumar Bhojasia (Founder & CTO @ sanfoundry.com)
 
 ## Setup
 - Ubuntu 20.04
-- GCC.
+- GCC
 - VS Code
 
 
