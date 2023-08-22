@@ -1,4 +1,4 @@
-// 1D Arrays
+// Enum
 #include <stdio.h>
 
 enum day {
