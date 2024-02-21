@@ -7,43 +7,79 @@
 
 # Subjects
 1. Languages
-   1. C++
-   2. C
-   3. CUDA
-   4. Python
+   a. C++
+   b. C
+   c. CUDA
+   d. Python
 2. DSA
-   1. Data structures
-   2. Algorithms
+   a. Data structures
+   b. Algorithms
 3. Computer Vision
-   1. Features detector and descriptor
-   2. Line detection
-   3. Image processing
-   4. Frequency domain feature detector
-   5. Fish eye distortion correction
-   6. Distance estimation
-   7. Camera calibration
-   8. Top view generation
-   9. Camera-LiDAR calibration
-   10. Distortion correction
-4. DL
-   1. Basics
-5. Kalman Filter
-   1. Linear filter
-   2. Non-linear filters
-   3. Early fusion
-   4. Late fusion
+   a. Edge detectors
+   b. Features detector and descriptor
+   c. Line detection
+   d. Image processing
+   e. Frequency domain feature detector
+   f. Fish eye distortion correction
+   g. Distance estimation
+   h. Camera calibration
+   i. Top view generation
+   j. Camera-LiDAR calibration
+   k. Thresholding techniques
+   l. Image enhancement techniques
+   m. RANSAC
+   n. Epipolar geometry
+   o. Optical flow
+5. DL/ML
+   a. Basics
+   b. PCA
+   c. SVM
+   d. DBSCAN
+   e. Clustering methods
+6. Kalman Filter
+   a. Linear filter
+   b. Non-linear filters
+   c. Early fusion
+   e. Late fusion
 7. ROS
 8. Docker
 9. Algebra
-   1. Basics
-   2. PNP Transformation.
+   a. Basics
+   b. PNP Transformation.
 10. Projects
+   a. Smart parking
+   b. LDW: Curved lane detection
+   c. BEV
+   d. Calibration: Camera, Camera-LiDAR
 11. OS
 12. ML
 13. Maths
-    1.  Permutation and combination
-    2.  Probability
-    
-    
+   a. Permutation and combination
+   b. Probability
+   c. Algebra
+15. Sensors:
+   a. Camera
+   b. LiDAR
+   c. RADAR
+
+
+# Projects
+1. Smart parking
+2. LDW: Curved lane detection
+3. BEV
+4. Calibration: Camera, Camera-LiDAR
+
+   
+# Courses 
+1. M. Tech courses.
+2. Thinkautonomous courses.
+3. Udemy courses:
+   a. ROS
+4. Coursera
+   a. Robotics
+   b. Deeplearning.ai
+
+
 # Resources
 1. https://pages.mtu.edu/~shene/COURSES/cs3621/NOTES/geometry/geo-tran.html
+2. https://github.com/Jeremy26?tab=repositories
