@@ -3,8 +3,8 @@
 2. C++
 3. CUDA
 4. ARM Neon architecture
-
-
+  
+  
 # Subjects
 1. Languages  
    a. C++  
@@ -30,7 +30,8 @@
    m. RANSAC  
    n. Epipolar geometry  
    o. Optical flow  
-   p. Image enhancement techniques   
+   p. Image enhancement techniques
+   q. Floating to fixed point conversion  
 5. DL/ML  
    a. Basics  
    b. PCA  
@@ -48,7 +49,7 @@
    a. Basics  
    b. PNP Transformation.  
 10. Projects  
-   a. Smart parking  
+   a. Smart Parking  
    b. LDW: Curved lane detection  
    c. BEV  
    d. Calibration: Camera, Camera-LiDAR  
@@ -62,15 +63,16 @@
    a. Camera  
    b. LiDAR  
    c. RADAR  
-
-
+  
+  
 # Projects
 1. Smart parking  
 2. LDW: Curved lane detection  
 3. BEV  
-4. Calibration: Camera, Camera-LiDAR  
-
-   
+4. Calibration: Camera, Camera-LiDAR
+5. Distance estimation  
+  
+    
 # Courses 
 1. M. Tech courses.  
 2. Thinkautonomous courses.  
