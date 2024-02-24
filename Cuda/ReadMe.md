@@ -7,8 +7,12 @@
 - Nvidia Driver Version: 510.108.03
 - CUDA Version: 11.6
 - GPU: NVIDIA T500
-- Compiler - GCC 9.4.0
+- Compiler - GCC 9.4.0, NVCC
 
+
+## How to compile?
+- To compile .cu files, run the following command:
+nvcc <filename>.cu
 
 ## Topics Covered
 - Multi-threading
