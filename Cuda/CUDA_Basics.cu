@@ -1,6 +1,6 @@
 // CUDA basics
 #include <stdio.h>
-#include "Dep/common/book.h"
+#include "Common/book.h"
 
 
 __global__ void kernel(void)
