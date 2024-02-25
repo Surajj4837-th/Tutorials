@@ -1,4 +1,4 @@
-# Why CUDA
+# 1. Why CUDA
 
 The GPUs of the early 2000s were designed to produce a color for every pixel on the screen using programmable arithmetic units known as pixel shaders. In general, a pixel shader uses its (x,y) position on the screen as well as some additional information to combine various inputs in computing a final color. The additional information could be input colors, texture coordinates, or other attributes that would be passed to the shader when it ran. But because the arithmetic being performed on the input colors and textures was completely controlled by the programmer, researchers observed that these input “colors” could actually be any data.
   
