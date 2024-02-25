@@ -17,3 +17,20 @@ The prerequisites to developing code in CUDA C are as follows:
 1. Windows: MSVC C compiler for Windows
 2. LINUX: GNU C compiler 
 3. MACINTOSH OS X > v10.5.7: GNU C compiler 
+
+
+## Install pre-requisites on Ubuntu
+1. I m using HP Zbook laptop which has NVIDIA T500 GPU.
+2. I m working on Ubuntu 20.04. Follow the steps to install NVIDIA driver.
+   1. To check the available drivers on your Ubuntu system, run the following command:
+        > sudo ubuntu-drivers list
+   2. Install the drivers:
+        > sudo ubuntu-drivers install  
+
+        Or you can tell system which version to install. Let’s assume we want to install the 525 driver:  
+        > sudo ubuntu-drivers install nvidia:525
+
+3. NVIDIA toolkit installation: Go to official website [link](https://developer.nvidia.com/cuda-downloads) and select the required configurations to get commands and steps to install the toolkit.
+4. Command to show drivers in use:
+    > nvidia-smi
+5. A standard GCC compiler is present in Ubuntu OS by default.
