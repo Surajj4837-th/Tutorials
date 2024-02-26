@@ -2,7 +2,7 @@
 
 ## First Program
 
-Refer to [HelloWorld.cu](Programs/Chapter1/HelloWorld.cu).
+Refer to [HelloWorld.cu](Programs/Chapter3/HelloWorld.cu).
 
 CUDA C is similar to standard C with some extra keywords. This code runs entirely on the host. 
 
@@ -18,7 +18,7 @@ This will create an executable with the name Hello in the directory. Now run the
 
 ## Kernel Call
 
-Refer to [KernelCall.cu](Programs/Chapter1/KernelCall.cu).
+Refer to [KernelCall.cu](Programs/Chapter3/KernelCall.cu).
 
 There are the following updates in above code:
 - An empty function named *kernel()* recognized with \_\_global__ keyword.
@@ -32,7 +32,7 @@ The angular brackets denote arguments we plan to pass to the runtime system. The
 
 ## Passing Parameters
 
-Refer to [PassingParameters.cu](Programs/Chapter1/PassingParameters.cu).
+Refer to [PassingParameters.cu](Programs/Chapter3/PassingParameters.cu).
 This code introduces the following changes:
 - We can pass parameters to a kernel as a regular C function in addition to the angular brackets information.
 - *cudaMalloc()*
@@ -60,7 +60,7 @@ We use pointers from within the device code the same way we use them in standard
 To free the memory allocated by *cudaMalloc()*, we need to use a call to *cudaFree()*, which behaves exactly like *free()* does.
 
 ## Querying devices
-Refer to [QueryingDevices.cu](Programs/Chapter1/QueryingDevices.cu).
+Refer to [QueryingDevices.cu](Programs/Chapter3/QueryingDevices.cu).
 
 Since we would like to be allocating memory and executing code on our device, it would be useful if our program had a way of knowing how much memory and what types of capabilities the device had. Furthermore, it is relatively common for people to have more than one CUDA-capable device per computer. In situations like this, we will want a way to determine which processor is which.
 
@@ -119,7 +119,7 @@ Max grid dimensions: (2147483647, 65535, 65535)
 ```
 
 ## Setting Devices
-Refer to [SettingDevices.cu](Programs/Chapter1/SettingDevices.cu).
+Refer to [SettingDevices.cu](Programs/Chapter3/SettingDevices.cu).
 
 For our development, we might be interested in choosing the GPU with the most multiprocessors on which to run our code. Or if the kernel needs close interaction with the CPU, we might be interested in running our code on the integrated GPU that shares system memory with the CPU. These are both properties we can query with *cudaGetDeviceProperties()*.
 
