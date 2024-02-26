@@ -129,3 +129,9 @@ Based on what we have seen with *cudaGetDeviceCount()* and *cudaGetDevicePropert
 
 
 **Note**:  If your application depends on certain features of the GPU or depends on having the fastest GPU in the system, you should familiarize yourself with this API because there is no guarantee that the CUDA runtime will choose the best or most appropriate GPU for your application.
+
+After running the referred code, the printed output is:
+```
+ID of current CUDA device: 0
+ID of CUDA device closest to revision 1.3: 0
+```
