@@ -84,5 +84,6 @@
 
 
 # Resources
-1. https://pages.mtu.edu/~shene/COURSES/cs3621/NOTES/geometry/geo-tran.html  
-2. https://github.com/Jeremy26?tab=repositories
+1. Geometric transformations: https://pages.mtu.edu/~shene/COURSES/cs3621/NOTES/geometry/geo-tran.html  
+2. Think Autonomous github: https://github.com/Jeremy26?tab=repositories
+3. CUDA sample code github: https://github.com/CodedK/CUDA-by-Example-source-code-for-the-book-s-examples-/tree/master
