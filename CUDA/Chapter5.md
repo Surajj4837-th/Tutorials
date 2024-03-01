@@ -48,4 +48,16 @@ In case the vector size is greater than this number then we need to use combinat
    >  add<<< (N+127)/128, 128 >>>( dev _ a, dev _ b, dev _ c );
 
     Now consider the following cases:
-    1. Number of blocks, N = 
+    1. Size of vector, N = 120  
+      We will create (120+127)/128 = 1 block with 128 threads i.e. 1x128 = 128 threads, now we have 8 extra threads.
+    2. Size of vector, N = 128  
+      We will create (120+127)/128 = 1 block with 128 threads i.e. 1x128 = 128 threads, now we have no extra threads.
+    3. Size of vector, N = 200  
+      We will create (200+127)/128 = 2 block with 128 threads i.e. 2x128 = 256 threads, now we have 56 extra vectors.
+
+   Hence, we actually launch too many threads when N is not an exact multiple of 128. To solve this problem we use a if condition:
+   ```
+   if (tid < N)  
+      c[tid] = a[tid] + b[tid];
+   ```
+   Thus, when our index overshoots the end of our array, as will always happen when we launch a nonmultiple of 128, we automatically refrain from performing the calculation. More important, we refrain from reading and writing memory off the end of our array.
