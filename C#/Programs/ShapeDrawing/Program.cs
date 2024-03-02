@@ -5,6 +5,17 @@
         static void Main(string[] args)
         {
             Console.WriteLine("Hello, World!");     //Write this text on the console.
+
+
+            // Draw shape
+            Console.WriteLine("   /|");
+            Console.WriteLine("  / |");
+            Console.WriteLine(" /  |");
+            Console.WriteLine("/___|");
+
+
+            _ = Console.ReadLine();     //Used to read input from console or keep the console from vanishing.
+
         }
     }
 }
@@ -15,5 +26,5 @@
  * 2. static void Main(string[] args) is a method or a function. It is an important method. The required 
  *    program needs to be ut inside this method.
  *    
- * 3. 
+ * 3. End each instruction with a semi colon. 
  */
