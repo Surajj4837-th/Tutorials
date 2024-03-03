@@ -1,0 +1,18 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/C#/Programs/DataTypes/.vs/DataTypes
+/C#/Programs/DataTypes/DataTypes.csproj
+/C#/Programs/DataTypes/DataTypes.sln
+/C#/Programs/DataTypes/obj
+/C#/Programs/ShapeDrawing/.vs
+/C#/Programs/ShapeDrawing/obj
+/C#/Programs/ShapeDrawing/ShapeDrawing.csproj
+/C#/Programs/ShapeDrawing/ShapeDrawing.sln
+/C#/Programs/Variables/.vs
+/C#/Programs/Variables/obj
+/C#/Programs/Variables/Variables.csproj
+/C#/Programs/Variables/Variables.sln
+/C#/Programs/DataTypes/bin/Debug/net8.0
