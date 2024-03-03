@@ -13,3 +13,4 @@ Source: [C# Tutorial - Full Course for Beginners by freeCodeCamp.org](https://yo
 2. Methods
 2. Return statement
 2. If statement
+2. Better calculator
