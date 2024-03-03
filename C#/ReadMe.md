@@ -15,3 +15,4 @@ Source: [C# Tutorial - Full Course for Beginners by freeCodeCamp.org](https://yo
 2. If statement
 2. Better calculator
 2. Switch statement
+2. While loop
