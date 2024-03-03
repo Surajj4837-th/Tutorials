@@ -7,3 +7,4 @@ Source: [C# Tutorial - Full Course for Beginners by freeCodeCamp.org](https://yo
 2. Variables
 2. Data types
 2. Strings
+2. Numbers
