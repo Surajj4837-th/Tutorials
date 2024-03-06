@@ -22,3 +22,4 @@ Source: [C# Tutorial - Full Course for Beginners by freeCodeCamp.org](https://yo
 2. 2D Array
 2. Exception handeling
 2. Classes
+2. Constructor
