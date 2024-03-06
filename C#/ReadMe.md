@@ -18,3 +18,6 @@ Source: [C# Tutorial - Full Course for Beginners by freeCodeCamp.org](https://yo
 2. While loop
 2. Guessing game
 2. For loop
+2. Exponent
+2. 2D Array
+2. Exception handeling
