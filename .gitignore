@@ -112,3 +112,8 @@
 /C#/Programs/ExceptionHandeling/ExceptionHandeling.csproj
 /C#/Programs/ExceptionHandeling/ExceptionHandeling.sln
 /C#/Programs/ExceptionHandeling/obj
+/C#/Programs/Classes/.vs/Classes
+/C#/Programs/Classes/bin/Debug/net8.0
+/C#/Programs/Classes/Classes.csproj
+/C#/Programs/Classes/Classes.sln
+/C#/Programs/Classes/obj
