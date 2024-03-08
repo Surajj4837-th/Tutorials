@@ -25,6 +25,8 @@ namespace VPApp1
 
         private void btnlogin_Click(object sender, EventArgs e)
         {
+            this.Hide();
+
             string id = textID.Text;
             string pass = Txtpwd.Text;
 

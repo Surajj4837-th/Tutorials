@@ -39,6 +39,7 @@ namespace VPApp1
 
         private void lgtot_Click(object sender, EventArgs e)
         {
+            this.Hide();
             LoginForm L1 = new LoginForm();
             L1.Show();
         }
