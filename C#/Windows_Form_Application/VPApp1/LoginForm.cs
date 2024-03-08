@@ -23,15 +23,14 @@ namespace VPApp1
 
         }
 
-        private void btnlogin_Click(object sender, EventArgs e)
+        private void LoginCheck()
         {
-            this.Hide();
-
             string id = textID.Text;
             string pass = Txtpwd.Text;
 
-            if(id == "123" && pass == "qwerty")
+            if (id == "123" && pass == "qwerty")
             {
+                this.Hide();
                 Form1 f1 = new Form1();
                 f1.Show();
             }
@@ -41,10 +40,33 @@ namespace VPApp1
             }
         }
 
-        private void btnreset_Click(object sender, EventArgs e)
+        private void Reset()
         {
             textID.Text = "";
             Txtpwd.Text = "";
+        }
+
+        private void btnlogin_Click(object sender, EventArgs e)
+        {
+            LoginCheck();           
+        }
+
+        private void btnreset_Click(object sender, EventArgs e)
+        {
+            Reset();
+        }
+
+        private void Txtpwd_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(e.KeyChar == (char)Keys.Enter)
+            {
+                LoginCheck();
+            }
+
+            if (e.KeyChar == (char)Keys.Escape)
+            {
+                Reset();
+            }
         }
     }
 }

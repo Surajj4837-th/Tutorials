@@ -60,6 +60,7 @@
             this.Txtpwd.Size = new System.Drawing.Size(482, 20);
             this.Txtpwd.TabIndex = 3;
             this.Txtpwd.UseSystemPasswordChar = true;
+            this.Txtpwd.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Txtpwd_KeyPress);
             // 
             // label2
             // 
