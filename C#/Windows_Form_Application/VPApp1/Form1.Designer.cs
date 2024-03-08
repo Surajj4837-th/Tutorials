@@ -76,6 +76,7 @@
             this.lgtot.TabIndex = 3;
             this.lgtot.Text = "Logout";
             this.lgtot.UseVisualStyleBackColor = true;
+            this.lgtot.Click += new System.EventHandler(this.lgtot_Click);
             // 
             // Form1
             // 

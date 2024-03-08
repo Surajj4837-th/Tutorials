@@ -36,6 +36,12 @@ namespace VPApp1
         {
             lblHello.Text = "Cancelled";
         }
+
+        private void lgtot_Click(object sender, EventArgs e)
+        {
+            LoginForm L1 = new LoginForm();
+            L1.Show();
+        }
     }
 }
 
