@@ -25,3 +25,4 @@ Source: [C# Tutorial - Full Course for Beginners by freeCodeCamp.org](https://yo
 2. Constructor
 2. Object Methods
 2. Getters and Setters
+2. Static class attributes
