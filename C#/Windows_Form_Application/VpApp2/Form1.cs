@@ -23,8 +23,6 @@ namespace VpApp2
 
         Confirmation C = new Confirmation();
 
-
-
         public Form1()
         {
             InitializeComponent();
