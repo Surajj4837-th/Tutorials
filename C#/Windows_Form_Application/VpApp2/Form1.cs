@@ -30,27 +30,13 @@ namespace VpApp2
             InitializeComponent();
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
-        }
-
-        private void sms_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btn_signup_Click(object sender, EventArgs e)
         {
             FirstName = tb_FirstName.Text;
             LastName = tb_LastName.Text;
             email = tb_MailID.Text;
 
+            this.Hide();
             C.Show();
 
         }
@@ -101,5 +87,5 @@ namespace VpApp2
 /*
  * 1. Boolean keyword used for heck box status.
  * 
- * 2. static used for using the variables across forms * 
+ * 2. static used for using the variables across forms.
  */

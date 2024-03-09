@@ -99,7 +99,6 @@
             this.services.TabIndex = 6;
             this.services.TabStop = false;
             this.services.Text = "Services";
-            this.services.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // lbl_trn_report
             // 
@@ -108,8 +107,9 @@
             this.lbl_trn_report.ForeColor = System.Drawing.Color.Tomato;
             this.lbl_trn_report.Location = new System.Drawing.Point(274, 147);
             this.lbl_trn_report.Name = "lbl_trn_report";
-            this.lbl_trn_report.Size = new System.Drawing.Size(0, 25);
+            this.lbl_trn_report.Size = new System.Drawing.Size(65, 31);
             this.lbl_trn_report.TabIndex = 11;
+            this.lbl_trn_report.Text = "........";
             // 
             // lbl_report
             // 
@@ -118,8 +118,9 @@
             this.lbl_report.ForeColor = System.Drawing.Color.Tomato;
             this.lbl_report.Location = new System.Drawing.Point(274, 98);
             this.lbl_report.Name = "lbl_report";
-            this.lbl_report.Size = new System.Drawing.Size(0, 25);
+            this.lbl_report.Size = new System.Drawing.Size(65, 31);
             this.lbl_report.TabIndex = 10;
+            this.lbl_report.Text = "........";
             // 
             // lbl_sms
             // 
@@ -128,10 +129,10 @@
             this.lbl_sms.ForeColor = System.Drawing.Color.Tomato;
             this.lbl_sms.Location = new System.Drawing.Point(274, 51);
             this.lbl_sms.Name = "lbl_sms";
-            this.lbl_sms.Size = new System.Drawing.Size(0, 28);
+            this.lbl_sms.Size = new System.Drawing.Size(66, 36);
             this.lbl_sms.TabIndex = 7;
+            this.lbl_sms.Text = "........";
             this.lbl_sms.UseCompatibleTextRendering = true;
-            this.lbl_sms.Click += new System.EventHandler(this.sms_Click);
             // 
             // Chk_Trans_report
             // 
@@ -204,7 +205,6 @@
             this.Controls.Add(this.tb_FirstName);
             this.Name = "Form1";
             this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
             this.services.ResumeLayout(false);
             this.services.PerformLayout();
             this.ResumeLayout(false);

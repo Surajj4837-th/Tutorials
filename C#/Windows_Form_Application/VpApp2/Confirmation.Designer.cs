@@ -170,7 +170,7 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(54, 557);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(123, 36);
+            this.label3.Size = new System.Drawing.Size(98, 29);
             this.label3.TabIndex = 17;
             this.label3.Text = "Reports";
             // 
@@ -180,7 +180,7 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(54, 604);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(288, 36);
+            this.label5.Size = new System.Drawing.Size(230, 29);
             this.label5.TabIndex = 18;
             this.label5.Text = "Transaction Reports";
             // 
@@ -205,6 +205,7 @@
             this.Controls.Add(this.lbl_fname);
             this.Name = "Confirmation";
             this.Text = "Confirmation";
+            this.Load += new System.EventHandler(this.Confirmation_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
