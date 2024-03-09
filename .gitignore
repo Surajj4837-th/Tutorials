@@ -175,3 +175,8 @@
 /C#/Windows_Form_Application/RadioButtons/RadioButtons.csproj
 /C#/Windows_Form_Application/RadioButtons/RadioButtons.sln
 /C#/Windows_Form_Application/RadioButtons/bin/Debug
+/C#/Windows_Form_Application/DialogBox/.vs/DialogBox
+/C#/Windows_Form_Application/DialogBox/obj/Debug
+*.sln
+/C#/Windows_Form_Application/DialogBox/bin/Debug
+*.csproj
