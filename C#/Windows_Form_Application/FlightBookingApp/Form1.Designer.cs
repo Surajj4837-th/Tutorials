@@ -220,6 +220,7 @@
             this.dtp_IssueDate.Name = "dtp_IssueDate";
             this.dtp_IssueDate.Size = new System.Drawing.Size(200, 20);
             this.dtp_IssueDate.TabIndex = 15;
+            this.dtp_IssueDate.ValueChanged += new System.EventHandler(this.dtp_IssueDate_ValueChanged);
             // 
             // dtp_Expiry
             // 
@@ -279,6 +280,7 @@
             this.button1.TabIndex = 21;
             this.button1.Text = "Book without pay";
             this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Form1
             // 
@@ -308,7 +310,9 @@
             this.Controls.Add(this.lbl_To);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Flight Booking App";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nud_bag)).EndInit();
