@@ -69,6 +69,10 @@ namespace FlightBookingApp
 
                 Passport = true;
             }
+            else
+            {
+                Passport = false;
+            }
 
             if (rb_ID.Checked)
             {
@@ -77,6 +81,10 @@ namespace FlightBookingApp
                 lbl_ExpiryDate.Text = "ID Card No.";
 
                 ID_Card = true;
+            }
+            else
+            {
+                ID_Card = false;
             }
         }
     }
