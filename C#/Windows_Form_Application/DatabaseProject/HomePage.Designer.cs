@@ -163,6 +163,7 @@
             this.button2.TabIndex = 20;
             this.button2.Text = "Delete My Account";
             this.button2.UseVisualStyleBackColor = false;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // label6
             // 

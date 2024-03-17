@@ -56,13 +56,13 @@ namespace DatabaseProject
 
                 if (row == 1)
                 {
-                    MessageBox.Show("Account is created successfully...");
+                    MessageBox.Show("Account is created successfully. Please log in now.");
 
                     this.Hide();
 
-                    HomePage home = new HomePage();
+                    SignIn signin = new SignIn();
 
-                    home.Show();
+                    signin.Show();
                 }
                 else
                 {

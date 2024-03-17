@@ -40,7 +40,7 @@ namespace DatabaseProject
                 string query = "Select * from Users Where Email= '" + email + "' AND Password = '" + password + "'";
                 objDBAccess.readDatathroughAdapter(query, dtUser);  //dtUser stores the data on RAM. So it should be temporarily used.
 
-                if (dtUser.Rows.Count == 1 )
+                if (dtUser.Rows.Count >= 1 )
                 {
                     MessageBox.Show("You are logged in successfully.");
                     objDBAccess.closeConn();

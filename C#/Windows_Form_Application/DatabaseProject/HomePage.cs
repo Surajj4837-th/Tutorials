@@ -85,5 +85,34 @@ namespace DatabaseProject
                 }
             }
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            DialogResult dialog = MessageBox.Show("Are you sure?", "Delete Account", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (dialog == DialogResult.Yes)
+            {
+                string deletequery = "DELETE from Users where ID = '" + SignIn.st_id + "'";
+
+                SqlCommand deleteCommand = new SqlCommand(deletequery);
+
+                int row = objDBAccess.executeQuery(deleteCommand);
+
+                if (row == 1)
+                {
+                    MessageBox.Show("Account is deleted successfully...");
+
+                    this.Hide();
+
+                    SignIn signin = new SignIn();
+
+                    signin.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Error occured.");
+                }
+            }
+        }
     }
 }
