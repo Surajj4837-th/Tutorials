@@ -15,6 +15,8 @@ namespace DatabaseProject
         DBAccess objDBAccess = new DBAccess();
         DataTable dtUser =  new DataTable();
 
+        public static string st_id, st_name, st_email, st_password, st_country;
+
         public SignIn()
         {
             InitializeComponent();
@@ -43,6 +45,12 @@ namespace DatabaseProject
                     MessageBox.Show("You are logged in successfully.");
                     objDBAccess.closeConn();
 
+                    st_id = dtUser.Rows[0]["ID"].ToString();
+                    st_name = dtUser.Rows[0]["Name"].ToString();
+                    st_email = dtUser.Rows[0]["Email"].ToString();
+                    st_password = dtUser.Rows[0]["Password"].ToString();
+                    st_country = dtUser.Rows[0]["Country"].ToString();
+
                     this.Hide();
 
                     HomePage home = new HomePage();
@@ -54,6 +62,15 @@ namespace DatabaseProject
                     MessageBox.Show("Invalid credentials, provide correct data.");
                 }
             }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+
+            SignUp signUp = new SignUp();
+
+            signUp.Show();
         }
     }
 }
