@@ -29,5 +29,14 @@ namespace DatabaseProject
             dataGridView1.DataSource = dt_info;
             objDBAccess.closeConn();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string query = "Select * from Users";
+
+            int changes = objDBAccess.executeDataAdapter(dt_info, query);
+
+            MessageBox.Show("count = " + changes);
+        }
     }
 }
