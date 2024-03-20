@@ -37,7 +37,7 @@ namespace DatabaseProject
             }
             else
             {
-                string query = "Select * from Users Where Email= '" + email + "' AND Password = '" + password + "'";
+                string query = "Select * from Users Where Email= N'" + email + "' AND Password = N'" + password + "'";
                 objDBAccess.readDatathroughAdapter(query, dtUser);  //dtUser stores the data on RAM. So it should be temporarily used.
 
                 if (dtUser.Rows.Count >= 1 )
@@ -74,3 +74,4 @@ namespace DatabaseProject
         }
     }
 }
+
