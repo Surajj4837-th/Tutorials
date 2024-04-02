@@ -2,8 +2,6 @@
 
 Source: [SQL Course | SQL Training | SQL Tutorial For Beginners | Intellipaat](https://www.youtube.com/watch?v=LGTbdjoEBVM)
 
-## Lecture Sequence: 
-1. 
 
 ## General Notes
 1. SQL - Relational database (RDBMS), database that stores and provides access to data points that are related to one another.
@@ -83,6 +81,7 @@ Source: [SQL Course | SQL Training | SQL Tutorial For Beginners | Intellipaat](h
     ```SQL
     Select ID, name from employee where gender='F'; 
     ```
+    The WHERE clause is used to filter records. The WHERE clause is used to extract only those records that fulfill a specified condition.
 13. Operators:  
     1. And
     2. Or
@@ -114,3 +113,14 @@ Source: [SQL Course | SQL Training | SQL Tutorial For Beginners | Intellipaat](h
 18. Group by: Used to get aggregate results with respect to a group. Sequence of instruction is important, group by clause follows the where clause and precedes the order by clause.
 19. Having: Used in combination with group by to impose conditions on groups. Having clause must follow group by clause and must precede order by clause.
 20. Update: Modify existing records.
+    ```SQL
+        Update table_name set col1=val1, col2=val2 ... [where condition];
+    ```
+21. Delete: Delete the existing records.
+    ```SQL
+        Delete from table_name [where condition];
+    ```
+22. Truncate: Deletes all data inside table. The table structure i.e. the column names remains intact.
+    ```SQL
+        Truncate table_name;
+    ```
