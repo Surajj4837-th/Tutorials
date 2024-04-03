@@ -124,3 +124,14 @@ Source: [SQL Course | SQL Training | SQL Tutorial For Beginners | Intellipaat](h
     ```SQL
         Truncate table_name;
     ```
+23. Inner join: These are the records which have matching values in 2 different tables Also known as simple join. Syntax:
+    ```SQL
+        SELECT column1, column2, ..., columnN
+        FROM table1
+        INNER JOIN table2
+        ON [condition];
+    ```
+    In the end a new table is created where the selected columns are present mapped by the condition given.
+24. Left join: Returns all records from the left table and the matched records from right table. Unmatched data is assigned NULL value.
+25. Right join: Returns all records from the right table and the matched records from the left table. Unmatched data is assigned NULL value.
+26. FULL join returns all the records from right and left table and NULL assigned to the records no meeting the condition.
