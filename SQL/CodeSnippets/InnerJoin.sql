@@ -88,3 +88,11 @@ select * from emp_table;
 
 -- problem statement 2
 -- Delete employee table records which are based in New York.
+
+delete emp_table
+from emp_table
+join dept_table
+on emp_table.dept = dept_table.name
+where location='New York';
+
+select * from emp_table;
