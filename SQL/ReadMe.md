@@ -184,3 +184,18 @@ Source: [SQL Course | SQL Training | SQL Tutorial For Beginners | Intellipaat](h
     Alter table table_name
     drop column column_name;
     ```
+33. Merge: Combines insert, update and delete in singe statement. It requires 2 tables: source and target. Source table contains all the changes which are to be applied to the target table. Syntax:
+    ```SQL
+    merge [target] as T
+    using [source] as S
+    on [join condition]
+    when matched
+    then[update statement]
+    when not matched by taret
+    then[insert statement]
+    when not matched by source
+    then [delete statement];
+    ```
+    When rows match by join condition then update the target table. When rows in source are not in target then insert them in target table. When rows present in target table but absent in source table then delete these rows.
+34. User defined functions: There are 2 types of user defined functions: Scalar valued and table valued.
+    1. Scalar 
