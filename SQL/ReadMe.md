@@ -89,12 +89,11 @@ Source: [SQL Course | SQL Training | SQL Tutorial For Beginners | Intellipaat](h
     4. Like: Extract records where a particular pattern is present. Like operator uses wild card charachters.
         1. % - represents zero, one or multiple charachters.
         2. _ - represents a single charachter.  
-       Pattern should e inside single quotes.
-       Example:
-       ```SQL
-       select * from employee where name LIKE '_up%';    -- employee name with any first charachter 2nd charachter as 'u', third charather as 'p' and anything followed after that.
-       select * from employee where age LIKE '2_';       -- employee with age in 20s.
-       ```
+       Pattern should be inside single quotes. Example:
+           ```SQL
+           select * from employee where name LIKE '_up%';    -- employee name with any first charachter 2nd charachter as 'u', third charather as 'p' and anything followed after that.
+           select * from employee where age LIKE '2_';       -- employee with age in 20s.
+           ```
     5. Between: Extract values between a range, both the mentioned values are inclusive.
 14. SQL functions:
     1. min()
@@ -198,4 +197,84 @@ Source: [SQL Course | SQL Training | SQL Tutorial For Beginners | Intellipaat](h
     ```
     When rows match by join condition then update the target table. When rows in source are not in target then insert them in target table. When rows present in target table but absent in source table then delete these rows.
 34. User defined functions: There are 2 types of user defined functions: Scalar valued and table valued.
-    1. Scalar 
+    1. Scalar valued function returns a scalar value.
+    Syntax:
+        ```SQL
+        CREATE FUNCTION fun_name(@param1 data_type, @param2 data_type, ...)
+        RETURNS return_data_type
+        AS
+        BEGIN
+            -- function body
+        RETURN value
+        END
+        ```
+    2. Table valued function return a table instead of a scale.
+    Syntax:
+        ```SQL
+        CREATE FUNCTION fun_name(@param1 data_type, @param2 data_type, ...)
+        RETURNS table
+        AS
+        BEGIN
+            -- function body
+        RETURN (SELECT column_list FROM table_name WHERE[condition])
+        END
+        ```
+35. Temporary tables: These are created in tempDB and deleted as soon as the session is terminated. These are useful whenever temporary data is generated. Syntax:
+    ```SQL
+    CREATE TABLE #table_name(
+    );
+    ```
+36. Case statement: Helps in multi way decision making. Syntax:
+    ```SQL
+    CASE
+        When condition1 THEN Operation1
+        When condition2 THEN Operation2
+        When conditionN THEN OperationN
+        ELSE oeprationM
+    END;
+    ```
+37. IIF() function: Alternative of case statement. Syntax:
+    ```SQL
+    IIF(boolean_expression, true_value, false_value)
+    ```
+38. Stored procedure: It is a prepared SQL code which can be saved and reused.   
+    Stored procedure without parameter syntax:
+    ```SQL
+    CREATE PROCEDURE procedure_name
+    AS
+    sql_statement
+    GO
+    ```
+    While executing the stored procedure:
+    ```SQL
+    EXEC procedure_name
+    ```
+    Stored prcedure with parameter syntax:
+    ```SQL
+    CREATE PROCEDURE procedure_name
+    @param1 data_type, param2 data_type
+    AS
+    sql_statement
+    GO
+    ```
+40. Exception handeling: Error condition during a program execution is called as an exception and the mechanism for resolving such an exception is called exception handling. SQL provides try and catch block for exception handling. Syntax:
+    ```SQL
+    BEGIN TRY
+    SQL statements
+    END TRY
+    
+    BEGIN CATCH
+    print error
+    SQL statements
+    END CATCH
+    ```
+41. Transactions: It is a group of commands that change data stored in a database. Transaction is treated as a single unit if any of the command in the transaction fails then all the commands will fail and any modified data in the database is rolled back. Similarly if all the commands in the database are successful then the data is committed. The data from the transaction can be rolled back by using `rollback transaction` command. The final change in the database will be done once `commit transaction` command is given. After this the change is permanent.
+42. DB Administrator (DBA): DBA performs all activities related to maintaininga successful database environment. Types of DBA:
+    1. Production DBA
+    2. Application DBA
+    3. Development DBA
+    4. UAT DBA
+    5. Data warehouse DBA
+43. MS SQL Server: It is RDBMS from Microsoft.
+44. Server instance: It is a collection of SQL server databases run by a single SQL server service. There is option of default and named instance while server installation. If you plan to install a single instance of SQL server on a DB server then go with a default instance. Use a named instance for situations where you plan to have multiple instances on the same server. A computer can host only 1 default instance and all other instances must be named.
+45. Backup and restore: One of the important tasks of a DBA is to backup and restore the DB to ake sure there is no data loss. The system DBs that you must always back up include msdb, master and model.
