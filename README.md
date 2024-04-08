@@ -3,7 +3,8 @@
 2. C++
 3. CUDA
 4. ARM Neon architecture
-4. C#
+5. C#
+5. SQL
   
   
 # Subjects
