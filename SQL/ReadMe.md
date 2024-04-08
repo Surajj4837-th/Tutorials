@@ -278,3 +278,55 @@ Source: [SQL Course | SQL Training | SQL Tutorial For Beginners | Intellipaat](h
 43. MS SQL Server: It is RDBMS from Microsoft.
 44. Server instance: It is a collection of SQL server databases run by a single SQL server service. There is option of default and named instance while server installation. If you plan to install a single instance of SQL server on a DB server then go with a default instance. Use a named instance for situations where you plan to have multiple instances on the same server. A computer can host only 1 default instance and all other instances must be named.
 45. Backup and restore: One of the important tasks of a DBA is to backup and restore the DB to ake sure there is no data loss. The system DBs that you must always back up include msdb, master and model.
+46. Recovery model: A recovery model is a database property that controls how transactions are logged, whether the transaction log requires backing up and what kinds of restore operations are available. There are 3 models:
+    1. Simple: 
+        1. Maintains only a min amount of information in the SQL server transaction log file.
+        2. SQL server on its own truncates the transaction log files and removes the information related to the transactions which have reached transaction checkpoints so that the space can be reused, leaving no transaction log entries fordisaster recovery purpose.
+        3. The data is recoverable only to the most full database or differential back ups.
+        4. Here, the transcation log truncation happens after a checkpoint or as soon as you can change the recovery model of your database to simple recovery model.
+        5. It requires very less administration. Data loss is also higher if a data file is damaged.
+        6. Recovery command:
+            ```SQL
+            USE [master]
+            Go
+            Alter Database [db_name]
+            Set Recovery Simple With No_Wait
+            Go
+            ```
+    2. Full:
+        1. It logs every transactino and maintains it there until a transaction log backup is taken.
+        2. With this recovery model you can devise a disaster recovery planthat includes a combination of full backup and transaction log and backups. To control the size of the transaction log, you need to take a transaction log backup so that it gets truncated.
+        3. No work is lost due to damaged data files.
+        4. Recovery command:
+            ```SQL
+            USE [master]
+            Go
+            Alter Database [db_name]
+            Set Recovery Full With No_Wait
+            Go
+            ```
+    3. Bulk logged:
+        1. It is similar to full recovery model with the difference of handeling bulk data modufication operations. The bulk log model records the transactions using minimal logging so that this saves processing time.
+        2. There is no point in time recovery option like full recovery model.
+        3. Recovery command:
+            ```SQL
+            USE [master]
+            Go
+            Alter Database [db_name]
+            Set Recovery Bulk_Logged With No_Wait
+            Go
+            ```
+47. Planning a backup strategy: After you have selected a recovery model that suits your business requirements for a specific database, you have to plan and implement a corresponding backup strategy. Questions to keep in mind:
+    1. How many hours a day do applications have to access the database?
+    2. How frequently are the changes and updates likely to occur?
+    3. Are the changes likely to occur in only a small part of the database or in a large part?
+48. Types of back up models:
+    1. Full backup: Back ups the complete database.
+    2. Partial backup.
+    3. Differential backup: It is a backup that copies all the data that has changed since the last full back up.The full backup upon which a differential backup is based is called as base of the differential.
+    4. Copy-only backup: It is an independent backup and it does not break the chain of database backups. In other words, it does not disturb the original backup workflow, but just creates a copy of the original database independently.
+    5. File and filegroup backup: When database size and performance requirements make a full database backup impractical, you can create a file backup instead. A file backup contains al the data in one or more files or filegroups.
+    6. Mirror backup: Identical copies of the same backup. Admins store them on multiple backup devices thus increasing the reliability of the backups and reducing the probability of data loss.
+    7. Transaction log backup: Allows you to backup the active part of the transaction log. So after you issue a "Full" or "Differential" backup, the transaction log backup will have any transactions that were created after those other backups are completed.
+49. Point in time recovery: It allows to recover a database into a state it was in any point in time. This type of recovery is applicable only to databases that run under the full or bulk logged recovery model.
+50 Import and export data in SSMS.
