@@ -158,7 +158,7 @@ Source: [SQL Course | SQL Training | SQL Tutorial For Beginners | Intellipaat](h
     intersect
     select columnList from table2;
     ```
-31. Views: View is a vietual table based on the result of an SQL statement.
+31. Views: View is a virtual table based on the result of an SQL statement.
     ```SQL
     create view_name as
     select columnList from table1
@@ -183,15 +183,15 @@ Source: [SQL Course | SQL Training | SQL Tutorial For Beginners | Intellipaat](h
     Alter table table_name
     drop column column_name;
     ```
-33. Merge: Combines insert, update and delete in singe statement. It requires 2 tables: source and target. Source table contains all the changes which are to be applied to the target table. Syntax:
+33. Merge: Combines insert, update and delete in single statement. It requires 2 tables: source and target. Source table contains all the changes which are to be applied to the target table. Syntax:
     ```SQL
     merge [target] as T
     using [source] as S
     on [join condition]
     when matched
-    then[update statement]
+    then [update statement]
     when not matched by taret
-    then[insert statement]
+    then [insert statement]
     when not matched by source
     then [delete statement];
     ```
@@ -280,7 +280,7 @@ Source: [SQL Course | SQL Training | SQL Tutorial For Beginners | Intellipaat](h
 45. Backup and restore: One of the important tasks of a DBA is to backup and restore the DB to ake sure there is no data loss. The system DBs that you must always back up include msdb, master and model.
 46. Recovery model: A recovery model is a database property that controls how transactions are logged, whether the transaction log requires backing up and what kinds of restore operations are available. There are 3 models:
     1. Simple: 
-        1. Maintains only a min amount of information in the SQL server transaction log file.
+        1. Maintains only a minimum amount of information in the SQL server transaction log file.
         2. SQL server on its own truncates the transaction log files and removes the information related to the transactions which have reached transaction checkpoints so that the space can be reused, leaving no transaction log entries fordisaster recovery purpose.
         3. The data is recoverable only to the most full database or differential back ups.
         4. Here, the transcation log truncation happens after a checkpoint or as soon as you can change the recovery model of your database to simple recovery model.
@@ -294,8 +294,8 @@ Source: [SQL Course | SQL Training | SQL Tutorial For Beginners | Intellipaat](h
             Go
             ```
     2. Full:
-        1. It logs every transactino and maintains it there until a transaction log backup is taken.
-        2. With this recovery model you can devise a disaster recovery planthat includes a combination of full backup and transaction log and backups. To control the size of the transaction log, you need to take a transaction log backup so that it gets truncated.
+        1. It logs every transaction and maintains it there until a transaction log backup is taken.
+        2. With this recovery model you can devise a disaster recovery plan that includes a combination of full backup and transaction log and backups. To control the size of the transaction log, you need to take a transaction log backup so that it gets truncated.
         3. No work is lost due to damaged data files.
         4. Recovery command:
             ```SQL
@@ -306,7 +306,7 @@ Source: [SQL Course | SQL Training | SQL Tutorial For Beginners | Intellipaat](h
             Go
             ```
     3. Bulk logged:
-        1. It is similar to full recovery model with the difference of handeling bulk data modufication operations. The bulk log model records the transactions using minimal logging so that this saves processing time.
+        1. It is similar to full recovery model with the difference of handeling bulk data modification operations. The bulk log model records the transactions using minimal logging so that this saves processing time.
         2. There is no point in time recovery option like full recovery model.
         3. Recovery command:
             ```SQL
@@ -330,3 +330,34 @@ Source: [SQL Course | SQL Training | SQL Tutorial For Beginners | Intellipaat](h
     7. Transaction log backup: Allows you to backup the active part of the transaction log. So after you issue a "Full" or "Differential" backup, the transaction log backup will have any transactions that were created after those other backups are completed.
 49. Point in time recovery: It allows to recover a database into a state it was in any point in time. This type of recovery is applicable only to databases that run under the full or bulk logged recovery model.
 50 Import and export data in SSMS.
+51. Dynamic management views (DMVs): It returns server state information that can be used to monitor the health of a server instance, diagnose problems and tune performance. Properties:
+    1. These are composed of both views and table valued functions. Some apply to the entire server and are stored in the master database, others are specific to each database.
+    2. All dynamic management views and functions exist in the sys schema and follow this naming convention dm_*.
+    Categories:
+    1. Database related.
+    2. SQL server OS related.
+    3. Execution related.
+52. SQL server activity monitor.
+53. SQL server performance monitor.
+54. SQL server profiler.
+55. Data integrity: Used to maintain accuracy and consistency of data in a table.
+56. Index: It is an on disk structure associated with a table or a view that speeds retrieval of rows from table or view.
+57. Fragmentation.
+58. CRUD operations in MySQL.
+59. SQL injection (SQLi): It is a kind of attack in web based applications where the attacker can run malicious queries in the website's database. How to prevent SQLi:
+    1. Principle of least privilege: Provide level of previleges to different users.
+    2. Password hashing.
+    3. Third party authentication: Login with Google, login with FB, etc.
+    4. Hueristic ways.
+60. SQL developer tasks:
+    1. Data modeling
+    2. Data management.
+    3. Data backup and restore.
+    4. Data migration.
+61. SQL developer skills:
+    1. SQL language.
+    2. Programming language as interface between application and database.
+    3. Profiling.
+    4. Performance tuning.
+62. SQL demo.
+63. SQL vs MySQL.
