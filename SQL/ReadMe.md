@@ -36,7 +36,7 @@ Source: [SQL Course | SQL Training | SQL Tutorial For Beginners | Intellipaat](h
     1. Not Null: Ensures a column cannot have a NULL value.
     2. Default: Sets a default value for a column when no value is specified.
     3. Unique: All the values in a column are different.
-    4. Primary key: Combination of unique and null constraint. All columns will have a unique value and not null. We specify a column as primary key when we want to access the resords using the same. A table cannot have more than 1 primary key.
+    4. Primary key: Combination of unique and null constraint. All columns will have a unique value and not null. We specify a column as primary key when we want to access the records using the same. A table cannot have more than 1 primary key. A primary key can be declared later by using `alter` command.
 9. Syntax to create a table:  
     ```SQL
     CREATE TABLE table_name (
@@ -361,3 +361,29 @@ Source: [SQL Course | SQL Training | SQL Tutorial For Beginners | Intellipaat](h
     4. Performance tuning.
 62. SQL demo.
 63. SQL vs MySQL.
+
+
+## Notes from other sources
+1. GO command: Used to create batches of statements instead of executing them together. Also used to run a SQL code multiple times.
+1. Foreign key: It makes relational database "relational" by creating relationships between tables. It also helps to ensure all the data entering the database is consistent and valid. Foreign key of one table is used as primary key of another table. Foregn key can be added later by using `alter` command. Join commands can be used to combine multiple tables based on foreign key values.
+1. Auto increment keyword: It allows a unique number to be generated automatically when a new record is inserted into a table. Often this is the primary key field that we would like to be created automatically every time a new record is inserted. THis keyword works in MySQL. Example
+   ```SQL
+   CREATE TABLE Persons (
+   Personid int NOT NULL AUTO_INCREMENT,
+   LastName varchar(255) NOT NULL,
+   FirstName varchar(255),
+   Age int,
+   PRIMARY KEY (PersonId)
+   );
+   ```
+   In case of MSSQL use `identity` keyword. Example:
+   ```SQL
+   CREATE TABLE Persons (
+   Personid int NOT NULL IDENTITY,
+   LastName varchar(255) NOT NULL,
+   FirstName varchar(255),
+   Age int,
+   PRIMARY KEY (PersonId)
+   );
+   ```
+1. Alter statement: Used to add, delete or modify columns of an existing table.
