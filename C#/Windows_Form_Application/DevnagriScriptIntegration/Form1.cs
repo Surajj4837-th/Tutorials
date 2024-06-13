@@ -30,6 +30,15 @@ namespace DevnagriScriptIntegration
             string query = "INSERT INTO [dbo].[Table1] ([name],[surname]) VALUES (N'" + tb_name.Text + "', N'" + tb_surname.Text + "')";
             SqlCommand cmd = new SqlCommand(query, con);
             cmd.ExecuteNonQuery();
+
+            // Tested the delete operation
+            string name = "आशीष";
+            SqlCommand deleteCommand = new SqlCommand("DELETE FROM Table1 WHERE name = @name");
+            deleteCommand.Parameters.AddWithValue("@name", name);
+            deleteCommand.Connection = con;
+
+            deleteCommand.ExecuteNonQuery();
+
         }
     }
 }
