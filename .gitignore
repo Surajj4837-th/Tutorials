@@ -195,3 +195,6 @@
 /C#/Windows_Form_Application/DatabaseProject/bin/Release
 /C#/Windows_Form_Application/DatabaseProject/obj/Release
 /SQL/.vs
+/C#/Windows_Form_Application/MultiLanguageApplication/.vs/MultiLanguageApplication
+/C#/Windows_Form_Application/MultiLanguageApplication/bin/Debug
+/C#/Windows_Form_Application/MultiLanguageApplication/obj/Debug
