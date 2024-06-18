@@ -5,6 +5,7 @@
 4. ARM Neon architecture
 5. C#
 5. SQL
+6. Dart
   
   
 # Subjects
