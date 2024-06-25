@@ -219,6 +219,7 @@
             this.print.TabIndex = 4;
             this.print.Text = "Print";
             this.print.UseVisualStyleBackColor = true;
+            this.print.Click += new System.EventHandler(this.print_Click);
             // 
             // preview
             // 

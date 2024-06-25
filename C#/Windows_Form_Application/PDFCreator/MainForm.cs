@@ -58,7 +58,24 @@ namespace PDFCreator
 
         private void printDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
+            //Show image
+            Bitmap image = Properties.Resources.Logo;
+            Image img = image;
+            e.Graphics.DrawImage(img, 10, 10, img.Width, img.Height);
 
+            // Show string
+            e.Graphics.DrawString("Customer Name: " + name.Text, new Font("Arial", 11, FontStyle.Regular), Brushes.Black, new Point(10, 100));
+            e.Graphics.DrawString("Date: " + DateTime.Now, new Font("Arial", 11, FontStyle.Regular), Brushes.Black, new Point(10, 130));
+            e.Graphics.DrawString("Customer Mobile No.: " + mobno.Text, new Font("Arial", 11, FontStyle.Regular), Brushes.Black, new Point(10, 150));
+
+            string dash = "--------------------------------------------------------------------------------------------------------------------------------------------";
+            e.Graphics.DrawString(dash, new Font("Arial", 11, FontStyle.Regular), Brushes.Black, new Point(0, 170));
+            
+        }
+
+        private void print_Click(object sender, EventArgs e)
+        {
+            printDocument.Print();
         }
     }
 }
