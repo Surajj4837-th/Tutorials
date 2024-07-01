@@ -140,39 +140,6 @@ namespace PDFCreator
             // Create Table
             CreateTable(e);
 
-            //CreateHeader(e, LeftBound, RightBound);
-
-            //Pen selPen = new Pen(Color.Blue);
-            //e.Graphics.FillRectangle(new SolidBrush(Color.AliceBlue), e.MarginBounds.Left, e.MarginBounds.Top, e.MarginBounds.Width, e.MarginBounds.Height);
-
-
-            /*
-             1. Permanent items:
-                - Page No.
-                - Logo
-                - Company Name, address
-                - Note
-                - Bill To
-                - Invoice details: No, Date, Time
-                - Table
-                - Payment status
-             */
-
-            //e.Graphics.Clear(Color.LightGray);
-
-            ////Show image
-            //Bitmap image = Properties.Resources.Logo;
-            //Image img = image;
-            //e.Graphics.DrawImage(img, 10, 10, img.Width, img.Height);
-
-            //// Show string
-            //e.Graphics.DrawString("Customer Name: " + name.Text, new Font("Arial", 11, FontStyle.Regular), Brushes.Black, new Point(10, 100));
-            //e.Graphics.DrawString("Date: " + DateTime.Now, new Font("Arial", 11, FontStyle.Regular), Brushes.Black, new Point(10, 130));
-            //e.Graphics.DrawString("Customer Mobile No.: " + mobno.Text, new Font("Arial", 11, FontStyle.Regular), Brushes.Black, new Point(10, 150));
-
-            //string dash = "--------------------------------------------------------------------------------------------------------------------------------------------";
-            //e.Graphics.DrawString(dash, new Font("Arial", 11, FontStyle.Regular), Brushes.Black, new Point(0, 170));
-
         }
 
         private void print_Click(object sender, EventArgs e)
