@@ -18,7 +18,7 @@ namespace PDFCreator
             InitializeComponent();
         }
 
-        Font fnt = new Font("Arial", 11, FontStyle.Regular);
+        Font fnt = new Font("Arial", 12, FontStyle.Regular);
 
         private void close_Click(object sender, EventArgs e)
         {
@@ -65,7 +65,7 @@ namespace PDFCreator
         }
         private void ShowUsableArea(PrintPageEventArgs e)
         {
-            e.Graphics.DrawRectangle(new Pen(Color.Yellow), e.PageBounds.Left + 40, e.PageBounds.Top + 20, e.PageBounds.Width - 80, e.PageBounds.Height - 60);
+            e.Graphics.DrawRectangle(new Pen(Color.Yellow), e.PageBounds.Left + 40, e.PageBounds.Top + 40, e.PageBounds.Width - 80, e.PageBounds.Height - 80);
         }
         private void ShowPageNumber(PrintPageEventArgs e, string pageNumber)
         {
@@ -74,40 +74,56 @@ namespace PDFCreator
         }
         private void CreateTable(PrintPageEventArgs e)
         {
-            int LeftBound = e.PageBounds.Left + 40;
-            int RightBound = e.PageBounds.Right - 10;
+            int FirstColumn = e.PageBounds.Left + 40;
+            int SecondColumn = FirstColumn + 70;
+            int ThirdColumn = SecondColumn + 280;
+            int FourthColumn = ThirdColumn + 85;
+            int FifthColumn = FourthColumn + 85;
+            int SixthColumn = FifthColumn + 85;
+            int SeventhColumn = SixthColumn + 85;
+            int EighthColumn = e.PageBounds.Right - 40;
 
-            //Header
-            e.Graphics.FillRectangle(new SolidBrush(Color.Black), LeftBound, 370, e.PageBounds.Width - 80, 30);
+            int TableStartY = 330;
+            int TableEndY = 1010;
 
-            //Draw vertical lines
-            e.Graphics.DrawLine(new Pen(Color.Black), new Point(e.PageBounds.Left + 40, 370), new Point(e.PageBounds.Left + 40, e.PageBounds.Height - 60));
-            e.Graphics.DrawLine(new Pen(Color.Black), new Point(e.PageBounds.Right - 40, 370), new Point(e.PageBounds.Right - 40, e.PageBounds.Height - 60));
+            //Table header
+            e.Graphics.FillRectangle(new SolidBrush(Color.Black), FirstColumn, TableStartY, e.PageBounds.Width - 80, 40);
+            e.Graphics.DrawString("Sr. No.", fnt, Brushes.White, (FirstColumn + SecondColumn)/2 - 25, TableStartY + 3);
+            e.Graphics.DrawString("Item", fnt, Brushes.White, (SecondColumn + ThirdColumn) / 2 - 15, TableStartY + 3);
+            e.Graphics.DrawString("Quantity", fnt, Brushes.White, (ThirdColumn + FourthColumn) / 2 - 30, TableStartY + 3);
+            e.Graphics.DrawString("Rate", fnt, Brushes.White, (FourthColumn + FifthColumn) / 2 - 20, TableStartY + 3);
+            e.Graphics.DrawString("SGST", fnt, Brushes.White, (FifthColumn + SixthColumn) / 2 - 20, TableStartY + 3);
+            e.Graphics.DrawString("CGST", fnt, Brushes.White, (SixthColumn + SeventhColumn) / 2 - 15, TableStartY + 3);
+            e.Graphics.DrawString("Amount", fnt, Brushes.White, (SeventhColumn + EighthColumn) / 2 - 30, TableStartY + 3);
 
             bool IsEven = true;
 
-            for(int i = 400; i < e.PageBounds.Height - 60; i+=40)
+            //Table rows
+            for(int i = TableStartY + 40; i < TableEndY; i+=40)
             {
                 if (IsEven)
                 {
-                    e.Graphics.FillRectangle(new SolidBrush(Color.White), LeftBound, i, e.PageBounds.Width - 80, 40);
+                    e.Graphics.FillRectangle(new SolidBrush(Color.White), FirstColumn, i, e.PageBounds.Width - 80, 40);
                     IsEven = false;
                 }
                 else
                 {
-                    e.Graphics.FillRectangle(new SolidBrush(Color.LightGray), LeftBound, i, e.PageBounds.Width - 80, 40);
+                    e.Graphics.FillRectangle(new SolidBrush(Color.LightGray), FirstColumn, i, e.PageBounds.Width - 80, 40);
                     IsEven = true;
                 }
             }
 
-            e.Graphics.DrawLine(new Pen(Color.Black), new Point(e.PageBounds.Left + 110, 370), new Point(e.PageBounds.Left + 110, e.PageBounds.Height - 60));
-            e.Graphics.DrawLine(new Pen(Color.Black), new Point(e.PageBounds.Left + 390, 370), new Point(e.PageBounds.Left + 390, e.PageBounds.Height - 60));
-            e.Graphics.DrawLine(new Pen(Color.Black), new Point(e.PageBounds.Left + 460, 370), new Point(e.PageBounds.Left + 460, e.PageBounds.Height - 60));
-            e.Graphics.DrawLine(new Pen(Color.Black), new Point(e.PageBounds.Left + 530, 370), new Point(e.PageBounds.Left + 530, e.PageBounds.Height - 60));
-            e.Graphics.DrawLine(new Pen(Color.Black), new Point(e.PageBounds.Left + 600, 370), new Point(e.PageBounds.Left + 600, e.PageBounds.Height - 60));
-            e.Graphics.DrawLine(new Pen(Color.Black), new Point(e.PageBounds.Left + 670, 370), new Point(e.PageBounds.Left + 670, e.PageBounds.Height - 60));
+            //Draw vertical lines
+            e.Graphics.DrawLine(new Pen(Color.Black), new Point(FirstColumn, TableStartY), new Point(FirstColumn, e.PageBounds.Height - 60));
+            e.Graphics.DrawLine(new Pen(Color.Black), new Point(SecondColumn, TableStartY), new Point(SecondColumn, e.PageBounds.Height - 60));
+            e.Graphics.DrawLine(new Pen(Color.Black), new Point(ThirdColumn, TableStartY), new Point(ThirdColumn, e.PageBounds.Height - 60));
+            e.Graphics.DrawLine(new Pen(Color.Black), new Point(FourthColumn, TableStartY), new Point(FourthColumn, e.PageBounds.Height - 60));
+            e.Graphics.DrawLine(new Pen(Color.Black), new Point(FifthColumn, TableStartY), new Point(FifthColumn, e.PageBounds.Height - 60));
+            e.Graphics.DrawLine(new Pen(Color.Black), new Point(SixthColumn, TableStartY), new Point(SixthColumn, e.PageBounds.Height - 60));
+            e.Graphics.DrawLine(new Pen(Color.Black), new Point(SeventhColumn, TableStartY), new Point(SeventhColumn, e.PageBounds.Height - 60));
+            e.Graphics.DrawLine(new Pen(Color.Black), new Point(EighthColumn, TableStartY), new Point(EighthColumn, e.PageBounds.Height - 60));
 
-            e.Graphics.DrawLine(new Pen(Color.Black), new Point(e.PageBounds.Left + 40, e.PageBounds.Height - 60), new Point(e.PageBounds.Width - 40, e.PageBounds.Height - 60));
+            e.Graphics.DrawLine(new Pen(Color.Black), new Point(FirstColumn, e.PageBounds.Height - 60), new Point(EighthColumn, e.PageBounds.Height - 60));
         }
 
         private void printDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
