@@ -18,7 +18,7 @@ namespace PDFCreator
             InitializeComponent();
         }
 
-        Font fnt = new Font("Arial", 12, FontStyle.Regular);
+        Font fnt = new Font("Arial", 13, FontStyle.Regular);
 
         private void close_Click(object sender, EventArgs e)
         {
@@ -61,7 +61,8 @@ namespace PDFCreator
 
         private void CreateHeader(PrintPageEventArgs e, int LeftBound, int RightBound)
         {
-            e.Graphics.DrawLine(new Pen(Color.Black), new Point(0, 240), new Point(700, 240));
+            e.Graphics.DrawString("TAX INVOICE", new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(40, 40));
+            e.Graphics.DrawLine(new Pen(Color.Black), new Point(180, 50), new Point(RightBound - 40, 50));
         }
         private void ShowUsableArea(PrintPageEventArgs e)
         {
@@ -133,6 +134,8 @@ namespace PDFCreator
 
             //Usable Area
             ShowUsableArea(e);
+
+            CreateHeader(e, LeftBound, RightBound);
 
             //Show page number
             ShowPageNumber(e, "1");
