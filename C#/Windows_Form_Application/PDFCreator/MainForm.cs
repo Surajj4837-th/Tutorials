@@ -80,6 +80,13 @@ namespace PDFCreator
 
             e.Graphics.DrawRectangle(new Pen(Color.Black), e.PageBounds.Width / 2, 70, e.PageBounds.Width / 2 - 40, 125);
             e.Graphics.DrawRectangle(new Pen(Color.Black), e.PageBounds.Width / 2, 70 + 125, e.PageBounds.Width / 2 - 40, 125);
+
+            // Add Logo
+            var img = new Bitmap("C:\\Users\\admin\\source\\repos\\Tutorials\\C#\\Windows_Form_Application\\PDFCreator\\Resources\\Logo.png");
+            e.Graphics.DrawImage(img, new Rectangle(60, 75, 284, 61));
+
+            // Add vendor address
+
         }
         private void CreateTable(PrintPageEventArgs e)
         {
