@@ -59,7 +59,7 @@ namespace PDFCreator
             printPreviewDialog.ShowDialog();
         }
 
-        private void CreateHeader(PrintPageEventArgs e, int LeftBound, int RightBound)
+        private void CreateHeaderLine(PrintPageEventArgs e, int LeftBound, int RightBound)
         {
             e.Graphics.DrawString("TAX INVOICE", new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(40, 40));
             e.Graphics.DrawLine(new Pen(Color.Black), new Point(180, 50), new Point(RightBound - 40, 50));
@@ -72,6 +72,14 @@ namespace PDFCreator
         {
             e.Graphics.DrawLine(new Pen(Color.Black), new Point(e.PageBounds.Left + 40, e.PageBounds.Height - 40), new Point(e.PageBounds.Width - 40, e.PageBounds.Height - 40));
             e.Graphics.DrawString(pageNumber, fnt, Brushes.Black, new Point(e.PageBounds.Width / 2, e.PageBounds.Height - 30));
+        }
+        private void AddLogo(PrintPageEventArgs e)
+        {
+            e.Graphics.DrawRectangle(new Pen(Color.Black), e.PageBounds.Left + 40, 70, e.PageBounds.Width/2 - 40, 125);
+            e.Graphics.DrawRectangle(new Pen(Color.Black), e.PageBounds.Left + 40, 70 + 125, e.PageBounds.Width/2 - 40, 125);
+
+            e.Graphics.DrawRectangle(new Pen(Color.Black), e.PageBounds.Width / 2, 70, e.PageBounds.Width / 2 - 40, 125);
+            e.Graphics.DrawRectangle(new Pen(Color.Black), e.PageBounds.Width / 2, 70 + 125, e.PageBounds.Width / 2 - 40, 125);
         }
         private void CreateTable(PrintPageEventArgs e)
         {
@@ -89,13 +97,13 @@ namespace PDFCreator
 
             //Table header
             e.Graphics.FillRectangle(new SolidBrush(Color.Black), FirstColumn, TableStartY, e.PageBounds.Width - 80, 40);
-            e.Graphics.DrawString("Sr. No.", fnt, Brushes.White, (FirstColumn + SecondColumn)/2 - 25, TableStartY + 3);
-            e.Graphics.DrawString("Item", fnt, Brushes.White, (SecondColumn + ThirdColumn) / 2 - 15, TableStartY + 3);
-            e.Graphics.DrawString("Quantity", fnt, Brushes.White, (ThirdColumn + FourthColumn) / 2 - 30, TableStartY + 3);
-            e.Graphics.DrawString("Rate", fnt, Brushes.White, (FourthColumn + FifthColumn) / 2 - 20, TableStartY + 3);
-            e.Graphics.DrawString("SGST", fnt, Brushes.White, (FifthColumn + SixthColumn) / 2 - 20, TableStartY + 3);
-            e.Graphics.DrawString("CGST", fnt, Brushes.White, (SixthColumn + SeventhColumn) / 2 - 15, TableStartY + 3);
-            e.Graphics.DrawString("Amount", fnt, Brushes.White, (SeventhColumn + EighthColumn) / 2 - 30, TableStartY + 3);
+            e.Graphics.DrawString("Sr. No.", fnt, Brushes.White, (FirstColumn + SecondColumn)/2 - 25, TableStartY + 6);
+            e.Graphics.DrawString("Item", fnt, Brushes.White, (SecondColumn + ThirdColumn) / 2 - 15, TableStartY + 6);
+            e.Graphics.DrawString("Quantity", fnt, Brushes.White, (ThirdColumn + FourthColumn) / 2 - 30, TableStartY + 6);
+            e.Graphics.DrawString("Rate", fnt, Brushes.White, (FourthColumn + FifthColumn) / 2 - 20, TableStartY + 6);
+            e.Graphics.DrawString("SGST", fnt, Brushes.White, (FifthColumn + SixthColumn) / 2 - 20, TableStartY + 6);
+            e.Graphics.DrawString("CGST", fnt, Brushes.White, (SixthColumn + SeventhColumn) / 2 - 15, TableStartY + 6);
+            e.Graphics.DrawString("Amount", fnt, Brushes.White, (SeventhColumn + EighthColumn) / 2 - 30, TableStartY + 6);
 
             bool IsEven = true;
 
@@ -135,13 +143,16 @@ namespace PDFCreator
             //Usable Area
             ShowUsableArea(e);
 
-            CreateHeader(e, LeftBound, RightBound);
+            CreateHeaderLine(e, LeftBound, RightBound);
 
             //Show page number
             ShowPageNumber(e, "1");
 
             // Create Table
             CreateTable(e);
+
+            // Add logo
+            AddLogo(e);
 
         }
 
