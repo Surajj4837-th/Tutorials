@@ -145,7 +145,27 @@ namespace PDFCreator
         }
         private void AddVendorAddressSection(PrintPageEventArgs e)
         {
+            var format = new StringFormat() { Alignment = StringAlignment.Far };
 
+            var rect1 = new Rectangle(e.PageBounds.Width / 2, 70 + 4, e.PageBounds.Width / 2 - 40, 20);
+            e.Graphics.DrawString("ABC LTD", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, rect1, format);
+            //e.Graphics.DrawRectangle(new Pen(Brushes.Blue), rect1);
+
+            var rect2 = new Rectangle(e.PageBounds.Width / 2, 90 + 4, e.PageBounds.Width / 2 - 40, 20);
+            e.Graphics.DrawString("Address 1", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, rect2, format);
+            //e.Graphics.DrawRectangle(new Pen(Brushes.Blue), rect2);
+
+            var rect3 = new Rectangle(e.PageBounds.Width / 2, 110 + 4, e.PageBounds.Width / 2 - 40, 20);
+            e.Graphics.DrawString("Address 2", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, rect3, format);
+            //e.Graphics.DrawRectangle(new Pen(Brushes.Blue), rect3);
+
+            var rect4 = new Rectangle(e.PageBounds.Width / 2, 130 + 4, e.PageBounds.Width / 2 - 40, 20);
+            e.Graphics.DrawString("Maharashtra, India", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, rect4, format);
+            //e.Graphics.DrawRectangle(new Pen(Brushes.Blue), rect4);
+
+            var rect5 = new Rectangle(e.PageBounds.Width / 2, 150 + 4, e.PageBounds.Width / 2 - 40, 20);
+            e.Graphics.DrawString("GST: XXXXX XXXXX XXXXX", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, rect5, format);
+            //e.Graphics.DrawRectangle(new Pen(Brushes.Blue), rect5);
         }
 
         private void printDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
