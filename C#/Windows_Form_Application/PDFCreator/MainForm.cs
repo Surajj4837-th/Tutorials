@@ -167,6 +167,30 @@ namespace PDFCreator
             e.Graphics.DrawString("GST: XXXXX XXXXX XXXXX", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, rect5, format);
             //e.Graphics.DrawRectangle(new Pen(Brushes.Blue), rect5);
         }
+        private void AddCustomerAddressSection(PrintPageEventArgs e)
+        {
+            //var format = new StringFormat() { Alignment = StringAlignment.Far };
+
+            var rect1 = new Rectangle(e.PageBounds.Left + 40 + 2, 70 + 125 + 4, e.PageBounds.Width / 2 - 40, 20);
+            e.Graphics.DrawString("Bill To:", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, rect1);
+            //e.Graphics.DrawRectangle(new Pen(Brushes.Blue), rect1);
+
+            var rect2 = new Rectangle(e.PageBounds.Left + 40 + 2, 90 + 125 + 4, e.PageBounds.Width / 2 - 40, 20);
+            e.Graphics.DrawString("XYZ LTD", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, rect2);
+            //e.Graphics.DrawRectangle(new Pen(Brushes.Blue), rect2);
+
+            var rect3 = new Rectangle(e.PageBounds.Left + 40 + 2, 110 + 125 + 4, e.PageBounds.Width / 2 - 40, 20);
+            e.Graphics.DrawString("Address 1", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, rect3);
+            //e.Graphics.DrawRectangle(new Pen(Brushes.Blue), rect3);
+
+            var rect4 = new Rectangle(e.PageBounds.Left + 40 + 2, 130 + 125 + 4, e.PageBounds.Width / 2 - 40, 20);
+            e.Graphics.DrawString("Address 2", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, rect4);
+            //e.Graphics.DrawRectangle(new Pen(Brushes.Blue), rect4);
+
+            var rect5 = new Rectangle(e.PageBounds.Left + 40 + 2, 150 + 125 + 4, e.PageBounds.Width / 2 - 40, 20);
+            e.Graphics.DrawString("Maharashtra, India", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, rect5);
+            //e.Graphics.DrawRectangle(new Pen(Brushes.Blue), rect5);
+        }
 
         private void printDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
@@ -185,7 +209,10 @@ namespace PDFCreator
             AddLogo(e);
 
             // Add vendor address
-            AddVendorAddressSection(e);
+            //AddVendorAddressSection(e);
+
+            // Add customer address
+            AddCustomerAddressSection(e);
 
         }
 
