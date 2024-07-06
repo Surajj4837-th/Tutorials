@@ -54,15 +54,18 @@ namespace PDFCreator
         }
 
         private void preview_Click(object sender, EventArgs e)
-        {
+        {            
             printPreviewDialog.Document = printDocument;
+            printPreviewDialog.Document.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("PaperA4", 840, 1180);
             printPreviewDialog.ShowDialog();
         }
 
-        private void CreateHeaderLine(PrintPageEventArgs e, int LeftBound, int RightBound)
+        private void CreateHeaderLine(PrintPageEventArgs e)
         {
+            int RightBound = e.PageBounds.Right - 40;
+
             e.Graphics.DrawString("TAX INVOICE", new Font("Arial", 15, FontStyle.Regular), Brushes.Black, new Point(40, 40));
-            e.Graphics.DrawLine(new Pen(Color.Black), new Point(180, 50), new Point(RightBound - 40, 50));
+            e.Graphics.DrawLine(new Pen(Color.Black), new Point(180, 50), new Point(RightBound, 50));
         }
         private void ShowUsableArea(PrintPageEventArgs e)
         {
@@ -82,10 +85,9 @@ namespace PDFCreator
             e.Graphics.DrawRectangle(new Pen(Color.Black), e.PageBounds.Width / 2, 70 + 125, e.PageBounds.Width / 2 - 40, 125);
 
             // Add Logo
-            var img = new Bitmap("C:\\Users\\admin\\source\\repos\\Tutorials\\C#\\Windows_Form_Application\\PDFCreator\\Resources\\Logo.png");
-            e.Graphics.DrawImage(img, new Rectangle(60, 75, 284, 61));
-
-            // Add vendor address
+            var img = new Bitmap("C:\\Users\\admin\\source\\repos\\Tutorials\\C#\\Windows_Form_Application\\PDFCreator\\Resources\\SampleLogo72.png");
+            e.Graphics.DrawImage(img, new Rectangle(60, 75, img.Width / 2, img.Height / 2));
+            e.Graphics.DrawRectangle(new Pen(Brushes.Black), new Rectangle(60, 75, img.Width / 2, img.Height / 2));
 
         }
         private void CreateTable(PrintPageEventArgs e)
@@ -141,16 +143,17 @@ namespace PDFCreator
 
             e.Graphics.DrawLine(new Pen(Color.Black), new Point(FirstColumn, e.PageBounds.Height - 60), new Point(EighthColumn, e.PageBounds.Height - 60));
         }
+        private void AddVendorAddressSection(PrintPageEventArgs e)
+        {
+
+        }
 
         private void printDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            int LeftBound = e.PageBounds.Left + 10;
-            int RightBound = e.PageBounds.Right - 10;
-
             //Usable Area
             ShowUsableArea(e);
 
-            CreateHeaderLine(e, LeftBound, RightBound);
+            CreateHeaderLine(e);
 
             //Show page number
             ShowPageNumber(e, "1");
@@ -160,6 +163,9 @@ namespace PDFCreator
 
             // Add logo
             AddLogo(e);
+
+            // Add vendor address
+            AddVendorAddressSection(e);
 
         }
 
