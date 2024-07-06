@@ -169,8 +169,6 @@ namespace PDFCreator
         }
         private void AddCustomerAddressSection(PrintPageEventArgs e)
         {
-            //var format = new StringFormat() { Alignment = StringAlignment.Far };
-
             var rect1 = new Rectangle(e.PageBounds.Left + 40 + 2, 70 + 125 + 4, e.PageBounds.Width / 2 - 40, 20);
             e.Graphics.DrawString("Bill To:", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, rect1);
             //e.Graphics.DrawRectangle(new Pen(Brushes.Blue), rect1);
@@ -191,6 +189,26 @@ namespace PDFCreator
             e.Graphics.DrawString("Maharashtra, India", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, rect5);
             //e.Graphics.DrawRectangle(new Pen(Brushes.Blue), rect5);
         }
+        private void AddBillDetailsSection(PrintPageEventArgs e)
+        {
+            var format = new StringFormat() { Alignment = StringAlignment.Far };
+
+            var rect1 = new Rectangle(e.PageBounds.Width / 2, 70 + 125 + 4, e.PageBounds.Width / 2 - 40, 20);
+            e.Graphics.DrawString("Invoice ID: XXXXXXXXXXXX", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, rect1, format);
+            //e.Graphics.DrawRectangle(new Pen(Brushes.Blue), rect1);
+
+            var rect2 = new Rectangle(e.PageBounds.Width / 2, 90 + 125 + 4, e.PageBounds.Width / 2 - 40, 20);
+            e.Graphics.DrawString("Admin: XXXX XXXX", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, rect2, format);
+            //e.Graphics.DrawRectangle(new Pen(Brushes.Blue), rect2);
+
+            var rect3 = new Rectangle(e.PageBounds.Width / 2, 110 + 125 + 4, e.PageBounds.Width / 2 - 40, 20);
+            e.Graphics.DrawString("Date: XX/XX/XXXX", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, rect3, format);
+            //e.Graphics.DrawRectangle(new Pen(Brushes.Blue), rect3);
+
+            var rect4 = new Rectangle(e.PageBounds.Width / 2, 130 + 125 + 4, e.PageBounds.Width / 2 - 40, 20);
+            e.Graphics.DrawString("Time: XX:XX:XX", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, rect4, format);
+            //e.Graphics.DrawRectangle(new Pen(Brushes.Blue), rect4);
+        }
 
         private void printDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
@@ -209,10 +227,13 @@ namespace PDFCreator
             AddLogo(e);
 
             // Add vendor address
-            //AddVendorAddressSection(e);
+            AddVendorAddressSection(e);
 
             // Add customer address
             AddCustomerAddressSection(e);
+
+            // Add bill details
+            AddBillDetailsSection(e);
 
         }
 
