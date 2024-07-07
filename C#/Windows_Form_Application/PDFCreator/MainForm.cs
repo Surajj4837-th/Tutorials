@@ -90,7 +90,7 @@ namespace PDFCreator
             e.Graphics.DrawRectangle(new Pen(Brushes.Black), new Rectangle(60, 75, img.Width / 2, img.Height / 2));
 
         }
-        private void CreateTable(PrintPageEventArgs e)
+        private void CreateTable(PrintPageEventArgs e, DataTable items)
         {
             int FirstColumn = e.PageBounds.Left + 40;
             int SecondColumn = FirstColumn + 70;
@@ -210,6 +210,33 @@ namespace PDFCreator
             //e.Graphics.DrawRectangle(new Pen(Brushes.Blue), rect4);
         }
 
+        void FillDatatable(DataTable items)
+        {
+            items.Columns.Add("Sr. No.");
+            items.Columns.Add("Item");
+            items.Columns.Add("Quantity");
+            items.Columns.Add("Rate");
+            items.Columns.Add("SGST");
+            items.Columns.Add("CGST");
+            items.Columns.Add("Amount");
+
+            DataRow row = items.NewRow();
+            row["Sr. No."] = "Name1";
+            row["Item"] = "Item1";
+            row["Quantity"] = "123";
+            row["Rate"] = "10";
+            row["SGST"] = "1.5";
+            row["CGST"] = "1.5";
+            row["Amount"] = "10000";
+
+            items.Rows.Add(row);
+            items.Rows.Add("Name1", "Item1", "123", "10", "1.5", "1.5", "10000");
+            items.Rows.Add("Name1", "Item1", "123", "10", "1.5", "1.5", "10000");
+            items.Rows.Add("Name1", "Item1", "123", "10", "1.5", "1.5", "10000");
+            items.Rows.Add("Name1", "Item1", "123", "10", "1.5", "1.5", "10000");
+            items.Rows.Add("Name1", "Item1", "123", "10", "1.5", "1.5", "10000");
+        }
+
         private void printDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             //Usable Area
@@ -219,9 +246,6 @@ namespace PDFCreator
 
             //Show page number
             ShowPageNumber(e, "1");
-
-            // Create Table
-            CreateTable(e);
 
             // Add logo
             AddLogo(e);
@@ -234,6 +258,13 @@ namespace PDFCreator
 
             // Add bill details
             AddBillDetailsSection(e);
+
+            //Fill datatable
+            DataTable items = new DataTable();
+            FillDatatable(items);
+
+            // Create Table
+            CreateTable(e, items);
 
         }
 
