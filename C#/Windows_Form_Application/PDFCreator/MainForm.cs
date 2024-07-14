@@ -18,7 +18,7 @@ namespace PDFCreator
         DataTable items = new DataTable();
 
         int currentpage = 1;
-        int numofpages = 1;
+        int numofpages = 2;
 
         public MainForm()
         {
@@ -261,7 +261,6 @@ namespace PDFCreator
 
         private void printDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            //currentpage++;
 
             if (currentpage == 1)
             {
@@ -287,16 +286,20 @@ namespace PDFCreator
 
                 //Show page number
                 ShowPageNumber(e, "1");
-            }
-            //else if (currentpage == 2)
-            //{
-            //    Bitmap bmp = Properties.Resources.Logo;
-            //    Image newImage = bmp;
-            //    e.Graphics.DrawImage(newImage, 20, 20);
-            //    e.Graphics.DrawString(currentpage.ToString(), new Font("Verdana", 10, FontStyle.Bold), Brushes.Black, 600, 350);
-            //}
 
-            //e.HasMorePages = currentpage < numofpages;
+                //Fill table
+                FillTable(e, items);
+            }
+            else if (currentpage == 2)
+            {
+                Bitmap bmp = Properties.Resources.Logo;
+                Image newImage = bmp;
+                e.Graphics.DrawImage(newImage, 20, 20);
+                e.Graphics.DrawString(currentpage.ToString(), new Font("Verdana", 10, FontStyle.Bold), Brushes.Black, 600, 350);
+            }
+
+            e.HasMorePages = currentpage < numofpages;
+            currentpage++;
 
         }
 
