@@ -13,8 +13,8 @@ namespace PDFCreator
 {
     public partial class MainForm : Form
     {
-        private int MainPageItemCount = 16;
-        private int SecondPageItemCount = 16;
+        private int MainPageItemCount = 20;
+        private int SecondPageItemCount = 31;
         DataTable items = new DataTable();
 
         int currentpage = 1;
@@ -258,9 +258,36 @@ namespace PDFCreator
             items.Rows.Add("Name1", "Item1", "123", "10", "1.5", "1.5", "10000");
         }
 
+        private void FillTable(PrintPageEventArgs e, DataTable items)
+        {
+
+        }
+
+        private int FindNumberOfPages(DataTable items)
+        {
+            int numOfPages = 0;
+
+            //Count number of items in data table
+            int quantity = items.Rows.Count;
+
+            if(quantity <= MainPageItemCount)
+            {
+                numOfPages = 1;
+            }
+            else
+            {
+                decimal temp = quantity - MainPageItemCount; // Subtracting 1st page items.
+                int remainingPages = (int)Math.Ceiling(temp / SecondPageItemCount);
+
+                numOfPages = 1 + remainingPages;
+            }
+
+            return numOfPages;
+        }
 
         private void printDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
+            numofpages = FindNumberOfPages(items);
 
             if (currentpage == 1)
             {
