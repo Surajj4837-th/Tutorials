@@ -133,7 +133,7 @@ namespace PDFCreator
 
             //Table rows
             int i = 0;
-            for(i = TableStartY + 40; i < TableEndY; i+=40)
+            for(i = TableStartY + 30; i < TableEndY; i+=30)
             {
                 if (IsEven)
                 {
