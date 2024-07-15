@@ -17,6 +17,18 @@ namespace PDFCreator
         private int SecondPageItemCount = 31;
         DataTable items = new DataTable();
 
+        int FirstColumn;
+        int SecondColumn;
+        int ThirdColumn;
+        int FourthColumn;
+        int FifthColumn;
+        int SixthColumn;
+        int SeventhColumn;
+        int EighthColumn;
+
+        int TableStartY;
+        int TableEndY;
+
         int currentpage = 1;
         int numofpages = 2;
 
@@ -26,11 +38,6 @@ namespace PDFCreator
 
             //Fill datatable
             FillDatatable(items);
-
-            //if(items.Rows.Count > 16)
-            //{
-            //    numofpages = 2;
-            //}
         }
 
         Font fnt = new Font("Arial", 13, FontStyle.Regular);
@@ -107,21 +114,21 @@ namespace PDFCreator
         }
         private void CreateTable(PrintPageEventArgs e)
         {
-            int FirstColumn = (int)e.PageSettings.PrintableArea.Left + 40;
-            int SecondColumn = FirstColumn + 70;
-            int ThirdColumn = SecondColumn + 280;
-            int FourthColumn = ThirdColumn + 85;
-            int FifthColumn = FourthColumn + 85;
-            int SixthColumn = FifthColumn + 85;
-            int SeventhColumn = SixthColumn + 85;
-            int EighthColumn = (int)e.PageSettings.PrintableArea.Right - 40;
+            FirstColumn = (int)e.PageSettings.PrintableArea.Left + 40;
+            SecondColumn = FirstColumn + 70;
+            ThirdColumn = SecondColumn + 280;
+            FourthColumn = ThirdColumn + 85;
+            FifthColumn = FourthColumn + 85;
+            SixthColumn = FifthColumn + 85;
+            SeventhColumn = SixthColumn + 85;
+            EighthColumn = (int)e.PageSettings.PrintableArea.Right - 40;
 
-            int TableStartY = 330;
-            int TableEndY = 1040;
+            TableStartY = 330;
+            TableEndY = 1040;
 
             //Table header
             e.Graphics.FillRectangle(new SolidBrush(Color.Black), FirstColumn, TableStartY, e.PageSettings.PrintableArea.Width - 80, 40);
-            e.Graphics.DrawString("Sr. No.", fnt, Brushes.White, (FirstColumn + SecondColumn)/2 - 25, TableStartY + 6);
+            e.Graphics.DrawString("Sr. No.", fnt, Brushes.White, (FirstColumn + SecondColumn) / 2 - 25, TableStartY + 6);
             e.Graphics.DrawString("Item", fnt, Brushes.White, (SecondColumn + ThirdColumn) / 2 - 15, TableStartY + 6);
             e.Graphics.DrawString("Quantity", fnt, Brushes.White, (ThirdColumn + FourthColumn) / 2 - 30, TableStartY + 6);
             e.Graphics.DrawString("Rate", fnt, Brushes.White, (FourthColumn + FifthColumn) / 2 - 20, TableStartY + 6);
@@ -251,16 +258,42 @@ namespace PDFCreator
             row["Amount"] = "10000";
 
             items.Rows.Add(row);
-            items.Rows.Add("Name1", "Item1", "123", "10", "1.5", "1.5", "10000");
-            items.Rows.Add("Name1", "Item1", "123", "10", "1.5", "1.5", "10000");
-            items.Rows.Add("Name1", "Item1", "123", "10", "1.5", "1.5", "10000");
-            items.Rows.Add("Name1", "Item1", "123", "10", "1.5", "1.5", "10000");
-            items.Rows.Add("Name1", "Item1", "123", "10", "1.5", "1.5", "10000");
+            items.Rows.Add("Name1", "Item2", "123", "10", "1.5", "1.5", "10000");
+            items.Rows.Add("Name1", "Item3", "123", "10", "1.5", "1.5", "10000");
+            items.Rows.Add("Name1", "Item4", "123", "10", "1.5", "1.5", "10000");
+            items.Rows.Add("Name1", "Item5", "123", "10", "1.5", "1.5", "10000");
+            items.Rows.Add("Name1", "Item6", "123", "10", "1.5", "1.5", "10000");
         }
 
         private void FillTable(PrintPageEventArgs e, DataTable items)
         {
+            int StartRow = TableStartY + 30;
+            int SrNo = 1;
+            var NearFormat = new StringFormat() { Alignment = StringAlignment.Near };
+            var CentreFormat = new StringFormat() { Alignment = StringAlignment.Center };
+            var FarFormat = new StringFormat() { Alignment = StringAlignment.Far };
 
+            for (int item = 0; item < items.Rows.Count; item++)
+            {
+                var rect1 = new Rectangle(FirstColumn, StartRow, SecondColumn - FirstColumn - 1, 30);
+                var rect2 = new Rectangle(SecondColumn, StartRow, ThirdColumn - SecondColumn - 1, 30);
+                var rect3 = new Rectangle(ThirdColumn, StartRow, FourthColumn - ThirdColumn - 1, 30);
+                var rect4 = new Rectangle(FourthColumn, StartRow, FifthColumn - FourthColumn - 1, 30);
+                var rect5 = new Rectangle(FifthColumn, StartRow, SixthColumn - FifthColumn - 1, 30);
+                var rect6 = new Rectangle(SixthColumn, StartRow, SeventhColumn - SixthColumn - 1, 30);
+                var rect7 = new Rectangle(SeventhColumn, StartRow, EighthColumn - SeventhColumn - 1, 30);
+
+                e.Graphics.DrawString(SrNo.ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, rect1, CentreFormat);
+                e.Graphics.DrawString(items.Rows[item]["Item"].ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, rect2, NearFormat);
+                e.Graphics.DrawString(items.Rows[item]["Quantity"].ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, rect3, FarFormat);
+                e.Graphics.DrawString(items.Rows[item]["Rate"].ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, rect4, FarFormat);
+                e.Graphics.DrawString(items.Rows[item]["SGST"].ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, rect5, FarFormat);
+                e.Graphics.DrawString(items.Rows[item]["CGST"].ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, rect6, FarFormat);
+                e.Graphics.DrawString(items.Rows[item]["Amount"].ToString(), new Font("Arial", 12, FontStyle.Regular), Brushes.Black, rect7, FarFormat);
+
+                StartRow += 30;
+                SrNo++;
+            }
         }
 
         private int FindNumberOfPages(DataTable items)
