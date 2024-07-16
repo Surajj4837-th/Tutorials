@@ -173,7 +173,7 @@ namespace PDFCreator
         }
         private void AddVendorAddressSection(PrintPageEventArgs e)
         {
-            var format = new StringFormat() { Alignment = StringAlignment.Far };
+            var format = new StringFormat() { Alignment = StringAlignment.Far, LineAlignment = StringAlignment.Center };
 
             var rect1 = new Rectangle((int)e.PageSettings.PrintableArea.Width / 2, 70 + 4, (int)e.PageSettings.PrintableArea.Width / 2 - 40, 20);
             e.Graphics.DrawString("ABC LTD", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, rect1, format);
@@ -219,7 +219,7 @@ namespace PDFCreator
         }
         private void AddBillDetailsSection(PrintPageEventArgs e)
         {
-            var format = new StringFormat() { Alignment = StringAlignment.Far };
+            var format = new StringFormat() { Alignment = StringAlignment.Far, LineAlignment = StringAlignment.Center };
 
             var rect1 = new Rectangle((int)e.PageSettings.PrintableArea.Width / 2, 70 + 125 + 4, (int)e.PageSettings.PrintableArea.Width / 2 - 40, 20);
             e.Graphics.DrawString("Invoice ID: XXXXXXXXXXXX", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, rect1, format);
@@ -265,13 +265,13 @@ namespace PDFCreator
             items.Rows.Add("Name1", "Item6", "123", "10", "1.5", "1.5", "10000");
         }
 
-        private void FillTable(PrintPageEventArgs e, DataTable items)
+        private int FillItemTable(PrintPageEventArgs e, DataTable items)
         {
             int StartRow = TableStartY + 30;
             int SrNo = 1;
-            var NearFormat = new StringFormat() { Alignment = StringAlignment.Near };
-            var CentreFormat = new StringFormat() { Alignment = StringAlignment.Center };
-            var FarFormat = new StringFormat() { Alignment = StringAlignment.Far };
+            var NearFormat = new StringFormat() { Alignment = StringAlignment.Near, LineAlignment = StringAlignment.Center };
+            var CentreFormat = new StringFormat() { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center };
+            var FarFormat = new StringFormat() { Alignment = StringAlignment.Far, LineAlignment = StringAlignment.Center };
 
             for (int item = 0; item < items.Rows.Count; item++)
             {
@@ -294,6 +294,61 @@ namespace PDFCreator
                 StartRow += 30;
                 SrNo++;
             }
+            return StartRow;
+        }
+
+        private string ComputeSubTotal()
+        {
+            return "1000";
+        }
+
+        private string ComputeSGST()
+        {
+            return "100";
+        }
+
+        private string ComputeCGST()
+        {
+            return "100";
+        }
+
+        private string ComputeTotalAmount()
+        {
+            return "1200";
+        }
+        private int FillFinalAmountTable(PrintPageEventArgs e, DataTable items, int StartRow)
+        {
+            StartRow += 30;
+
+            var NearFormat = new StringFormat() { Alignment = StringAlignment.Near, LineAlignment = StringAlignment.Center };
+            var FarFormat = new StringFormat() { Alignment = StringAlignment.Far, LineAlignment = StringAlignment.Center };
+
+            var rect1 = new Rectangle(FourthColumn + 20 , StartRow, SixthColumn - FourthColumn - 20 - 1, 30);
+            var rect2 = new Rectangle(SixthColumn, StartRow, EighthColumn - SixthColumn - 1, 30);
+            StartRow += 30;
+            var rect3 = new Rectangle(FourthColumn + 20 , StartRow, SixthColumn - FourthColumn - 20 - 1, 30);
+            var rect4 = new Rectangle(SixthColumn, StartRow, EighthColumn - SixthColumn - 1, 30);
+            StartRow += 30;
+            var rect5 = new Rectangle(FourthColumn + 20, StartRow, SixthColumn - FourthColumn - 20 - 1, 30);
+            var rect6 = new Rectangle(SixthColumn, StartRow, EighthColumn - SixthColumn - 1, 30);
+            StartRow += 30;
+            var rect7 = new Rectangle(FourthColumn + 20, StartRow, SixthColumn - FourthColumn - 20 - 1, 30);
+            var rect8 = new Rectangle(SixthColumn, StartRow, EighthColumn - SixthColumn - 1, 30);
+
+            e.Graphics.DrawString("Sub total", new Font("Arial", 14, FontStyle.Regular), Brushes.Black, rect1, NearFormat);
+            e.Graphics.DrawString(ComputeSubTotal(), new Font("Arial", 14, FontStyle.Regular), Brushes.Black, rect2, FarFormat);
+
+            e.Graphics.DrawString("SGST", new Font("Arial", 14, FontStyle.Regular), Brushes.Black, rect3, NearFormat);
+            e.Graphics.DrawString(ComputeSGST(), new Font("Arial", 14, FontStyle.Regular), Brushes.Black, rect4, FarFormat);
+
+            e.Graphics.DrawString("CGST", new Font("Arial", 14, FontStyle.Regular), Brushes.Black, rect5, NearFormat);
+            e.Graphics.DrawString(ComputeCGST(), new Font("Arial", 14, FontStyle.Regular), Brushes.Black, rect6, FarFormat);
+
+            e.Graphics.DrawString("Total Amount", new Font("Arial", 14, FontStyle.Bold), Brushes.Black, rect7, NearFormat);
+            e.Graphics.DrawString(ComputeTotalAmount(), new Font("Arial", 14, FontStyle.Bold), Brushes.Black, rect8, FarFormat);
+
+
+            return StartRow;
         }
 
         private int FindNumberOfPages(DataTable items)
@@ -348,7 +403,10 @@ namespace PDFCreator
                 ShowPageNumber(e, "1");
 
                 //Fill table
-                FillTable(e, items);
+                int TableEndRow = FillItemTable(e, items);
+
+                //Fill final amount
+                int NextItemStartRow = FillFinalAmountTable(e, items, TableEndRow);
             }
             else if (currentpage == 2)
             {
