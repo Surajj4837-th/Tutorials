@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Printing;
 using System.Linq;
@@ -114,6 +115,8 @@ namespace PDFCreator
         }
         private void CreateTable(PrintPageEventArgs e)
         {
+            var format = new StringFormat() { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center };
+
             FirstColumn = (int)e.PageSettings.PrintableArea.Left + 40;
             SecondColumn = FirstColumn + 70;
             ThirdColumn = SecondColumn + 280;
@@ -376,37 +379,92 @@ namespace PDFCreator
         private void printDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
             numofpages = FindNumberOfPages(items);
+            var stopwatch = new Stopwatch();
+            long totalTime = 0;
 
             if (currentpage == 1)
             {
                 //Usable Area
+                stopwatch.Start();
                 ShowUsableArea(e);
+                //stopwatch.Stop();
+                long elapsed_time = stopwatch.ElapsedMilliseconds;
+                Console.WriteLine("ShowUsableArea time: " + elapsed_time.ToString() + "ms");
+                totalTime += elapsed_time;
 
+                stopwatch.Restart();
                 CreateHeaderLine(e);
+                stopwatch.Stop();
+                elapsed_time = stopwatch.ElapsedMilliseconds;
+                Console.WriteLine("CreateHeaderLine time: " + elapsed_time.ToString() + "ms");
+                totalTime += elapsed_time;
 
                 // Add logo
+                stopwatch.Restart();
                 AddLogo(e);
+                stopwatch.Stop();
+                elapsed_time = stopwatch.ElapsedMilliseconds;
+                Console.WriteLine("AddLogo time: " + elapsed_time.ToString() + "ms");
+                totalTime += elapsed_time;
 
                 // Add vendor address
+                stopwatch.Restart();
                 AddVendorAddressSection(e);
+                stopwatch.Stop();
+                elapsed_time = stopwatch.ElapsedMilliseconds;
+                Console.WriteLine("AddVendorAddressSection time: " + elapsed_time.ToString() + "ms");
+                totalTime += elapsed_time;
 
                 // Add customer address
+                stopwatch.Restart();
                 AddCustomerAddressSection(e);
+                stopwatch.Stop();
+                elapsed_time = stopwatch.ElapsedMilliseconds;
+                Console.WriteLine("AddCustomerAddressSection time: " + elapsed_time.ToString() + "ms");
+                totalTime += elapsed_time;
 
                 // Add bill details
+                stopwatch.Restart();
                 AddBillDetailsSection(e);
+                stopwatch.Stop();
+                elapsed_time = stopwatch.ElapsedMilliseconds;
+                Console.WriteLine("AddBillDetailsSection time: " + elapsed_time.ToString() + "ms");
+                totalTime += elapsed_time;
 
                 // Create Table
+                stopwatch.Restart();
                 CreateTable(e);
+                stopwatch.Stop();
+                elapsed_time = stopwatch.ElapsedMilliseconds;
+                Console.WriteLine("CreateTable time: " + elapsed_time.ToString() + "ms");
+                totalTime += elapsed_time;
 
                 //Show page number
+                stopwatch.Restart();
                 ShowPageNumber(e, "1");
+                stopwatch.Stop();
+                elapsed_time = stopwatch.ElapsedMilliseconds;
+                Console.WriteLine("ShowPageNumber time: " + elapsed_time.ToString() + "ms");
+                totalTime += elapsed_time;
 
                 //Fill table
+                stopwatch.Restart();
                 int TableEndRow = FillItemTable(e, items);
+                stopwatch.Stop();
+                elapsed_time = stopwatch.ElapsedMilliseconds;
+                Console.WriteLine("FillItemTable time: " + elapsed_time.ToString() + "ms");
+                totalTime += elapsed_time;
 
                 //Fill final amount
+                stopwatch.Restart();
                 int NextItemStartRow = FillFinalAmountTable(e, items, TableEndRow);
+                stopwatch.Stop();
+                elapsed_time = stopwatch.ElapsedMilliseconds;
+                Console.WriteLine("FillFinalAmountTable time: " + elapsed_time.ToString() + "ms");
+                totalTime += elapsed_time;
+
+
+                Console.WriteLine("Total Time time: " + totalTime.ToString() + "ms");
             }
             else if (currentpage == 2)
             {
@@ -416,8 +474,8 @@ namespace PDFCreator
                 e.Graphics.DrawString(currentpage.ToString(), new Font("Verdana", 10, FontStyle.Bold), Brushes.Black, 600, 350);
             }
 
-            e.HasMorePages = currentpage < numofpages;
-            currentpage++;
+            //e.HasMorePages = currentpage < numofpages;
+            //currentpage++;
 
         }
 
@@ -427,3 +485,17 @@ namespace PDFCreator
         }
     }
 }
+
+/*
+ShowUsableArea time: 657ms
+CreateHeaderLine time: 161ms
+AddLogo time: 1260ms
+AddVendorAddressSection time: 1632ms
+AddCustomerAddressSection time: 1637ms
+AddBillDetailsSection time: 1350ms
+CreateTable time: 6001ms
+ShowPageNumber time: 933ms
+FillItemTable time: 1ms
+FillFinalAmountTable time: 1ms
+Total Time time: 13633ms
+*/
