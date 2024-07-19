@@ -157,20 +157,24 @@ namespace PDFCreator
                 }
             }
 
-            //for(i = TableStartY + 40; i < (int)e.PageSettings.PrintableArea.Height; i += 40)
-            //{
-            //    e.Graphics.DrawString(i.ToString(), fnt, Brushes.Black, new Point(FirstColumn, i));
-            //}
-
             //Draw vertical lines
-            e.Graphics.DrawLine(new Pen(Color.Black), new Point(FirstColumn, TableStartY), new Point(FirstColumn, (int)e.PageSettings.PrintableArea.Height - 50));
-            e.Graphics.DrawLine(new Pen(Color.Black), new Point(SecondColumn, TableStartY), new Point(SecondColumn, (int)e.PageSettings.PrintableArea.Height - 50));
-            e.Graphics.DrawLine(new Pen(Color.Black), new Point(ThirdColumn, TableStartY), new Point(ThirdColumn, (int)e.PageSettings.PrintableArea.Height - 50));
-            e.Graphics.DrawLine(new Pen(Color.Black), new Point(FourthColumn, TableStartY), new Point(FourthColumn, (int)e.PageSettings.PrintableArea.Height - 50));
-            e.Graphics.DrawLine(new Pen(Color.Black), new Point(FifthColumn, TableStartY), new Point(FifthColumn, (int)e.PageSettings.PrintableArea.Height - 50));
-            e.Graphics.DrawLine(new Pen(Color.Black), new Point(SixthColumn, TableStartY), new Point(SixthColumn, (int)e.PageSettings.PrintableArea.Height - 50));
-            e.Graphics.DrawLine(new Pen(Color.Black), new Point(SeventhColumn, TableStartY), new Point(SeventhColumn, (int)e.PageSettings.PrintableArea.Height - 50));
-            e.Graphics.DrawLine(new Pen(Color.Black), new Point(EighthColumn, TableStartY), new Point(EighthColumn, (int)e.PageSettings.PrintableArea.Height - 50));
+            //e.Graphics.DrawLine(new Pen(Color.Black), new Point(FirstColumn, TableStartY), new Point(FirstColumn, (int)e.PageSettings.PrintableArea.Height - 50));
+            //e.Graphics.DrawLine(new Pen(Color.Black), new Point(SecondColumn, TableStartY), new Point(SecondColumn, (int)e.PageSettings.PrintableArea.Height - 50));
+            e.Graphics.DrawRectangle(new Pen(Color.Black), new Rectangle(FirstColumn, TableStartY + 1, SecondColumn - FirstColumn, TableEndY - TableStartY - 1));
+
+            //e.Graphics.DrawLine(new Pen(Color.Black), new Point(ThirdColumn, TableStartY), new Point(ThirdColumn, (int)e.PageSettings.PrintableArea.Height - 50));
+            //e.Graphics.DrawLine(new Pen(Color.Black), new Point(FourthColumn, TableStartY), new Point(FourthColumn, (int)e.PageSettings.PrintableArea.Height - 50));
+            e.Graphics.DrawRectangle(new Pen(Color.Black), new Rectangle(ThirdColumn, TableStartY + 1, FourthColumn - ThirdColumn, TableEndY - TableStartY - 1));
+
+
+            //e.Graphics.DrawLine(new Pen(Color.Black), new Point(FifthColumn, TableStartY), new Point(FifthColumn, (int)e.PageSettings.PrintableArea.Height - 50));
+            //e.Graphics.DrawLine(new Pen(Color.Black), new Point(SixthColumn, TableStartY), new Point(SixthColumn, (int)e.PageSettings.PrintableArea.Height - 50));
+            e.Graphics.DrawRectangle(new Pen(Color.Black), new Rectangle(FifthColumn, TableStartY + 1, SixthColumn - FifthColumn, TableEndY - TableStartY - 1));
+
+
+            //e.Graphics.DrawLine(new Pen(Color.Black), new Point(SeventhColumn, TableStartY), new Point(SeventhColumn, (int)e.PageSettings.PrintableArea.Height - 50));
+            //e.Graphics.DrawLine(new Pen(Color.Black), new Point(EighthColumn, TableStartY), new Point(EighthColumn, (int)e.PageSettings.PrintableArea.Height - 50));
+            e.Graphics.DrawRectangle(new Pen(Color.Black), new Rectangle(SeventhColumn, TableStartY + 1, EighthColumn - SeventhColumn, TableEndY - TableStartY - 1));
 
             e.Graphics.DrawLine(new Pen(Color.Black), new Point(FirstColumn, (int)e.PageSettings.PrintableArea.Height - 50), new Point(EighthColumn, (int)e.PageSettings.PrintableArea.Height - 50));
         }
