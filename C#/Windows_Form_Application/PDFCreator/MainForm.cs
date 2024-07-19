@@ -195,25 +195,28 @@ namespace PDFCreator
         {
             var format = new StringFormat() { Alignment = StringAlignment.Far, LineAlignment = StringAlignment.Center };
 
-            var rect1 = new Rectangle((int)e.PageSettings.PrintableArea.Width / 2, 70 + 4, (int)e.PageSettings.PrintableArea.Width / 2 - 40, 20);
-            e.Graphics.DrawString("ABC LTD", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, rect1, format);
-            //e.Graphics.DrawRectangle(new Pen(Brushes.Blue), rect1);
+            //var rect1 = new Rectangle((int)e.PageSettings.PrintableArea.Width / 2, 70 + 4, (int)e.PageSettings.PrintableArea.Width / 2 - 40, 20);
+            //e.Graphics.DrawString("ABC LTD", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, rect1, format);
+            ////e.Graphics.DrawRectangle(new Pen(Brushes.Blue), rect1);
 
-            var rect2 = new Rectangle((int)e.PageSettings.PrintableArea.Width / 2, 90 + 4, (int)e.PageSettings.PrintableArea.Width / 2 - 40, 20);
-            e.Graphics.DrawString("Address 1", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, rect2, format);
-            //e.Graphics.DrawRectangle(new Pen(Brushes.Blue), rect2);
+            //var rect2 = new Rectangle((int)e.PageSettings.PrintableArea.Width / 2, 90 + 4, (int)e.PageSettings.PrintableArea.Width / 2 - 40, 20);
+            //e.Graphics.DrawString("Address 1", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, rect2, format);
+            ////e.Graphics.DrawRectangle(new Pen(Brushes.Blue), rect2);
 
-            var rect3 = new Rectangle((int)e.PageSettings.PrintableArea.Width / 2, 110 + 4, (int)e.PageSettings.PrintableArea.Width / 2 - 40, 20);
-            e.Graphics.DrawString("Address 2", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, rect3, format);
-            //e.Graphics.DrawRectangle(new Pen(Brushes.Blue), rect3);
+            //var rect3 = new Rectangle((int)e.PageSettings.PrintableArea.Width / 2, 110 + 4, (int)e.PageSettings.PrintableArea.Width / 2 - 40, 20);
+            //e.Graphics.DrawString("Address 2", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, rect3, format);
+            ////e.Graphics.DrawRectangle(new Pen(Brushes.Blue), rect3);
 
-            var rect4 = new Rectangle((int)e.PageSettings.PrintableArea.Width / 2, 130 + 4, (int)e.PageSettings.PrintableArea.Width / 2 - 40, 20);
-            e.Graphics.DrawString("Maharashtra, India", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, rect4, format);
-            //e.Graphics.DrawRectangle(new Pen(Brushes.Blue), rect4);
+            //var rect4 = new Rectangle((int)e.PageSettings.PrintableArea.Width / 2, 130 + 4, (int)e.PageSettings.PrintableArea.Width / 2 - 40, 20);
+            //e.Graphics.DrawString("Maharashtra, India", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, rect4, format);
+            ////e.Graphics.DrawRectangle(new Pen(Brushes.Blue), rect4);
 
-            var rect5 = new Rectangle((int)e.PageSettings.PrintableArea.Width / 2, 150 + 4, (int)e.PageSettings.PrintableArea.Width / 2 - 40, 20);
-            e.Graphics.DrawString("GST: XXXXX XXXXX XXXXX", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, rect5, format);
-            //e.Graphics.DrawRectangle(new Pen(Brushes.Blue), rect5);
+            //var rect5 = new Rectangle((int)e.PageSettings.PrintableArea.Width / 2, 150 + 4, (int)e.PageSettings.PrintableArea.Width / 2 - 40, 20);
+            //e.Graphics.DrawString("GST: XXXXX XXXXX XXXXX", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, rect5, format);
+            ////e.Graphics.DrawRectangle(new Pen(Brushes.Blue), rect5);
+
+            var rect6 = new Rectangle((int)e.PageSettings.PrintableArea.Width / 2, 70 + 4, (int)e.PageSettings.PrintableArea.Width / 2 - 40, 100);
+            e.Graphics.DrawString("ABC LTD,\nAddress 1,\nAddress 2,\nMaharashtra, India,\nGST: XXXXX XXXXX XXXXX", new Font("Arial", 12, FontStyle.Regular), Brushes.Black, rect6, format);
         }
         private void AddCustomerAddressSection(PrintPageEventArgs e)
         {
