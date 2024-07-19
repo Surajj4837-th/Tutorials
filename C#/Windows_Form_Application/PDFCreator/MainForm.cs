@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
 using System.Drawing.Printing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PDFCreator
@@ -105,12 +100,11 @@ namespace PDFCreator
         }
         private void ShowPageNumber(PrintPageEventArgs e, string pageNumber)
         {
-            Pen pen = pen_Black;
             Point point1 = new Point((int)e.PageSettings.PrintableArea.Left + 40, (int)e.PageSettings.PrintableArea.Height - 40);
             Point point2 = new Point((int)e.PageSettings.PrintableArea.Width - 40, (int)e.PageSettings.PrintableArea.Height - 40);
             Point point3 = new Point((int)e.PageSettings.PrintableArea.Width / 2, (int)e.PageSettings.PrintableArea.Height - 30);
 
-            e.Graphics.DrawLine(pen, point1, point2);
+            e.Graphics.DrawLine(pen_Black, point1, point2);
             e.Graphics.DrawString(pageNumber, font_Arial_13, Brushes.Black, point3);
         }
         private void AddLogo(PrintPageEventArgs e)
@@ -145,25 +139,19 @@ namespace PDFCreator
 
             //Table header
             e.Graphics.FillRectangle(solidbrush_black, FirstColumn, TableStartY, e.PageSettings.PrintableArea.Width - 80, 40);
-            //e.Graphics.DrawString("Sr. No.", fnt, Brushes.White, (FirstColumn + SecondColumn) / 2 - 25, TableStartY + 6);
+
             e.Graphics.DrawString("Sr. No.", font_Arial_13, Brushes.White, new Rectangle(FirstColumn, TableStartY, SecondColumn - FirstColumn, 40), CentreFormat);
 
-            //e.Graphics.DrawString("Item", fnt, Brushes.White, (SecondColumn + ThirdColumn) / 2 - 15, TableStartY + 6);
             e.Graphics.DrawString("Item", font_Arial_13, Brushes.White, new Rectangle(SecondColumn, TableStartY, ThirdColumn - SecondColumn, 40), CentreFormat);
 
-            //e.Graphics.DrawString("Quantity", fnt, Brushes.White, (ThirdColumn + FourthColumn) / 2 - 30, TableStartY + 6);
             e.Graphics.DrawString("Quantity", font_Arial_13, Brushes.White, new Rectangle(ThirdColumn, TableStartY, FourthColumn - ThirdColumn, 40), CentreFormat);
 
-            //e.Graphics.DrawString("Rate", fnt, Brushes.White, (FourthColumn + FifthColumn) / 2 - 20, TableStartY + 6);
             e.Graphics.DrawString("Rate", font_Arial_13, Brushes.White, new Rectangle(FourthColumn, TableStartY, FifthColumn - FourthColumn, 40), CentreFormat);
 
-            //e.Graphics.DrawString("SGST", fnt, Brushes.White, (FifthColumn + SixthColumn) / 2 - 20, TableStartY + 6);
             e.Graphics.DrawString("SGST", font_Arial_13, Brushes.White, new Rectangle(FifthColumn, TableStartY, SixthColumn - FifthColumn, 40), CentreFormat);
 
-            //e.Graphics.DrawString("CGST", fnt, Brushes.White, (SixthColumn + SeventhColumn) / 2 - 15, TableStartY + 6);
             e.Graphics.DrawString("CGST", font_Arial_13, Brushes.White, new Rectangle(SixthColumn, TableStartY, SeventhColumn - SixthColumn, 40), CentreFormat);
 
-            //e.Graphics.DrawString("Amount", fnt, Brushes.White, (SeventhColumn + EighthColumn) / 2 - 30, TableStartY + 6);
             e.Graphics.DrawString("Amount", font_Arial_13, Brushes.White, new Rectangle(SeventhColumn, TableStartY, EighthColumn - SeventhColumn, 40), CentreFormat);
 
             bool IsEven = true;
@@ -184,23 +172,13 @@ namespace PDFCreator
                 }
             }
 
-            //Draw vertical lines
-            //e.Graphics.DrawLine(pen_Black, new Point(FirstColumn, TableStartY), new Point(FirstColumn, (int)e.PageSettings.PrintableArea.Height - 50));
-            //e.Graphics.DrawLine(pen_Black, new Point(SecondColumn, TableStartY), new Point(SecondColumn, (int)e.PageSettings.PrintableArea.Height - 50));
+            //Draw vertical lines of table using DrawRectangle()
             e.Graphics.DrawRectangle(pen_Black, new Rectangle(FirstColumn, TableStartY + 1, SecondColumn - FirstColumn, TableEndY - TableStartY - 1));
 
-            //e.Graphics.DrawLine(pen_Black, new Point(ThirdColumn, TableStartY), new Point(ThirdColumn, (int)e.PageSettings.PrintableArea.Height - 50));
-            //e.Graphics.DrawLine(pen_Black, new Point(FourthColumn, TableStartY), new Point(FourthColumn, (int)e.PageSettings.PrintableArea.Height - 50));
             e.Graphics.DrawRectangle(pen_Black, new Rectangle(ThirdColumn, TableStartY + 1, FourthColumn - ThirdColumn, TableEndY - TableStartY - 1));
 
-
-            //e.Graphics.DrawLine(pen_Black, new Point(FifthColumn, TableStartY), new Point(FifthColumn, (int)e.PageSettings.PrintableArea.Height - 50));
-            //e.Graphics.DrawLine(pen_Black, new Point(SixthColumn, TableStartY), new Point(SixthColumn, (int)e.PageSettings.PrintableArea.Height - 50));
             e.Graphics.DrawRectangle(pen_Black, new Rectangle(FifthColumn, TableStartY + 1, SixthColumn - FifthColumn, TableEndY - TableStartY - 1));
 
-
-            //e.Graphics.DrawLine(pen_Black, new Point(SeventhColumn, TableStartY), new Point(SeventhColumn, (int)e.PageSettings.PrintableArea.Height - 50));
-            //e.Graphics.DrawLine(pen_Black, new Point(EighthColumn, TableStartY), new Point(EighthColumn, (int)e.PageSettings.PrintableArea.Height - 50));
             e.Graphics.DrawRectangle(pen_Black, new Rectangle(SeventhColumn, TableStartY + 1, EighthColumn - SeventhColumn, TableEndY - TableStartY - 1));
 
             e.Graphics.DrawLine(pen_Black, new Point(FirstColumn, TableEndY), new Point(EighthColumn, TableEndY));
@@ -209,74 +187,17 @@ namespace PDFCreator
         {
             var format = new StringFormat() { Alignment = StringAlignment.Far, LineAlignment = StringAlignment.Center };
 
-            //var rect1 = new Rectangle((int)e.PageSettings.PrintableArea.Width / 2, 70 + 4, (int)e.PageSettings.PrintableArea.Width / 2 - 40, 20);
-            //e.Graphics.DrawString("ABC LTD", font_Arial_12, Brushes.Black, rect1, format);
-            ////e.Graphics.DrawRectangle(new Pen(Brushes.Blue), rect1);
-
-            //var rect2 = new Rectangle((int)e.PageSettings.PrintableArea.Width / 2, 90 + 4, (int)e.PageSettings.PrintableArea.Width / 2 - 40, 20);
-            //e.Graphics.DrawString("Address 1", font_Arial_12, Brushes.Black, rect2, format);
-            ////e.Graphics.DrawRectangle(new Pen(Brushes.Blue), rect2);
-
-            //var rect3 = new Rectangle((int)e.PageSettings.PrintableArea.Width / 2, 110 + 4, (int)e.PageSettings.PrintableArea.Width / 2 - 40, 20);
-            //e.Graphics.DrawString("Address 2", font_Arial_12, Brushes.Black, rect3, format);
-            ////e.Graphics.DrawRectangle(new Pen(Brushes.Blue), rect3);
-
-            //var rect4 = new Rectangle((int)e.PageSettings.PrintableArea.Width / 2, 130 + 4, (int)e.PageSettings.PrintableArea.Width / 2 - 40, 20);
-            //e.Graphics.DrawString("Maharashtra, India", font_Arial_12, Brushes.Black, rect4, format);
-            ////e.Graphics.DrawRectangle(new Pen(Brushes.Blue), rect4);
-
-            //var rect5 = new Rectangle((int)e.PageSettings.PrintableArea.Width / 2, 150 + 4, (int)e.PageSettings.PrintableArea.Width / 2 - 40, 20);
-            //e.Graphics.DrawString("GST: XXXXX XXXXX XXXXX", font_Arial_12, Brushes.Black, rect5, format);
-            ////e.Graphics.DrawRectangle(new Pen(Brushes.Blue), rect5);
-
             var rect = new Rectangle((int)e.PageSettings.PrintableArea.Width / 2, 70 + 4, (int)e.PageSettings.PrintableArea.Width / 2 - 40, 100);
             e.Graphics.DrawString("ABC LTD,\nAddress 1,\nAddress 2,\nMaharashtra, India,\nGST: XXXXX XXXXX XXXXX", font_Arial_12, Brushes.Black, rect, format);
         }
         private void AddCustomerAddressSection(PrintPageEventArgs e)
         {
-            //var rect1 = new Rectangle((int)e.PageSettings.PrintableArea.Left + 40 + 2, 70 + 125 + 4, (int)e.PageSettings.PrintableArea.Width / 2 - 40, 20);
-            //e.Graphics.DrawString("Bill To:", font_Arial_12, Brushes.Black, rect1);
-            ////e.Graphics.DrawRectangle(new Pen(Brushes.Blue), rect1);
-
-            //var rect2 = new Rectangle((int)e.PageSettings.PrintableArea.Left + 40 + 2, 90 + 125 + 4, (int)e.PageSettings.PrintableArea.Width / 2 - 40, 20);
-            //e.Graphics.DrawString("XYZ LTD", font_Arial_12, Brushes.Black, rect2);
-            ////e.Graphics.DrawRectangle(new Pen(Brushes.Blue), rect2);
-
-            //var rect3 = new Rectangle((int)e.PageSettings.PrintableArea.Left + 40 + 2, 110 + 125 + 4, (int)e.PageSettings.PrintableArea.Width / 2 - 40, 20);
-            //e.Graphics.DrawString("Address 1", font_Arial_12, Brushes.Black, rect3);
-            ////e.Graphics.DrawRectangle(new Pen(Brushes.Blue), rect3);
-
-            //var rect4 = new Rectangle((int)e.PageSettings.PrintableArea.Left + 40 + 2, 130 + 125 + 4, (int)e.PageSettings.PrintableArea.Width / 2 - 40, 20);
-            //e.Graphics.DrawString("Address 2", font_Arial_12, Brushes.Black, rect4);
-            ////e.Graphics.DrawRectangle(new Pen(Brushes.Blue), rect4);
-
-            //var rect5 = new Rectangle((int)e.PageSettings.PrintableArea.Left + 40 + 2, 150 + 125 + 4, (int)e.PageSettings.PrintableArea.Width / 2 - 40, 20);
-            //e.Graphics.DrawString("Maharashtra, India", font_Arial_12, Brushes.Black, rect5);
-            ////e.Graphics.DrawRectangle(new Pen(Brushes.Blue), rect5);
-
             var rect = new Rectangle((int)e.PageSettings.PrintableArea.Left + 40 + 2, 70 + 125 + 4, (int)e.PageSettings.PrintableArea.Width / 2 - 40, 100);
             e.Graphics.DrawString("Bill To:\nXYZ LTD\nAddress 1\nAddress 2\nMaharashtra, India", font_Arial_12, Brushes.Black, rect);
-
         }
         private void AddBillDetailsSection(PrintPageEventArgs e)
         {
             var format = new StringFormat() { Alignment = StringAlignment.Far, LineAlignment = StringAlignment.Center };
-
-            //var rect1 = new Rectangle((int)e.PageSettings.PrintableArea.Width / 2, 70 + 125 + 4, (int)e.PageSettings.PrintableArea.Width / 2 - 40, 20);
-            //e.Graphics.DrawString("Invoice ID: XXXXXXXXXXXX", font_Arial_12, Brushes.Black, rect1, format);
-            ////e.Graphics.DrawRectangle(new Pen(Brushes.Blue), rect1);
-
-            //var rect2 = new Rectangle((int)e.PageSettings.PrintableArea.Width / 2, 90 + 125 + 4, (int)e.PageSettings.PrintableArea.Width / 2 - 40, 20);
-            //e.Graphics.DrawString("Admin: XXXX XXXX", font_Arial_12, Brushes.Black, rect2, format);
-            ////e.Graphics.DrawRectangle(new Pen(Brushes.Blue), rect2);
-
-            //var rect3 = new Rectangle((int)e.PageSettings.PrintableArea.Width / 2, 110 + 125 + 4, (int)e.PageSettings.PrintableArea.Width / 2 - 40, 20);
-            //e.Graphics.DrawString("Date: XX/XX/XXXX", font_Arial_12, Brushes.Black, rect3, format);
-            ////e.Graphics.DrawRectangle(new Pen(Brushes.Blue), rect3);
-
-            //var rect4 = new Rectangle((int)e.PageSettings.PrintableArea.Width / 2, 130 + 125 + 4, (int)e.PageSettings.PrintableArea.Width / 2 - 40, 20);
-            //e.Graphics.DrawString("Time: XX:XX:XX", font_Arial_12, Brushes.Black, rect4, format);
-            ////e.Graphics.DrawRectangle(new Pen(Brushes.Blue), rect4);
 
             var rect = new Rectangle((int)e.PageSettings.PrintableArea.Width / 2, 70 + 125 + 4, (int)e.PageSettings.PrintableArea.Width / 2 - 40, 80);
             e.Graphics.DrawString("Invoice ID: XXXXXXXXXXXX\nAdmin: XXXX XXXX\nDate: XX/XX/XXXX\nTime: XX:XX:XX", font_Arial_12, Brushes.Black, rect, format);
