@@ -115,7 +115,7 @@ namespace PDFCreator
         }
         private void CreateTable(PrintPageEventArgs e)
         {
-            var format = new StringFormat() { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center };
+            var CentreFormat = new StringFormat() { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center };
 
             FirstColumn = (int)e.PageSettings.PrintableArea.Left + 40;
             SecondColumn = FirstColumn + 70;
@@ -127,17 +127,30 @@ namespace PDFCreator
             EighthColumn = (int)e.PageSettings.PrintableArea.Right - 40;
 
             TableStartY = 330;
-            TableEndY = 1040;
+            TableEndY = (int)e.PageSettings.PrintableArea.Height - 50;
 
             //Table header
             e.Graphics.FillRectangle(new SolidBrush(Color.Black), FirstColumn, TableStartY, e.PageSettings.PrintableArea.Width - 80, 40);
-            e.Graphics.DrawString("Sr. No.", fnt, Brushes.White, (FirstColumn + SecondColumn) / 2 - 25, TableStartY + 6);
-            e.Graphics.DrawString("Item", fnt, Brushes.White, (SecondColumn + ThirdColumn) / 2 - 15, TableStartY + 6);
-            e.Graphics.DrawString("Quantity", fnt, Brushes.White, (ThirdColumn + FourthColumn) / 2 - 30, TableStartY + 6);
-            e.Graphics.DrawString("Rate", fnt, Brushes.White, (FourthColumn + FifthColumn) / 2 - 20, TableStartY + 6);
-            e.Graphics.DrawString("SGST", fnt, Brushes.White, (FifthColumn + SixthColumn) / 2 - 20, TableStartY + 6);
-            e.Graphics.DrawString("CGST", fnt, Brushes.White, (SixthColumn + SeventhColumn) / 2 - 15, TableStartY + 6);
-            e.Graphics.DrawString("Amount", fnt, Brushes.White, (SeventhColumn + EighthColumn) / 2 - 30, TableStartY + 6);
+            //e.Graphics.DrawString("Sr. No.", fnt, Brushes.White, (FirstColumn + SecondColumn) / 2 - 25, TableStartY + 6);
+            e.Graphics.DrawString("Sr. No.", fnt, Brushes.White, new Rectangle(FirstColumn, TableStartY, SecondColumn - FirstColumn, 40), CentreFormat);
+
+            //e.Graphics.DrawString("Item", fnt, Brushes.White, (SecondColumn + ThirdColumn) / 2 - 15, TableStartY + 6);
+            e.Graphics.DrawString("Item", fnt, Brushes.White, new Rectangle(SecondColumn, TableStartY, ThirdColumn - SecondColumn, 40), CentreFormat);
+
+            //e.Graphics.DrawString("Quantity", fnt, Brushes.White, (ThirdColumn + FourthColumn) / 2 - 30, TableStartY + 6);
+            e.Graphics.DrawString("Quantity", fnt, Brushes.White, new Rectangle(ThirdColumn, TableStartY, FourthColumn - ThirdColumn, 40), CentreFormat);
+
+            //e.Graphics.DrawString("Rate", fnt, Brushes.White, (FourthColumn + FifthColumn) / 2 - 20, TableStartY + 6);
+            e.Graphics.DrawString("Rate", fnt, Brushes.White, new Rectangle(FourthColumn, TableStartY, FifthColumn - FourthColumn, 40), CentreFormat);
+
+            //e.Graphics.DrawString("SGST", fnt, Brushes.White, (FifthColumn + SixthColumn) / 2 - 20, TableStartY + 6);
+            e.Graphics.DrawString("SGST", fnt, Brushes.White, new Rectangle(FifthColumn, TableStartY, SixthColumn - FifthColumn, 40), CentreFormat);
+
+            //e.Graphics.DrawString("CGST", fnt, Brushes.White, (SixthColumn + SeventhColumn) / 2 - 15, TableStartY + 6);
+            e.Graphics.DrawString("CGST", fnt, Brushes.White, new Rectangle(SixthColumn, TableStartY, SeventhColumn - SixthColumn, 40), CentreFormat);
+
+            //e.Graphics.DrawString("Amount", fnt, Brushes.White, (SeventhColumn + EighthColumn) / 2 - 30, TableStartY + 6);
+            e.Graphics.DrawString("Amount", fnt, Brushes.White, new Rectangle(SeventhColumn, TableStartY, EighthColumn - SeventhColumn, 40), CentreFormat);
 
             bool IsEven = true;
 
@@ -176,7 +189,7 @@ namespace PDFCreator
             //e.Graphics.DrawLine(new Pen(Color.Black), new Point(EighthColumn, TableStartY), new Point(EighthColumn, (int)e.PageSettings.PrintableArea.Height - 50));
             e.Graphics.DrawRectangle(new Pen(Color.Black), new Rectangle(SeventhColumn, TableStartY + 1, EighthColumn - SeventhColumn, TableEndY - TableStartY - 1));
 
-            e.Graphics.DrawLine(new Pen(Color.Black), new Point(FirstColumn, (int)e.PageSettings.PrintableArea.Height - 50), new Point(EighthColumn, (int)e.PageSettings.PrintableArea.Height - 50));
+            e.Graphics.DrawLine(new Pen(Color.Black), new Point(FirstColumn, TableEndY), new Point(EighthColumn, TableEndY));
         }
         private void AddVendorAddressSection(PrintPageEventArgs e)
         {
@@ -354,7 +367,6 @@ namespace PDFCreator
             e.Graphics.DrawString("Total Amount", new Font("Arial", 14, FontStyle.Bold), Brushes.Black, rect7, NearFormat);
             e.Graphics.DrawString(ComputeTotalAmount(), new Font("Arial", 14, FontStyle.Bold), Brushes.Black, rect8, FarFormat);
 
-
             return StartRow;
         }
 
@@ -391,7 +403,7 @@ namespace PDFCreator
                 //Usable Area
                 stopwatch.Start();
                 ShowUsableArea(e);
-                //stopwatch.Stop();
+                stopwatch.Stop();
                 long elapsed_time = stopwatch.ElapsedMilliseconds;
                 Console.WriteLine("ShowUsableArea time: " + elapsed_time.ToString() + "ms");
                 totalTime += elapsed_time;
