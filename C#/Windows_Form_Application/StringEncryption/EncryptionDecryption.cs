@@ -18,10 +18,11 @@ namespace StringEncryption
         // Decrypt edata1 with key k2 using symmetric decryption, creating data2.
         // data2 should equal data1.
 
-        public static byte[] EncryptData(string pwd1, byte[] salt1, string data1, ref Aes encAlg, int myIterations)
+        public static byte[] EncryptData(string data1)
         {
-            Rfc2898DeriveBytes k1 = new Rfc2898DeriveBytes(pwd1, salt1, myIterations);
-            encAlg.Key = k1.GetBytes(16);
+            Aes encAlg = Aes.Create();
+            encAlg.Key = [134, 23, 44, 252, 254, 197, 75, 88, 192, 144, 49, 24, 3, 137, 183, 37];
+            encAlg.IV = [27, 233, 168, 94, 38, 210, 16, 203, 151, 134, 1, 161, 42, 20, 170, 198];
 
             // Encrypt the data.
             MemoryStream encryptionStream = new MemoryStream();
@@ -31,26 +32,25 @@ namespace StringEncryption
             encrypt.Write(utfD1, 0, utfD1.Length);
             encrypt.FlushFinalBlock();
             encrypt.Close();
+
             byte[] edata1 = encryptionStream.ToArray();
-            k1.Reset();
 
             return edata1;
         }
 
-        public static string DecryptData(Aes encAlg, byte[] edata1, string pwd1, byte[] salt1)
+        public static string DecryptData(byte[] edata1)
         {
-            Rfc2898DeriveBytes k2 = new Rfc2898DeriveBytes(pwd1, salt1);
-
             // Try to decrypt, thus showing it can be round-tripped.
             Aes decAlg = Aes.Create();
-            decAlg.Key = k2.GetBytes(16);
-            decAlg.IV = encAlg.IV;
+            decAlg.Key = [134, 23, 44, 252, 254, 197, 75, 88, 192, 144, 49, 24, 3, 137, 183, 37];
+            decAlg.IV = [27, 233, 168, 94, 38, 210, 16, 203, 151, 134, 1, 161, 42, 20, 170, 198];
+
             MemoryStream decryptionStreamBacking = new MemoryStream();
             CryptoStream decrypt = new CryptoStream(decryptionStreamBacking, decAlg.CreateDecryptor(), CryptoStreamMode.Write);
             decrypt.Write(edata1, 0, edata1.Length);
             decrypt.Flush();
             decrypt.Close();
-            k2.Reset();
+
             string data2 = new UTF8Encoding(false).GetString(decryptionStreamBacking.ToArray());
 
             return data2;
@@ -58,53 +58,29 @@ namespace StringEncryption
 
         public static void Main(string[] args)
         {
-            string password = "Sample";
+            //data1 can be a string or contents of a file.
+            string data1 = "Sample string.";
 
-            //If no file name is specified, write usage text.
-            if (password.Equals(""))
+            try
             {
-                Console.WriteLine("Specify a string");
-            }
-            else
-            {
-                string pwd1 = password;
+                byte[] edata1 = EncryptData(data1);
 
-                // Create a byte array to hold the random value.
-                byte[] salt1 = new byte[8];
-                using (RNGCryptoServiceProvider rngCsp = new RNGCryptoServiceProvider())
+                string data2 = DecryptData(edata1);
+
+                if (!data1.Equals(data2))
                 {
-                    // Fill the array with a random value.
-                    rngCsp.GetBytes(salt1);
+                    Console.WriteLine("Error: The two values are not equal.");
                 }
-
-                //data1 can be a string or contents of a file.
-                string data1 = "Some test data";
-
-                //The default iteration count is 1000 so the two methods use the same iteration count.
-                int myIterations = 1000;
-
-                try
+                else
                 {
-                    Aes encAlg = Aes.Create();
-
-                    byte[] edata1 = EncryptData(pwd1, salt1, data1, ref encAlg, myIterations);
-
-                    string data2 = DecryptData(encAlg, edata1, pwd1, salt1);
-
-                    if (!data1.Equals(data2))
-                    {
-                        Console.WriteLine("Error: The two values are not equal.");
-                    }
-                    else
-                    {
-                        Console.WriteLine("The two values are equal.");
-                    }
-                }
-                catch (Exception e)
-                {
-                    Console.WriteLine("Error: {0}", e);
+                    Console.WriteLine("The two values are equal.");
                 }
             }
+            catch (Exception e)
+            {
+                Console.WriteLine("Error: {0}", e);
+            }
+
         }
     }
 }
