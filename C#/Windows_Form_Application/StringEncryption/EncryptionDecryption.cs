@@ -37,8 +37,10 @@ namespace StringEncryption
             return edata1;
         }
 
-        public static string DecryptData(Rfc2898DeriveBytes k2, Aes encAlg, byte[] edata1)
+        public static string DecryptData(Aes encAlg, byte[] edata1, string pwd1, byte[] salt1)
         {
+            Rfc2898DeriveBytes k2 = new Rfc2898DeriveBytes(pwd1, salt1);
+
             // Try to decrypt, thus showing it can be round-tripped.
             Aes decAlg = Aes.Create();
             decAlg.Key = k2.GetBytes(16);
@@ -83,13 +85,11 @@ namespace StringEncryption
 
                 try
                 {
-                    Rfc2898DeriveBytes k2 = new Rfc2898DeriveBytes(pwd1, salt1);
-
                     Aes encAlg = Aes.Create();
 
                     byte[] edata1 = EncryptData(pwd1, salt1, data1, ref encAlg, myIterations);
 
-                    string data2 = DecryptData(k2, encAlg, edata1);
+                    string data2 = DecryptData(encAlg, edata1, pwd1, salt1);
 
                     if (!data1.Equals(data2))
                     {
