@@ -16,3 +16,4 @@ Source: [C# Windows Form Application Tutorial by Muhammad Ali's Coding Cafe](htt
 1. DevnagriScriptIntegration: Take devnagri script from user and save in database. To fetch and write devanagri data in database 'N' has to be appended before the values.
 1. MultiLanguageApplication: Application which showcases contect of controls in multiple languages.
 1. PrintDocument: [C# tutorial How to Make Invoice Generator Windows Form Application in C#](https://www.youtube.com/watch?v=6-Wg9ZCKQ5c): Create invoice using Graphics in C#.
+1. StringEncryption: Application to encrypt and decrypt a string data.
