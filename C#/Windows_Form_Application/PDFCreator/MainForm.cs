@@ -9,7 +9,7 @@ namespace PDFCreator
 {
     public partial class MainForm : Form
     {
-        private int MainPageItemCount = 20;
+        private int MainPageItemCount = 17;
         private int SecondPageItemCount = 31;
         DataTable items = new DataTable();
 
@@ -25,7 +25,7 @@ namespace PDFCreator
         int TableStartY;
         int TableEndY;
 
-        int currentpage = 1;
+        int currentPage = 1;
         int numofpages = 2;
 
         public MainForm()
@@ -230,6 +230,17 @@ namespace PDFCreator
             items.Rows.Add("Name1", "Item6", "123", "10", "1.5", "1.5", "10000");
             items.Rows.Add("Name1", "Item7", "123", "10", "1.5", "1.5", "10000");
             items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
+            items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
+            items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
+            items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
+            items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
+            items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
+            items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
+            items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
+            items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
+            items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
+            items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
+            items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
         }
 
         private int FillItemTable(PrintPageEventArgs e, DataTable items)
@@ -264,7 +275,7 @@ namespace PDFCreator
             return StartRow;
         }
 
-        private int CreateAndFillTable(PrintPageEventArgs e)
+        private int CreateAndFillTable(PrintPageEventArgs e, int PageContent)
         {
             int SrNo = 1;
             var NearFormat = new StringFormat() { Alignment = StringAlignment.Near, LineAlignment = StringAlignment.Center };
@@ -306,7 +317,7 @@ namespace PDFCreator
             //Table rows
             int i = 0;
             int item = 0;
-            for (i = TableStartY + 30; item < items.Rows.Count; i += 40, item++)
+            for (i = TableStartY + 30; item < items.Rows.Count && item < PageContent; i += 40, item++)
             {
                 if (IsEven)
                 {
@@ -437,7 +448,7 @@ namespace PDFCreator
             long totalTime = 0;
             long elapsed_time = 0;
 
-            if (currentpage == 1)
+            if (currentPage == 1)
             {
                 //Usable Area
                 //stopwatch.Start();
@@ -488,7 +499,7 @@ namespace PDFCreator
 
                 //Show page number
                 stopwatch.Restart();
-                ShowPageNumber(e, currentpage.ToString());
+                ShowPageNumber(e, currentPage.ToString());
                 stopwatch.Stop();
                 elapsed_time = stopwatch.ElapsedMilliseconds;
                 Console.WriteLine("ShowPageNumber time: " + elapsed_time.ToString() + "ms");
@@ -502,7 +513,7 @@ namespace PDFCreator
                 {
                     //Create and fill table at once
                     stopwatch.Restart();
-                    TableEndRow = CreateAndFillTable(e);
+                    TableEndRow = CreateAndFillTable(e, MainPageItemCount);
                     stopwatch.Stop();
                     elapsed_time = stopwatch.ElapsedMilliseconds;
                     Console.WriteLine("CreateAndFillTable time: " + elapsed_time.ToString() + "ms");
@@ -538,16 +549,25 @@ namespace PDFCreator
 
                 Console.WriteLine("Total Time time: " + totalTime.ToString() + "ms");
             }
-            else if (currentpage == 2)
+            else if (currentPage >= 2)
             {
                 Bitmap bmp = Properties.Resources.Logo;
                 Image newImage = bmp;
                 e.Graphics.DrawImage(newImage, 20, 20);
-                e.Graphics.DrawString(currentpage.ToString(), new Font("Verdana", 10, FontStyle.Bold), Brushes.Black, 600, 350);
+                e.Graphics.DrawString(currentPage.ToString(), new Font("Verdana", 10, FontStyle.Bold), Brushes.Black, 600, 350);
             }
 
-            //e.HasMorePages = currentpage < numofpages;
-            //currentpage++;
+            // Check if there are more pages to print
+            if (currentPage < numofpages)
+            {
+                e.HasMorePages = true;
+                currentPage++;
+            }
+            else
+            {
+                e.HasMorePages = false;
+                currentPage = 0; // Reset for future prints
+            }
 
         }
 
