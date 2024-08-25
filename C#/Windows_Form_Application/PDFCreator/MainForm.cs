@@ -10,7 +10,7 @@ namespace PDFCreator
     public partial class MainForm : Form
     {
         private int MainPageItemCount = 17;
-        private int OtherPageItemCount = 31;
+        private int OtherPageItemCount = 24;
         int RowHeight = 40;
         DataTable items = new DataTable();
 
@@ -101,9 +101,9 @@ namespace PDFCreator
         }
         private void ShowPageNumber(PrintPageEventArgs e, string pageNumber)
         {
-            Point point1 = new Point((int)e.PageSettings.PrintableArea.Left + 40, (int)e.PageSettings.PrintableArea.Height - 40);
-            Point point2 = new Point((int)e.PageSettings.PrintableArea.Width - 40, (int)e.PageSettings.PrintableArea.Height - 40);
-            Point point3 = new Point((int)e.PageSettings.PrintableArea.Width / 2, (int)e.PageSettings.PrintableArea.Height - 30);
+            Point point1 = new Point((int)e.PageSettings.PrintableArea.Left + 40, (int)e.PageSettings.PrintableArea.Height - 20);
+            Point point2 = new Point((int)e.PageSettings.PrintableArea.Width - 40, (int)e.PageSettings.PrintableArea.Height - 20);
+            Point point3 = new Point((int)e.PageSettings.PrintableArea.Width / 2, (int)e.PageSettings.PrintableArea.Height - 10);
 
             e.Graphics.DrawLine(pen_Black, point1, point2);
             e.Graphics.DrawString(pageNumber, font_Arial_13, Brushes.Black, point3);
@@ -242,6 +242,13 @@ namespace PDFCreator
             items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
             items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
             items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
+            items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
+            items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
+            items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
+            items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
+            items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
+            items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
+            items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
         }
 
         private int FillItemTable(PrintPageEventArgs e, DataTable items)
@@ -326,8 +333,7 @@ namespace PDFCreator
                 }
                 else
                 {
-                    //if(SrNo.ToString() == "6") 
-                        e.Graphics.FillRectangle(solidbrush_LightGray, FirstColumn, i, e.PageSettings.PrintableArea.Width - 80, RowHeight);
+                    e.Graphics.FillRectangle(solidbrush_LightGray, FirstColumn, i, e.PageSettings.PrintableArea.Width - 80, RowHeight);
                     IsEven = true;
                 }
 
@@ -556,7 +562,8 @@ namespace PDFCreator
                 //e.Graphics.DrawImage(newImage, 20, 20);
                 //e.Graphics.DrawString(currentPage.ToString(), new Font("Verdana", 10, FontStyle.Bold), Brushes.Black, 600, 350);
                 CreateHeaderLine(e);
-                CreateAndFillTable(e, MainPageItemCount, 70);
+                CreateAndFillTable(e, OtherPageItemCount, 70);
+                ShowPageNumber(e, currentPage.ToString());
             }
 
             // Check if there are more pages to print
