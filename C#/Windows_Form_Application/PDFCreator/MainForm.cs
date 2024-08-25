@@ -31,7 +31,6 @@ namespace PDFCreator
 
         bool FinalAmountPrinted = false;
         int currentPage = 1;
-        int numofpages = 2;
 
         public MainForm()
         {
@@ -448,31 +447,8 @@ namespace PDFCreator
             return true;
         }
 
-        private int FindNumberOfPages(DataTable items)
-        {
-            int numOfPages = 0;
-
-            //Count number of items in data table
-            int quantity = items.Rows.Count;
-
-            if(quantity <= MainPageItemCount)
-            {
-                numOfPages = 1;
-            }
-            else
-            {
-                decimal temp = quantity - MainPageItemCount; // Subtracting 1st page items.
-                int remainingPages = (int)Math.Ceiling(temp / OtherPageItemCount);
-
-                numOfPages = 1 + remainingPages;
-            }
-
-            return numOfPages;
-        }
-
         private void printDocument_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
         {
-            numofpages = FindNumberOfPages(items);
             var stopwatch = new Stopwatch();
             long totalTime = 0;
             long elapsed_time = 0;
