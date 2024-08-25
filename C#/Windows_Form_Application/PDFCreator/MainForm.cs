@@ -9,10 +9,12 @@ namespace PDFCreator
 {
     public partial class MainForm : Form
     {
+        DataTable items = new DataTable();
+
         private int MainPageItemCount = 17;
         private int OtherPageItemCount = 24;
         int RowHeight = 40;
-        DataTable items = new DataTable();
+        int RemainingItems = 0;
 
         int FirstColumn;
         int SecondColumn;
@@ -82,7 +84,8 @@ namespace PDFCreator
         }
 
         private void preview_Click(object sender, EventArgs e)
-        {            
+        {
+            RemainingItems = items.Rows.Count;
             printPreviewDialog.Document = printDocument;
             printPreviewDialog.Document.DefaultPageSettings.PaperSize = new System.Drawing.Printing.PaperSize("PaperA4", 840, 1180);
             printPreviewDialog.ShowDialog();
@@ -283,9 +286,9 @@ namespace PDFCreator
             return StartRow;
         }
 
-        private int CreateAndFillTable(PrintPageEventArgs e, int PageContent, int TableStartY)
+        private int CreateAndFillTable(PrintPageEventArgs e, int PageContent, int TableStartY, int RemainingItems)
         {
-            int SrNo = 1;
+            int SrNo = items.Rows.Count - RemainingItems + 1;
             var NearFormat = new StringFormat() { Alignment = StringAlignment.Near, LineAlignment = StringAlignment.Center };
             var CentreFormat = new StringFormat() { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center };
             var FarFormat = new StringFormat() { Alignment = StringAlignment.Far, LineAlignment = StringAlignment.Center };
@@ -323,7 +326,7 @@ namespace PDFCreator
 
             //Table rows
             int i = 0;
-            int item = 0;
+            int item = items.Rows.Count - RemainingItems;
             for (i = TableStartY + RowHeight; item < items.Rows.Count && item < PageContent; i += RowHeight, item++)
             {
                 if (IsEven)
@@ -519,7 +522,8 @@ namespace PDFCreator
                 {
                     //Create and fill table at once
                     stopwatch.Restart();
-                    TableEndRow = CreateAndFillTable(e, MainPageItemCount, 330);
+                    TableEndRow = CreateAndFillTable(e, MainPageItemCount, 330, RemainingItems);
+                    RemainingItems -= MainPageItemCount;
                     stopwatch.Stop();
                     elapsed_time = stopwatch.ElapsedMilliseconds;
                     Console.WriteLine("CreateAndFillTable time: " + elapsed_time.ToString() + "ms");
@@ -562,7 +566,8 @@ namespace PDFCreator
                 //e.Graphics.DrawImage(newImage, 20, 20);
                 //e.Graphics.DrawString(currentPage.ToString(), new Font("Verdana", 10, FontStyle.Bold), Brushes.Black, 600, 350);
                 CreateHeaderLine(e);
-                CreateAndFillTable(e, OtherPageItemCount, 70);
+                CreateAndFillTable(e, OtherPageItemCount, 70, RemainingItems);
+                RemainingItems -= MainPageItemCount;
                 ShowPageNumber(e, currentPage.ToString());
             }
 
