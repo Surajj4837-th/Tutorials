@@ -317,7 +317,7 @@ namespace PDFCreator
             //Table rows
             int i = 0;
             int item = 0;
-            for (i = TableStartY + 40; item < items.Rows.Count && item < PageContent; i += RowHeight, item++)
+            for (i = TableStartY + RowHeight; item < items.Rows.Count && item < PageContent; i += RowHeight, item++)
             {
                 if (IsEven)
                 {
@@ -353,15 +353,15 @@ namespace PDFCreator
             }
 
             //Draw vertical lines of table using DrawRectangle()
-            e.Graphics.DrawRectangle(pen_Black, new Rectangle(FirstColumn, TableStartY + 1, SecondColumn - FirstColumn, TableEndY - TableStartY - 1));
+            e.Graphics.DrawRectangle(pen_Black, new Rectangle(FirstColumn, TableStartY + 1, SecondColumn - FirstColumn, StartRow - TableStartY));
 
-            e.Graphics.DrawRectangle(pen_Black, new Rectangle(ThirdColumn, TableStartY + 1, FourthColumn - ThirdColumn, TableEndY - TableStartY - 1));
+            e.Graphics.DrawRectangle(pen_Black, new Rectangle(ThirdColumn, TableStartY + 1, FourthColumn - ThirdColumn, StartRow - TableStartY));
 
-            e.Graphics.DrawRectangle(pen_Black, new Rectangle(FifthColumn, TableStartY + 1, SixthColumn - FifthColumn, TableEndY - TableStartY - 1));
+            e.Graphics.DrawRectangle(pen_Black, new Rectangle(FifthColumn, TableStartY + 1, SixthColumn - FifthColumn, StartRow - TableStartY));
 
-            e.Graphics.DrawRectangle(pen_Black, new Rectangle(SeventhColumn, TableStartY + 1, EighthColumn - SeventhColumn, TableEndY - TableStartY - 1));
+            e.Graphics.DrawRectangle(pen_Black, new Rectangle(SeventhColumn, TableStartY + 1, EighthColumn - SeventhColumn, StartRow - TableStartY));
 
-            e.Graphics.DrawLine(pen_Black, new Point(FirstColumn, TableEndY), new Point(EighthColumn, TableEndY));
+            e.Graphics.DrawLine(pen_Black, new Point(FirstColumn, StartRow + 1), new Point(EighthColumn, StartRow + 1));
 
             return StartRow;
         }
