@@ -15,6 +15,7 @@ namespace PDFCreator
         private int OtherPageItemCount = 24;
         int RowHeight = 40;
         int RemainingItems = 0;
+        int TableEndRow = 0;
 
         int FirstColumn;
         int SecondColumn;
@@ -28,6 +29,7 @@ namespace PDFCreator
         int TableStartY;
         int TableEndY;
 
+        bool FinalAmountPrinted = false;
         int currentPage = 1;
         int numofpages = 2;
 
@@ -241,17 +243,17 @@ namespace PDFCreator
             items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
             items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
             items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
-            items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
-            items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
-            items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
-            items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
-            items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
-            items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
-            items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
-            items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
-            items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
-            items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
-            items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
+            //items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
+            //items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
+            //items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
+            //items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
+            //items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
+            //items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
+            //items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
+            //items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
+            //items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
+            //items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
+            //items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
         }
 
         private int FillItemTable(PrintPageEventArgs e, DataTable items)
@@ -284,6 +286,24 @@ namespace PDFCreator
                 SrNo++;
             }
             return StartRow;
+        }
+
+        private bool SpaceAvailableForFinalAmount(System.Drawing.Printing.PrintPageEventArgs e, int TableEndRow)
+        {
+            bool SpaceAvailable = true;
+
+            int space = (int)e.PageSettings.PrintableArea.Height - 20 - TableEndRow;
+
+            if (space >= 120)    //Space required to print the total amount -> 120
+            {
+                SpaceAvailable = true;
+            }
+            else
+            {
+                SpaceAvailable = false;
+            }
+
+            return SpaceAvailable;
         }
 
         private int CreateAndFillTable(PrintPageEventArgs e, int PageContent, int TableStartY, int RemainingItems)
@@ -394,7 +414,7 @@ namespace PDFCreator
         {
             return "1200";
         }
-        private int FillFinalAmountTable(PrintPageEventArgs e, DataTable items, int StartRow)
+        private bool FillFinalAmountTable(PrintPageEventArgs e, DataTable items, int StartRow)
         {
             StartRow += 30;
 
@@ -413,7 +433,7 @@ namespace PDFCreator
             var rect7 = new Rectangle(FourthColumn + 20, StartRow, SixthColumn - FourthColumn - 20 - 1, 30);
             var rect8 = new Rectangle(SixthColumn, StartRow, EighthColumn - SixthColumn - 1, 30);
 
-            e.Graphics.DrawString("Sub total", font_Arial_14, Brushes.Black, rect1, NearFormat);
+            e.Graphics.DrawString("Sub Total", font_Arial_14, Brushes.Black, rect1, NearFormat);
             e.Graphics.DrawString(ComputeSubTotal(), font_Arial_14, Brushes.Black, rect2, FarFormat);
 
             e.Graphics.DrawString("SGST", font_Arial_14, Brushes.Black, rect3, NearFormat);
@@ -425,7 +445,7 @@ namespace PDFCreator
             e.Graphics.DrawString("Total Amount", font_Arial_14, Brushes.Black, rect7, NearFormat);
             e.Graphics.DrawString(ComputeTotalAmount(), font_Arial_14, Brushes.Black, rect8, FarFormat);
 
-            return StartRow;
+            return true;
         }
 
         private int FindNumberOfPages(DataTable items)
@@ -516,7 +536,6 @@ namespace PDFCreator
 
                 bool Combined = true;
 
-                int TableEndRow = 1;
 
                 if (Combined)
                 {
@@ -546,33 +565,44 @@ namespace PDFCreator
                     elapsed_time = stopwatch.ElapsedMilliseconds;
                     Console.WriteLine("FillItemTable time: " + elapsed_time.ToString() + "ms");
                     totalTime += elapsed_time;
-                }
-
-                //Fill final amount
-                stopwatch.Restart();
-                int NextItemStartRow = FillFinalAmountTable(e, items, TableEndRow);
-                stopwatch.Stop();
-                elapsed_time = stopwatch.ElapsedMilliseconds;
-                Console.WriteLine("FillFinalAmountTable time: " + elapsed_time.ToString() + "ms");
-                totalTime += elapsed_time;
-
+                }                
 
                 Console.WriteLine("Total Time time: " + totalTime.ToString() + "ms");
             }
             else if (currentPage >= 2)
             {
-                //Bitmap bmp = Properties.Resources.Logo;
-                //Image newImage = bmp;
-                //e.Graphics.DrawImage(newImage, 20, 20);
-                //e.Graphics.DrawString(currentPage.ToString(), new Font("Verdana", 10, FontStyle.Bold), Brushes.Black, 600, 350);
                 CreateHeaderLine(e);
-                CreateAndFillTable(e, OtherPageItemCount, 70, RemainingItems);
-                RemainingItems -= MainPageItemCount;
+
+                if (RemainingItems > 0)
+                {
+                    TableEndRow = CreateAndFillTable(e, OtherPageItemCount, 70, RemainingItems);
+                    RemainingItems -= MainPageItemCount;
+                }
+
                 ShowPageNumber(e, currentPage.ToString());
             }
 
+            if(RemainingItems < 0)
+            {
+                //Fill final amount
+                stopwatch.Restart();
+                if (SpaceAvailableForFinalAmount(e, TableEndRow))
+                {
+                    FinalAmountPrinted = FillFinalAmountTable(e, items, TableEndRow);
+                }
+                else
+                {
+                    TableEndRow = 70;
+                }
+
+                stopwatch.Stop();
+                elapsed_time = stopwatch.ElapsedMilliseconds;
+                Console.WriteLine("FillFinalAmountTable time: " + elapsed_time.ToString() + "ms");
+                totalTime += elapsed_time;
+            }
+
             // Check if there are more pages to print
-            if (currentPage < numofpages)
+            if (!FinalAmountPrinted)
             {
                 e.HasMorePages = true;
                 currentPage++;
