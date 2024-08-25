@@ -276,7 +276,7 @@ namespace PDFCreator
             return StartRow;
         }
 
-        private int CreateAndFillTable(PrintPageEventArgs e, int PageContent)
+        private int CreateAndFillTable(PrintPageEventArgs e, int PageContent, int TableStartY)
         {
             int SrNo = 1;
             var NearFormat = new StringFormat() { Alignment = StringAlignment.Near, LineAlignment = StringAlignment.Center };
@@ -292,7 +292,6 @@ namespace PDFCreator
             SeventhColumn = SixthColumn + 85;
             EighthColumn = (int)e.PageSettings.PrintableArea.Right - 40;
 
-            TableStartY = 330;
             int StartRow = TableStartY + RowHeight;
             TableEndY = (int)e.PageSettings.PrintableArea.Height - 50;
 
@@ -514,7 +513,7 @@ namespace PDFCreator
                 {
                     //Create and fill table at once
                     stopwatch.Restart();
-                    TableEndRow = CreateAndFillTable(e, MainPageItemCount);
+                    TableEndRow = CreateAndFillTable(e, MainPageItemCount, 330);
                     stopwatch.Stop();
                     elapsed_time = stopwatch.ElapsedMilliseconds;
                     Console.WriteLine("CreateAndFillTable time: " + elapsed_time.ToString() + "ms");
@@ -556,7 +555,8 @@ namespace PDFCreator
                 //Image newImage = bmp;
                 //e.Graphics.DrawImage(newImage, 20, 20);
                 //e.Graphics.DrawString(currentPage.ToString(), new Font("Verdana", 10, FontStyle.Bold), Brushes.Black, 600, 350);
-                CreateAndFillTable(e, MainPageItemCount);
+                CreateHeaderLine(e);
+                CreateAndFillTable(e, MainPageItemCount, 70);
             }
 
             // Check if there are more pages to print
