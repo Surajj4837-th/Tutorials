@@ -228,6 +228,8 @@ namespace PDFCreator
             items.Rows.Add("Name1", "Item4", "123", "10", "1.5", "1.5", "10000");
             items.Rows.Add("Name1", "Item5", "123", "10", "1.5", "1.5", "10000");
             items.Rows.Add("Name1", "Item6", "123", "10", "1.5", "1.5", "10000");
+            items.Rows.Add("Name1", "Item7", "123", "10", "1.5", "1.5", "10000");
+            items.Rows.Add("Name1", "Item8", "123", "10", "1.5", "1.5", "10000");
         }
 
         private int FillItemTable(PrintPageEventArgs e, DataTable items)
@@ -259,6 +261,97 @@ namespace PDFCreator
                 StartRow += 30;
                 SrNo++;
             }
+            return StartRow;
+        }
+
+        private int CreateAndFillTable(PrintPageEventArgs e)
+        {
+            int SrNo = 1;
+            var NearFormat = new StringFormat() { Alignment = StringAlignment.Near, LineAlignment = StringAlignment.Center };
+            var CentreFormat = new StringFormat() { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center };
+            var FarFormat = new StringFormat() { Alignment = StringAlignment.Far, LineAlignment = StringAlignment.Center };
+
+            FirstColumn = (int)e.PageSettings.PrintableArea.Left + 40;
+            SecondColumn = FirstColumn + 70;
+            ThirdColumn = SecondColumn + 280;
+            FourthColumn = ThirdColumn + 85;
+            FifthColumn = FourthColumn + 85;
+            SixthColumn = FifthColumn + 85;
+            SeventhColumn = SixthColumn + 85;
+            EighthColumn = (int)e.PageSettings.PrintableArea.Right - 40;
+
+            TableStartY = 330;
+            int StartRow = TableStartY + 30;
+            TableEndY = (int)e.PageSettings.PrintableArea.Height - 50;
+
+            //Table header
+            e.Graphics.FillRectangle(solidbrush_black, FirstColumn, TableStartY, e.PageSettings.PrintableArea.Width - 80, 40);
+
+            e.Graphics.DrawString("Sr. No.", font_Arial_13, Brushes.White, new Rectangle(FirstColumn, TableStartY, SecondColumn - FirstColumn, 40), CentreFormat);
+
+            e.Graphics.DrawString("Item", font_Arial_13, Brushes.White, new Rectangle(SecondColumn, TableStartY, ThirdColumn - SecondColumn, 40), CentreFormat);
+
+            e.Graphics.DrawString("Quantity", font_Arial_13, Brushes.White, new Rectangle(ThirdColumn, TableStartY, FourthColumn - ThirdColumn, 40), CentreFormat);
+
+            e.Graphics.DrawString("Rate", font_Arial_13, Brushes.White, new Rectangle(FourthColumn, TableStartY, FifthColumn - FourthColumn, 40), CentreFormat);
+
+            e.Graphics.DrawString("SGST", font_Arial_13, Brushes.White, new Rectangle(FifthColumn, TableStartY, SixthColumn - FifthColumn, 40), CentreFormat);
+
+            e.Graphics.DrawString("CGST", font_Arial_13, Brushes.White, new Rectangle(SixthColumn, TableStartY, SeventhColumn - SixthColumn, 40), CentreFormat);
+
+            e.Graphics.DrawString("Amount", font_Arial_13, Brushes.White, new Rectangle(SeventhColumn, TableStartY, EighthColumn - SeventhColumn, 40), CentreFormat);
+
+            bool IsEven = true;
+
+            //Table rows
+            int i = 0;
+            int item = 0;
+            for (i = TableStartY + 30; item < items.Rows.Count; i += 40, item++)
+            {
+                if (IsEven)
+                {
+                    e.Graphics.FillRectangle(solidbrush_white, FirstColumn, i, e.PageSettings.PrintableArea.Width - 80, 40);
+                    IsEven = false;
+                }
+                else
+                {
+                    //if(SrNo.ToString() == "6") 
+                        e.Graphics.FillRectangle(solidbrush_LightGray, FirstColumn, i, e.PageSettings.PrintableArea.Width - 80, 40);
+                    IsEven = true;
+                }
+
+                // Insert text
+                var rect1 = new Rectangle(FirstColumn, StartRow, SecondColumn - FirstColumn - 1, 30);
+                var rect2 = new Rectangle(SecondColumn, StartRow, ThirdColumn - SecondColumn - 1, 30);
+                var rect3 = new Rectangle(ThirdColumn, StartRow, FourthColumn - ThirdColumn - 1, 30);
+                var rect4 = new Rectangle(FourthColumn, StartRow, FifthColumn - FourthColumn - 1, 30);
+                var rect5 = new Rectangle(FifthColumn, StartRow, SixthColumn - FifthColumn - 1, 30);
+                var rect6 = new Rectangle(SixthColumn, StartRow, SeventhColumn - SixthColumn - 1, 30);
+                var rect7 = new Rectangle(SeventhColumn, StartRow, EighthColumn - SeventhColumn - 1, 30);
+
+                e.Graphics.DrawString(SrNo.ToString(), font_Arial_14, Brushes.Black, rect1, CentreFormat);
+                e.Graphics.DrawString(items.Rows[item]["Item"].ToString(), font_Arial_14, Brushes.Black, rect2, NearFormat);
+                e.Graphics.DrawString(items.Rows[item]["Quantity"].ToString(), font_Arial_14, Brushes.Black, rect3, FarFormat);
+                e.Graphics.DrawString(items.Rows[item]["Rate"].ToString(), font_Arial_14, Brushes.Black, rect4, FarFormat);
+                e.Graphics.DrawString(items.Rows[item]["SGST"].ToString(), font_Arial_14, Brushes.Black, rect5, FarFormat);
+                e.Graphics.DrawString(items.Rows[item]["CGST"].ToString(), font_Arial_14, Brushes.Black, rect6, FarFormat);
+                e.Graphics.DrawString(items.Rows[item]["Amount"].ToString(), font_Arial_14, Brushes.Black, rect7, FarFormat);
+
+                StartRow += 40;
+                SrNo++;
+            }
+
+            //Draw vertical lines of table using DrawRectangle()
+            e.Graphics.DrawRectangle(pen_Black, new Rectangle(FirstColumn, TableStartY + 1, SecondColumn - FirstColumn, TableEndY - TableStartY - 1));
+
+            e.Graphics.DrawRectangle(pen_Black, new Rectangle(ThirdColumn, TableStartY + 1, FourthColumn - ThirdColumn, TableEndY - TableStartY - 1));
+
+            e.Graphics.DrawRectangle(pen_Black, new Rectangle(FifthColumn, TableStartY + 1, SixthColumn - FifthColumn, TableEndY - TableStartY - 1));
+
+            e.Graphics.DrawRectangle(pen_Black, new Rectangle(SeventhColumn, TableStartY + 1, EighthColumn - SeventhColumn, TableEndY - TableStartY - 1));
+
+            e.Graphics.DrawLine(pen_Black, new Point(FirstColumn, TableEndY), new Point(EighthColumn, TableEndY));
+
             return StartRow;
         }
 
@@ -393,29 +486,46 @@ namespace PDFCreator
                 Console.WriteLine("AddBillDetailsSection time: " + elapsed_time.ToString() + "ms");
                 totalTime += elapsed_time;
 
-                // Create Table
-                stopwatch.Restart();
-                CreateTable(e);
-                stopwatch.Stop();
-                elapsed_time = stopwatch.ElapsedMilliseconds;
-                Console.WriteLine("CreateTable time: " + elapsed_time.ToString() + "ms");
-                totalTime += elapsed_time;
-
                 //Show page number
                 stopwatch.Restart();
-                ShowPageNumber(e, "1");
+                ShowPageNumber(e, currentpage.ToString());
                 stopwatch.Stop();
                 elapsed_time = stopwatch.ElapsedMilliseconds;
                 Console.WriteLine("ShowPageNumber time: " + elapsed_time.ToString() + "ms");
                 totalTime += elapsed_time;
 
-                //Fill table
-                stopwatch.Restart();
-                int TableEndRow = FillItemTable(e, items);
-                stopwatch.Stop();
-                elapsed_time = stopwatch.ElapsedMilliseconds;
-                Console.WriteLine("FillItemTable time: " + elapsed_time.ToString() + "ms");
-                totalTime += elapsed_time;
+                bool Combined = true;
+
+                int TableEndRow = 1;
+
+                if (Combined)
+                {
+                    //Create and fill table at once
+                    stopwatch.Restart();
+                    TableEndRow = CreateAndFillTable(e);
+                    stopwatch.Stop();
+                    elapsed_time = stopwatch.ElapsedMilliseconds;
+                    Console.WriteLine("CreateAndFillTable time: " + elapsed_time.ToString() + "ms");
+                    totalTime += elapsed_time;
+                }
+                else
+                {
+                    // Create Table
+                    stopwatch.Restart();
+                    CreateTable(e);
+                    stopwatch.Stop();
+                    elapsed_time = stopwatch.ElapsedMilliseconds;
+                    Console.WriteLine("CreateTable time: " + elapsed_time.ToString() + "ms");
+                    totalTime += elapsed_time;
+
+                    //Fill table
+                    stopwatch.Restart();
+                    TableEndRow = FillItemTable(e, items);
+                    stopwatch.Stop();
+                    elapsed_time = stopwatch.ElapsedMilliseconds;
+                    Console.WriteLine("FillItemTable time: " + elapsed_time.ToString() + "ms");
+                    totalTime += elapsed_time;
+                }
 
                 //Fill final amount
                 stopwatch.Restart();
