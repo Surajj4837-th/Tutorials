@@ -10,7 +10,8 @@ namespace PDFCreator
     public partial class MainForm : Form
     {
         private int MainPageItemCount = 17;
-        private int SecondPageItemCount = 31;
+        private int OtherPageItemCount = 31;
+        int RowHeight = 40;
         DataTable items = new DataTable();
 
         int FirstColumn;
@@ -292,53 +293,53 @@ namespace PDFCreator
             EighthColumn = (int)e.PageSettings.PrintableArea.Right - 40;
 
             TableStartY = 330;
-            int StartRow = TableStartY + 30;
+            int StartRow = TableStartY + RowHeight;
             TableEndY = (int)e.PageSettings.PrintableArea.Height - 50;
 
             //Table header
-            e.Graphics.FillRectangle(solidbrush_black, FirstColumn, TableStartY, e.PageSettings.PrintableArea.Width - 80, 40);
+            e.Graphics.FillRectangle(solidbrush_black, FirstColumn, TableStartY, e.PageSettings.PrintableArea.Width - 80, RowHeight);
 
-            e.Graphics.DrawString("Sr. No.", font_Arial_13, Brushes.White, new Rectangle(FirstColumn, TableStartY, SecondColumn - FirstColumn, 40), CentreFormat);
+            e.Graphics.DrawString("Sr. No.", font_Arial_14, Brushes.White, new Rectangle(FirstColumn, TableStartY, SecondColumn - FirstColumn, RowHeight), CentreFormat);
 
-            e.Graphics.DrawString("Item", font_Arial_13, Brushes.White, new Rectangle(SecondColumn, TableStartY, ThirdColumn - SecondColumn, 40), CentreFormat);
+            e.Graphics.DrawString("Item", font_Arial_14, Brushes.White, new Rectangle(SecondColumn, TableStartY, ThirdColumn - SecondColumn, RowHeight), CentreFormat);
 
-            e.Graphics.DrawString("Quantity", font_Arial_13, Brushes.White, new Rectangle(ThirdColumn, TableStartY, FourthColumn - ThirdColumn, 40), CentreFormat);
+            e.Graphics.DrawString("Quantity", font_Arial_14, Brushes.White, new Rectangle(ThirdColumn, TableStartY, FourthColumn - ThirdColumn, RowHeight), CentreFormat);
 
-            e.Graphics.DrawString("Rate", font_Arial_13, Brushes.White, new Rectangle(FourthColumn, TableStartY, FifthColumn - FourthColumn, 40), CentreFormat);
+            e.Graphics.DrawString("Rate", font_Arial_14, Brushes.White, new Rectangle(FourthColumn, TableStartY, FifthColumn - FourthColumn, RowHeight), CentreFormat);
 
-            e.Graphics.DrawString("SGST", font_Arial_13, Brushes.White, new Rectangle(FifthColumn, TableStartY, SixthColumn - FifthColumn, 40), CentreFormat);
+            e.Graphics.DrawString("SGST", font_Arial_14, Brushes.White, new Rectangle(FifthColumn, TableStartY, SixthColumn - FifthColumn, RowHeight), CentreFormat);
 
-            e.Graphics.DrawString("CGST", font_Arial_13, Brushes.White, new Rectangle(SixthColumn, TableStartY, SeventhColumn - SixthColumn, 40), CentreFormat);
+            e.Graphics.DrawString("CGST", font_Arial_14, Brushes.White, new Rectangle(SixthColumn, TableStartY, SeventhColumn - SixthColumn, RowHeight), CentreFormat);
 
-            e.Graphics.DrawString("Amount", font_Arial_13, Brushes.White, new Rectangle(SeventhColumn, TableStartY, EighthColumn - SeventhColumn, 40), CentreFormat);
+            e.Graphics.DrawString("Amount", font_Arial_14, Brushes.White, new Rectangle(SeventhColumn, TableStartY, EighthColumn - SeventhColumn, RowHeight), CentreFormat);
 
             bool IsEven = true;
 
             //Table rows
             int i = 0;
             int item = 0;
-            for (i = TableStartY + 30; item < items.Rows.Count && item < PageContent; i += 40, item++)
+            for (i = TableStartY + 40; item < items.Rows.Count && item < PageContent; i += RowHeight, item++)
             {
                 if (IsEven)
                 {
-                    e.Graphics.FillRectangle(solidbrush_white, FirstColumn, i, e.PageSettings.PrintableArea.Width - 80, 40);
+                    e.Graphics.FillRectangle(solidbrush_white, FirstColumn, i, e.PageSettings.PrintableArea.Width - 80, RowHeight);
                     IsEven = false;
                 }
                 else
                 {
                     //if(SrNo.ToString() == "6") 
-                        e.Graphics.FillRectangle(solidbrush_LightGray, FirstColumn, i, e.PageSettings.PrintableArea.Width - 80, 40);
+                        e.Graphics.FillRectangle(solidbrush_LightGray, FirstColumn, i, e.PageSettings.PrintableArea.Width - 80, RowHeight);
                     IsEven = true;
                 }
 
                 // Insert text
-                var rect1 = new Rectangle(FirstColumn, StartRow, SecondColumn - FirstColumn - 1, 30);
-                var rect2 = new Rectangle(SecondColumn, StartRow, ThirdColumn - SecondColumn - 1, 30);
-                var rect3 = new Rectangle(ThirdColumn, StartRow, FourthColumn - ThirdColumn - 1, 30);
-                var rect4 = new Rectangle(FourthColumn, StartRow, FifthColumn - FourthColumn - 1, 30);
-                var rect5 = new Rectangle(FifthColumn, StartRow, SixthColumn - FifthColumn - 1, 30);
-                var rect6 = new Rectangle(SixthColumn, StartRow, SeventhColumn - SixthColumn - 1, 30);
-                var rect7 = new Rectangle(SeventhColumn, StartRow, EighthColumn - SeventhColumn - 1, 30);
+                var rect1 = new Rectangle(FirstColumn, StartRow, SecondColumn - FirstColumn - 1, RowHeight);
+                var rect2 = new Rectangle(SecondColumn, StartRow, ThirdColumn - SecondColumn - 1, RowHeight);
+                var rect3 = new Rectangle(ThirdColumn, StartRow, FourthColumn - ThirdColumn - 1, RowHeight);
+                var rect4 = new Rectangle(FourthColumn, StartRow, FifthColumn - FourthColumn - 1, RowHeight);
+                var rect5 = new Rectangle(FifthColumn, StartRow, SixthColumn - FifthColumn - 1, RowHeight);
+                var rect6 = new Rectangle(SixthColumn, StartRow, SeventhColumn - SixthColumn - 1, RowHeight);
+                var rect7 = new Rectangle(SeventhColumn, StartRow, EighthColumn - SeventhColumn - 1, RowHeight);
 
                 e.Graphics.DrawString(SrNo.ToString(), font_Arial_14, Brushes.Black, rect1, CentreFormat);
                 e.Graphics.DrawString(items.Rows[item]["Item"].ToString(), font_Arial_14, Brushes.Black, rect2, NearFormat);
@@ -348,7 +349,7 @@ namespace PDFCreator
                 e.Graphics.DrawString(items.Rows[item]["CGST"].ToString(), font_Arial_14, Brushes.Black, rect6, FarFormat);
                 e.Graphics.DrawString(items.Rows[item]["Amount"].ToString(), font_Arial_14, Brushes.Black, rect7, FarFormat);
 
-                StartRow += 40;
+                StartRow += RowHeight;
                 SrNo++;
             }
 
@@ -433,7 +434,7 @@ namespace PDFCreator
             else
             {
                 decimal temp = quantity - MainPageItemCount; // Subtracting 1st page items.
-                int remainingPages = (int)Math.Ceiling(temp / SecondPageItemCount);
+                int remainingPages = (int)Math.Ceiling(temp / OtherPageItemCount);
 
                 numOfPages = 1 + remainingPages;
             }
@@ -551,10 +552,11 @@ namespace PDFCreator
             }
             else if (currentPage >= 2)
             {
-                Bitmap bmp = Properties.Resources.Logo;
-                Image newImage = bmp;
-                e.Graphics.DrawImage(newImage, 20, 20);
-                e.Graphics.DrawString(currentPage.ToString(), new Font("Verdana", 10, FontStyle.Bold), Brushes.Black, 600, 350);
+                //Bitmap bmp = Properties.Resources.Logo;
+                //Image newImage = bmp;
+                //e.Graphics.DrawImage(newImage, 20, 20);
+                //e.Graphics.DrawString(currentPage.ToString(), new Font("Verdana", 10, FontStyle.Bold), Brushes.Black, 600, 350);
+                CreateAndFillTable(e, MainPageItemCount);
             }
 
             // Check if there are more pages to print
