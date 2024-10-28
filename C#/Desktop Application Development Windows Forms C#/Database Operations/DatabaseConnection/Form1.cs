@@ -49,9 +49,8 @@ namespace DatabaseConnection
 
         private void showbtn_Click(object sender, EventArgs e)
         {
-            this.Hide();
             Display obj_disp = new Display();
-            obj_disp.Show();
+            obj_disp.ShowDialog();
         }
     }
 }
