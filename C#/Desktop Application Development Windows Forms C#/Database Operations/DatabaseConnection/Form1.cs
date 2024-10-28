@@ -41,6 +41,17 @@ namespace DatabaseConnection
             {
                 obj_DBConnect.addUser(Nametxt.Text, Convert.ToInt64(Phonetxt.Text.ToString()), Convert.ToInt16(Agetxt.Text), true);
             }
+            else
+            {
+                obj_DBConnect.addUser(Nametxt.Text, Convert.ToInt64(Phonetxt.Text.ToString()), Convert.ToInt16(Agetxt.Text), false);
+            }
+        }
+
+        private void showbtn_Click(object sender, EventArgs e)
+        {
+            this.Hide();
+            Display obj_disp = new Display();
+            obj_disp.Show();
         }
     }
 }

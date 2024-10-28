@@ -38,6 +38,7 @@
             this.Phonetxt = new System.Windows.Forms.TextBox();
             this.FemaleRB = new System.Windows.Forms.RadioButton();
             this.Savebtn = new System.Windows.Forms.Button();
+            this.showbtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -148,12 +149,25 @@
             this.Savebtn.UseVisualStyleBackColor = false;
             this.Savebtn.Click += new System.EventHandler(this.Savebtn_Click);
             // 
+            // showbtn
+            // 
+            this.showbtn.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.showbtn.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.showbtn.Location = new System.Drawing.Point(146, 378);
+            this.showbtn.Name = "showbtn";
+            this.showbtn.Size = new System.Drawing.Size(84, 28);
+            this.showbtn.TabIndex = 7;
+            this.showbtn.Text = "Show";
+            this.showbtn.UseVisualStyleBackColor = false;
+            this.showbtn.Click += new System.EventHandler(this.showbtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
             this.ClientSize = new System.Drawing.Size(292, 450);
+            this.Controls.Add(this.showbtn);
             this.Controls.Add(this.Savebtn);
             this.Controls.Add(this.FemaleRB);
             this.Controls.Add(this.MaleRB);
@@ -188,6 +202,7 @@
         private System.Windows.Forms.TextBox Phonetxt;
         private System.Windows.Forms.RadioButton FemaleRB;
         private System.Windows.Forms.Button Savebtn;
+        private System.Windows.Forms.Button showbtn;
     }
 }
 
