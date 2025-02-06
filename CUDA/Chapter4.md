@@ -2,12 +2,12 @@
 # Parallel Programming in CUDA C
 
 ## CPU Vector Sum
-Refer to [VectorSumInC.cu](Programs/Chapter4/VectorSumInC.cu).
+Refer to [VectorSumInC.cu](Programs/Chapter4/VectorSumCPU.cu).
 
 This code is written to add vectors a and b to vector c. This is written in standard C code. In the add() function, the sum is computed in a while loop where the index tid ranges from 0 to N-1.
 
 ## GPU Vector Sum
-Refer to [VectorSumInCUDA.cu](Programs/Chapter4/VectorSumInCUDA.cu).
+Refer to [VectorSumInCUDA.cu](Programs/Chapter4/VectorSumGPU.cu).
 
 In this code, there are the following changes:
 1. We allocate three arrays on the device: two arrays, dev_a and dev_b, to hold inputs, and one array, dev_c, to hold the result.
@@ -23,6 +23,8 @@ The *add()* is executed on the device by adding a \_\_global__ qualifier to the 
 The first number in those parameters represents the number of parallel blocks in which we would like the device to execute our kernel. In this case, we’re passing the value N for this parameter.
 
 For example, if we launch with *kernel<<<2,1>>>()*, you can think of the runtime creating two copies of the kernel and running them in parallel. We call each of these parallel invocations a **block**.  With *kernel<<<256,1>>>()*, you would get 256 blocks running on the GPU. Parallel programming has never been easier.
+
+**Experiment**: Add function was written in CPU and GPU code to do addition of 1000000 numbers and the result shows the GPU based Cuda code is 15000 times faster than CPU based code.
 
 **blockIdx.x**: At first glance, it looks like this variable should cause a syntax error at compile time since we use it to assign the value of tid, but we have never defined it. However, there is no need to define the variable blockIdx; this is one of the built-in variables that the CUDA runtime defines for us. Furthermore, we use this variable for exactly what it sounds like it means. It contains the value of the block index for whichever block is currently running the device code.
 
