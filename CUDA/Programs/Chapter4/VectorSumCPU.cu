@@ -14,7 +14,9 @@
  */
 
 #include "../../Common/book.h"
-#define N   10 
+#include <time.h>
+
+#define N 100000000 
 
 void add(int *a, int *b, int *c)
 {
@@ -30,22 +32,33 @@ void add(int *a, int *b, int *c)
 
 int main(void)
 {
-    int a[N], b[N], c[N];
-    // fill the arrays 'a' and 'b' on the CPU
+    int *a, *b, *c;
+    clock_t start, end;
+    double cpu_time_used;    
 
+    a = (int*)malloc(N * sizeof(int));
+    b = (int*)malloc(N * sizeof(int));
+    c = (int*)malloc(N * sizeof(int));
+
+    // fill the arrays 'a' and 'b' on the CPU
     for (int i = 0; i < N; i++)
     {
         a[i] = -i;
-        b[i] = i * i;
+        b[i] = i * 2;
     }
 
+    start = clock();
     add(a, b, c);
+    end = clock();
+    cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+
+    printf("add() took %f seconds to execute \n", cpu_time_used); 
     
     // display the results
-    for (int i = 0; i < N; i++)
-    {
-        printf("%d + %d = %d\n", a[i], b[i], c[i]);
-    }
+    // for (int i = 0; i < N; i++)
+    // {
+    //     printf("%d + %d = %d\n", a[i], b[i], c[i]);
+    // }
     
     return 0;
 }

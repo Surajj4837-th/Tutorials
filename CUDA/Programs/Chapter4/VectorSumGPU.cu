@@ -14,8 +14,9 @@
  */
 
 #include "../../Common/book.h"
+#include <time.h>
 
-#define N 10
+#define N 100000000
 
 __global__ void add(int *a, int *b, int *c)
 {
@@ -26,8 +27,14 @@ __global__ void add(int *a, int *b, int *c)
 
 int main(void)
 {
-    int a[N], b[N], c[N];
+    int *a, *b, *c;
     int *dev_a, *dev_b, *dev_c;
+    clock_t start, end;
+    double cpu_time_used;
+
+    a = (int*)malloc(N * sizeof(int));
+    b = (int*)malloc(N * sizeof(int));
+    c = (int*)malloc(N * sizeof(int));
 
     // allocate the memory on the GPU
     HANDLE_ERROR(cudaMalloc((void **)&dev_a, N * sizeof(int)));
@@ -45,16 +52,21 @@ int main(void)
     HANDLE_ERROR(cudaMemcpy(dev_a, a, N * sizeof(int), cudaMemcpyHostToDevice));
     HANDLE_ERROR(cudaMemcpy(dev_b, b, N * sizeof(int), cudaMemcpyHostToDevice));
 
+    start = clock();
     add<<<N, 1>>>(dev_a, dev_b, dev_c);
+    end = clock();
+    cpu_time_used = ((double) (end - start)) / CLOCKS_PER_SEC;
+
+    printf("add() took %f seconds to execute \n", cpu_time_used); 
 
     // copy the array 'c' back from the GPU to the CPU
     HANDLE_ERROR(cudaMemcpy(c, dev_c, N * sizeof(int), cudaMemcpyDeviceToHost));
 
     // display the results
-    for (int i = 0; i < N; i++)
-    {
-        printf("%d + %d = %d\n", a[i], b[i], c[i]);
-    }
+    // for (int i = 0; i < N; i++)
+    // {
+    //     printf("%d + %d = %d\n", a[i], b[i], c[i]);
+    // }
 
     // free the memory allocated on the GPU
     HANDLE_ERROR(cudaFree(dev_a));
