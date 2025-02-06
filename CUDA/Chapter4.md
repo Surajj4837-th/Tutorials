@@ -54,7 +54,7 @@ After obtaining the point in complex space, we then need to determine whether th
 
 This logic is implemented for execution on both the CPU and GPU.
 
-Refer to [JuliaSetCPU.cu] (Programmes/Chapter4/JuliaSetCPU.cu) for the CPU implementation.
+Refer to [JuliaSetCPU.cu](Programs/Chapter4/JuliaSetCPU.cu) for the CPU implementation.
 
 ### GPU Execution
 
