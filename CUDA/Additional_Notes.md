@@ -215,3 +215,32 @@ For a **3D block configuration** where `blockDim.x = 8`, `blockDim.y = 8`, and `
 ### Conclusion:
 
 As CUDA architectures evolved, the hardware has continuously improved in terms of parallel processing capabilities, memory handling, and support for advanced features like **Tensor Cores** and **Ray Tracing**. The **Ampere** and **Ada Lovelace** architectures, for example, are especially optimized for modern AI and deep learning workloads. Each new architecture brings better performance and more specialized hardware support, making CUDA GPUs ever more capable for a variety of tasks.
+
+
+## Hierarchical Structure
+
+GPU
+│
+├── Streaming Multiprocessors (SMs)
+│   ├── SM 0
+│   │   ├── Block 0
+│   │   │   ├── Warp 0
+│   │   │   │   ├── Thread 0
+│   │   │   │   ├── Thread 1
+│   │   │   │   └── Thread 31
+│   │   │   ├── Warp 1
+│   │   │   │   ├── Thread 32
+│   │   │   │   ├── Thread 33
+│   │   │   │   └── Thread 63
+│   │   │   └── ...
+│   │   ├── Block 1
+│   │   └── ...
+│   ├── SM 1
+│   │   ├── Block 0
+│   │   └── ...
+│   └── ...
+
+GPU → Multiple SMs
+SMs → Multiple Blocks
+Blocks → Multiple Warps (32 threads per warp)
+Warps → Multiple Threads
