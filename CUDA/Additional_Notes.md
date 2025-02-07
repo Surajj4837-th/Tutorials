@@ -219,26 +219,45 @@ As CUDA architectures evolved, the hardware has continuously improved in terms o
 
 ## Hierarchical Structure
 
-GPU
-│
-├── Streaming Multiprocessors (SMs)
-│   ├── SM 0
-│   │   ├── Block 0
-│   │   │   ├── Warp 0
-│   │   │   │   ├── Thread 0
-│   │   │   │   ├── Thread 1
-│   │   │   │   └── Thread 31
-│   │   │   ├── Warp 1
-│   │   │   │   ├── Thread 32
-│   │   │   │   ├── Thread 33
-│   │   │   │   └── Thread 63
-│   │   │   └── ...
-│   │   ├── Block 1
-│   │   └── ...
-│   ├── SM 1
-│   │   ├── Block 0
-│   │   └── ...
-│   └── ...
+GPU  
+│  
+├── Streaming Multiprocessors (SMs)  
+│   ├── SM 0  
+│   │   ├── Block 0  
+│   │   │   ├── Warp 0  
+│   │   │   │   ├── Thread 0  
+│   │   │   │   ├── Thread 1  
+│   │   │   │   └── Thread 31  
+│   │   │   ├── Warp 1  
+│   │   │   │   ├── Thread 32  
+│   │   │   │   ├── Thread 33  
+│   │   │   │   └── Thread 63  
+│   │   │   └── ...  
+│   │   ├── Block 1  
+│   │   └── ...  
+│   ├── SM 1  
+│   │   ├── Block 0  
+│   │   └── ...  
+│   └── ...  
+│  
+├── Thread Blocks  
+│   ├── Block 0  
+│   ├── Block 1  
+│   ├── Block 2  
+│   └── ...  
+│  
+├── Warps  
+│   ├── Warp 0 (32 Threads)  
+│   ├── Warp 1 (32 Threads)  
+│   ├── Warp 2 (32 Threads)  
+│   └── ...  
+│  
+└── Threads  
+    ├── Thread 0  
+    ├── Thread 1  
+    ├── Thread 2  
+    └── ...  
+
 
 GPU → Multiple SMs
 SMs → Multiple Blocks
