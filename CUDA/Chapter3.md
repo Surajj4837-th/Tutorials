@@ -11,16 +11,16 @@ In CUDA terminology, the CPU and the system's memory are referred to as **host**
 
 ## CUDA code execution
 Use the following command to create an executable file of the code.
-> nvcc HelloWorld.cu -o Hello
+`nvcc HelloWorld.cu -o Hello`
 
-This will create an executable with the name Hello in the directory. Now run the executable by following command:
-> ./Hello
+This will create an executable with the name Hello in the directory. Now run the executable by following the command:
+`./Hello`
 
 ## Kernel Call
 
 Refer to [KernelCall.cu](Programs/Chapter3/KernelCall.cu).
 
-There are the following updates in above code:
+There are the following updates in the above code:
 - An empty function named *kernel()* recognized with \_\_global__ keyword.
 - A call to the empty function, added with <<<1,1>>>.
 
@@ -39,7 +39,7 @@ This code introduces the following changes:
 - *cudaMemcpy()*
 - *cudaFree()*
 
-We need to allocate memory to do anything on device. *cudaMalloc()* which acts similarly to *malloc()* tells the CUDA runtime to allocate the memory on the device. 
+We need to allocate memory to do anything on the device. *cudaMalloc()* which acts similarly to *malloc()* tells the CUDA runtime to allocate the memory on the device. 
 
 **Important point**: it is the responsibility of the programmer not to dereference the pointer returned by *cudaMalloc()* from code that executes on the host. Host code may pass this pointer around, perform arithmetic on it, or even cast it to a different type. But you cannot use it to read or write from memory. The compiler cannot protect you from this mistake. The restriction summary is as follows:
 - You **can pass** pointers allocated with *cudaMalloc()* to functions that execute on the device.
@@ -49,7 +49,7 @@ We need to allocate memory to do anything on device. *cudaMalloc()* which acts s
 
 **These points are applicable for host pointers as well.**
 
-As we cannot use the device memory locations directly to read or write in host function and vice versa for host memory. We can copy the data to and from each memory. This is achieved by using cudaMemcpy(). The call is similar to standard C function with an additional parameter as:
+We cannot use the device memory locations directly to read or write in the host function and vice versa for host memory. We can copy the data to and from each memory. This is achieved by using cudaMemcpy(). The call is similar to a standard C function with an additional parameter:
 - cudaMemcpyDeviceToHost: Copy device memory to the host.
 - cudaMemcpyHostToDevice: Copy host memory to the device.
 - cudaMemcpyDeviceToDevice: Both pointers are on the device.
@@ -68,31 +68,31 @@ To get the count of CUDA devices we can use *cudaGetDeviceCount()* and iterate t
 ```
  struct cudaDeviceProp 
  {
-    char name[256];             // An ASCII string identifying the device (e.g., "GeForce GTX 280") 
-    size_t totalGlobalMem;      // The amount of global memory on the device in bytes.
-    size_t sharedMemPerBlock;   // The maximum amount of shared memory a single block may use in bytes.
-    int regsPerBlock;           // The number of 32-bit registers available per block.
-    int warpSize;               // The number of threads in a warp.
-    size_t memPitch;            // The maximum pitch allowed for memory copies in bytes.
-    int maxThreadsPerBlock;     // The maximum number of threads that a block may contain.
-    int maxThreadsDim[3];       // The maximum number of threads allowed along each dimension of a block.
-    int maxGridSize[3];         // The number of blocks allowed along each dimension of a grid.
-    size_t totalConstMem;       // The amount of available constant memory.
-    int major;                  // The major revision of the device’s compute capability.
-    int minor;                  // The minor revision of the device’s compute capability.
-    int clockRate;
-    size_t textureAlignment;    // The device’s requirement for texture alignment.
-    int deviceOverlap;          // A boolean value representing whether the device can simultaneously perform a cudaMemcpy() and kernel execution.
-    int multiProcessorCount;    // The number of multiprocessors on the device.
-    int kernelExecTimeoutEnabled;   // A boolean value representing whether there is a runtime limit for kernels executed on this device.
-    int integrated;             // A boolean value representing whether the device is an integrated GPU (i.e., part of the chipset and not a discrete GPU).
-    int canMapHostMemory;       // A boolean value representing whether the device can map host memory into the CUDA device address space.
-    int computeMode;            // A value representing the device’s computing mode: default, exclusive, or prohibited.
-    int maxTexture1D;           // The maximum size supported for 1D textures.
-    int maxTexture2D[2];        // The maximum dimensions supported for 2D textures.
-    int maxTexture3D[3];        // The maximum dimensions supported for 3D textures.
-    int maxTexture2DArray[3];   // The maximum dimensions supported for 2D texture arrays.
-    int concurrentKernels;      // A boolean value representing whether the device supports executing multiple kernels within the same context simultaneously.
+ char name[256];             // An ASCII string identifying the device (e.g., "GeForce GTX 280") 
+ size_t totalGlobalMem;      // The amount of global memory on the device in bytes.
+ size_t sharedMemPerBlock;   // The maximum amount of shared memory a single block may use in bytes.
+ int regsPerBlock;           // The number of 32-bit registers available per block.
+ int warpSize;               // The number of threads in a warp.
+ size_t memPitch;            // The maximum pitch allowed for memory copies in bytes.
+ int maxThreadsPerBlock;     // The maximum number of threads that a block may contain.
+ int maxThreadsDim[3];       // The maximum number of threads allowed along each dimension of a block.
+ int maxGridSize[3];         // The number of blocks allowed along each dimension of a grid.
+ size_t totalConstMem;       // The amount of available constant memory.
+ int major;                  // The major revision of the device’s compute capability.
+ int minor;                  // The minor revision of the device’s compute capability.
+ int clockRate;
+ size_t textureAlignment;    // The device’s requirement for texture alignment.
+ int deviceOverlap;          // A boolean value representing whether the device can simultaneously perform a cudaMemcpy() and kernel execution.
+ int multiProcessorCount;    // The number of multiprocessors on the device.
+ int kernelExecTimeoutEnabled;   // A boolean value representing whether there is a runtime limit for kernels executed on this device.
+ int integrated;             // A boolean value representing whether the device is an integrated GPU (i.e., part of the chipset and not a discrete GPU).
+ int canMapHostMemory;       // A boolean value representing whether the device can map host memory into the CUDA device address space.
+ int computeMode;            // A value representing the device’s computing mode: default, exclusive, or prohibited.
+ int maxTexture1D;           // The maximum size supported for 1D textures.
+ int maxTexture2D[2];        // The maximum dimensions supported for 2D textures.
+ int maxTexture3D[3];        // The maximum dimensions supported for 3D textures.
+ int maxTexture2DArray[3];   // The maximum dimensions supported for 2D texture arrays.
+ int concurrentKernels;      // A boolean value representing whether the device supports executing multiple kernels within the same context simultaneously.
  }
 ```
 After running the referred code following is the printed output:
@@ -128,7 +128,7 @@ Suppose that we are writing an application that depends on having double-precisi
 Based on what we have seen with *cudaGetDeviceCount()* and *cudaGetDeviceProperties()*, we could iterate through each device and look for one that either has a major version greater than 1 or has a major version of 1 and a minor version greater than or equal to 3. But since this relatively common procedure is also relatively annoying to perform, the CUDA runtime offers us an automated way to do this. We first fill a *cudaDeviceProp* structure with the properties we need our device to have. After filling a *cudaDeviceProp* structure, we pass it to *cudaChooseDevice()* to have the CUDA runtime find a device that satisfies this constraint. The call to *cudaChooseDevice()* returns a device ID that we can then pass to *cudaSetDevice()*. From this point forward, all device operations will take place on the device we found in *cudaChooseDevice()*.
 
 
-**Note**:  If your application depends on certain features of the GPU or depends on having the fastest GPU in the system, you should familiarize yourself with this API because there is no guarantee that the CUDA runtime will choose the best or most appropriate GPU for your application.
+**Note**:  If your application depends on certain features of the GPU or depends on having the fastest GPU in the system, you should familiarize yourself with this API because there is no guarantee that the CUDA runtime will choose the best or most appropriate GPU for your application.
 
 After running the referred code, the printed output is:
 ```

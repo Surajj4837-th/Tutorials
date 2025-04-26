@@ -18,13 +18,13 @@ In this code, there are the following changes:
 In this code, we filled in input arrays in the host code. This operation can be done faster by filling the vectors in the device code.
 
 The *add()* is executed on the device by adding a \_\_global__ qualifier to the function name. In the function call,
-> add<<<N,1>>>( dev _ a, dev _ b, dev _ c );
+`add<<<N,1>>>( dev _ a, dev _ b, dev _ c );`
 
 The first number in those parameters represents the number of parallel blocks in which we would like the device to execute our kernel. In this case, we’re passing the value N for this parameter.
 
 For example, if we launch with *kernel<<<2,1>>>()*, you can think of the runtime creating two copies of the kernel and running them in parallel. We call each of these parallel invocations a **block**.  With *kernel<<<256,1>>>()*, you would get 256 blocks running on the GPU. Parallel programming has never been easier.
 
-**Experiment**: Add function was written in CPU and GPU code to do addition of 1000000 numbers and the result shows the GPU based Cuda code is 15000 times faster than CPU based code.
+**Experiment**: The Add function was written in CPU and GPU code to do the addition of 1000000 numbers and the result shows the GPU-based Cuda code is 15000 times faster than CPU-based code.
 
 **blockIdx.x**: At first glance, it looks like this variable should cause a syntax error at compile time since we use it to assign the value of tid, but we have never defined it. However, there is no need to define the variable blockIdx; this is one of the built-in variables that the CUDA runtime defines for us. Furthermore, we use this variable for exactly what it sounds like it means. It contains the value of the block index for whichever block is currently running the device code.
 
@@ -37,7 +37,7 @@ When we launched the kernel, we specified N as the number of parallel blocks. We
 The above image shows the actual code being copied for 4 blocks for execution.
 
 Why do we check whether tid is less than N?
-It should always be less than N, since we’ve specifically launched our kernel such that this assumption holds. For safety, we use this condition.
+It should always be less than N since we’ve specifically launched our kernel such that this assumption holds. For safety, we use this condition.
 
 If you would like to see how easy it is to generate a massively parallel application, try changing the 10 in the line #define N 10 to 10000 or 50000 to launch tens of thousands of parallel blocks. Be warned, though: No dimension of your launch of blocks may exceed 65,535. This is simply a hardware-imposed limit, so you will start to see failures if you attempt launches with more blocks than this.
 
@@ -46,7 +46,7 @@ If you would like to see how easy it is to generate a massively parallel applica
 ### CPU Execution
 
 Compute the Julia set for the following equation:
-> Z(n+1) = Z(n) * Z(n) + C
+`Z(n+1) = Z(n) * Z(n) + C`
 
 Create an image and iterate through all points we care to render, calling *julia()* on each to determine membership in the Julia Set. The function *julia()* will return 1 if the point is in the set and 0 if it is not in the set. We set the point’s colour to be red if *julia()* returns 1 and black if it returns 0. In the *julia()* function, the pixel coordinate is first translated to the centre (DIM/2), and then, to ensure that the image spans the range of -1.0 to 1.0, we scale the image coordinate by DIM/2. Then, to potentially zoom in or out, we introduce a scale factor. Currently, the scale is hard-coded to be 1.5.
 
@@ -67,13 +67,13 @@ The flow of this version is similar to the CPU version, with the additional item
 6. Copying the returned values back to the host pointer.
 
 The most significant difference is the use of the following code:
-> dim3 grid(DIM, DIM);
+`dim3 grid(DIM, DIM);`
 
 Because each pixel can be computed independently of every other pixel, we simply specify one copy of the function for each pixel we want to compute. The image domain needs 2D indexing, so there is a need to specify a 2D grid of blocks, as done in the above code.
 
-The type *dim3* is not a standard C type. Rather, the CUDA runtime header files define some convenience types to encapsulate multidimensional tuples. The type *dim3* represents a three-dimensional tuple that will be used to specify the size of our launch.
+The type *dim3* is not a standard C type. Rather, the CUDA runtime header files define some convenience types to encapsulate multi-dimensional tuples. The type *dim3* represents a three-dimensional tuple that will be used to specify the size of our launch.
 
-But why do we use a three-dimensional value when we clearly stated that our launch is a two-dimensional grid?
+But why do we use a three-dimensional value when we clearly state that our launch is a two-dimensional grid?
 Frankly, this is done because a three-dimensional, *dim3* value is what the CUDA runtime expects. Although a three-dimensional launch grid is not currently supported, the CUDA runtime still expects a *dim3* variable where the last component equals 1. When we initialise it with only two values, as we do in the above code statement, the CUDA runtime automatically fills the third dimension with the value 1, so everything here will work as expected.
 
 We do not need the *x* and *y* indices as used in *kernel()* for the loop in JuliaSetCPU.cu. These indices are fetched using the *blockIdx* variable.
