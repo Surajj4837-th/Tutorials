@@ -15,8 +15,8 @@
 
 
  #include "cuda.h"
- #include "../common/book.h"
- #include "../common/cpu_anim.h"
+ #include "../../Common/book.h"
+ #include "../../Common/cpu_anim.h"
  
  #define DIM 1024
  #define PI 3.1415926535897932f
@@ -72,3 +72,5 @@
      bitmap.anim_and_exit( (void (*)(void*,int))generate_frame,
                              (void (*)(void*))cleanup );
  }
+
+ //Command to create executable: nvcc Ripple.cu -o ripple -lglut -lGL -lGLU
