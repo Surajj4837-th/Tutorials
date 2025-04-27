@@ -18,7 +18,7 @@ In this code, there are the following changes:
 In this code, we filled in input arrays in the host code. This operation can be done faster by filling the vectors in the device code.
 
 The *add()* is executed on the device by adding a \_\_global__ qualifier to the function name. In the function call,
-`add<<<N,1>>>( dev _ a, dev _ b, dev _ c );`
+`add<<<N,1>>>(dev_a, dev_b, dev_c);`
 
 The first number in those parameters represents the number of parallel blocks in which we would like the device to execute our kernel. In this case, we’re passing the value N for this parameter.
 
