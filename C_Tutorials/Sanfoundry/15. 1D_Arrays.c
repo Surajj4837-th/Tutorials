@@ -21,6 +21,14 @@ int main()
    char arr4[] = "Suraj";  // NULL is automatically appended.
    char arr5[] = {"Jadhav"};  // NULL is automatically appended.
 
+   //logical error
+   char name[] = "Sura";
+   name[4] = 'j';    //replaces Null charachter, no compiler warning or error.
+
+   char name1[8]; 
+   //name1 = 'Suraj';    //Error as there is no Null assigned
+   strcpy(name1, "Suraj");      //Correct method
+   
    //**************************************************************************//
 
    printf("String length of arr1: %lu\n", strlen(arr1));
