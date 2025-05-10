@@ -19,7 +19,15 @@ int main()
 
 	std::cout << (&c == &a) << std::endl;
 
-	//r-value reference
+	// r-value
+	int x {100};		// 100 is an r-value
+	int y = x + 200;	// (x+200)is an r-value
+
+	std::string name = "Frank";		// "Frank" is an r-value
+
+	int max_num = std::max(20,30); // std::max(20,30) is an r-value, since it returns a non-addressable result.
+
+	// r-value reference
 	int&& rref = 90;
 
 	rref = 80;		//r-value rference can be updated
@@ -32,12 +40,10 @@ int main()
 	rref = b;
 	a = rref;
 
-
-
 	return 0;
 }
 /************************************Summary*****************************************
-1. l-value refers to memory  location which identifies an object. l-value may appear 
+1. l-value refers to memory location which identifies an object. l-value may appear 
    as either left hand or right hand side of an assignment operator(=).
 
 2. The l-value is one of the following:
@@ -52,7 +58,7 @@ int main()
 
 3. r-value refers to data value that is stored at some address in memory. 
 
-4. r-value cannot be assigned a value thus r-value cannot appear on left side of =.
+4. r-value cannot be assigned a value thus r-value cannot appear on left side of "=".
 
 5. rvalue references extend the lifespan of the temporary object to which they are assigned.
 
@@ -60,4 +66,9 @@ int main()
    assigned to the lvalue.
 
 7. lvalue references can be used to alias an existing object and in pass by reference. 
+
+8. Anythinf that is not an l-value is an r-value:
+	- Right side of an assignment operator.
+	- A literal.
+	- A temporary which is intended to be non-modifiable.
 ************************************************************************************/

@@ -24,15 +24,14 @@ int main()
 	printNumber(a);
 	printNumber(10);
 
-	//int && ref1 {a};	//error:  cannot bind 'int' lvalue to 'int&&'
-	const int&& ref1 {a};
+	//int && ref1 {a};		//error:  cannot bind 'int' lvalue to 'int&&'
+	// const int&& ref1 {a};	//error: an rvalue reference cannot be bound to an lvalue
 
-	int&& ref2 {a};
-	ref2 = 12;
+	int&& ref2 = 12;
 	
 	printNumber(ref2);	//calls the lvalue funciton as the passed parameter has an address.
 
-	cin.get();
+	std::cin.get();
 }
 
 /************************************Summary*****************************************

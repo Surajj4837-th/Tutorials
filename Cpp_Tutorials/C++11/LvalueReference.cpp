@@ -1,6 +1,7 @@
 //Use of Reference/alias
 #include <iostream>
 
+using std::cin;
 using std::cout;
 using std::endl;
 
@@ -61,7 +62,8 @@ int main()
 	int b = 20;
 
 	//swap(&a, &b);
-	SwapUsingAlias(a,b);
+	SwapUsingAlias(a, b);
+	// SwapUsingAlias(1, 2);		Error, can't reference r-value
 
 	cout << a << "\t" << b<< endl;
 	b = getSquare(a);
@@ -94,8 +96,6 @@ int main()
 	const int ref3{var};
 	var = 10;	//Okay
 	//ref3 = 11;	//error: assignment of read-only variable 'ref3'
-
-
 
 	cin.get();
 }
