@@ -51,6 +51,7 @@ int main()
 	*/
 
 	int &y = x;		//y is an alias to x
+	//Reference must be initialized during declaration.
 
 	++y;
 
