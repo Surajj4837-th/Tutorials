@@ -7,7 +7,7 @@ using std::endl;
 
 /****************Macro Declaration***********/
 
-#define LEN					(12)
+#define LEN											(12)
 #define ACTIVATE_COPY_CONSTRUCTOR					1
 #define ACTIVATE_COMPILER_COPY_CONSTRUCTOR			0
 
@@ -42,8 +42,7 @@ public:
 
 #if ACTIVATE_COMPILER_COPY_CONSTRUCTOR
 	ToyCar(const ToyCar& Object) = delete;
-	//Above statement can be used to avoid creation of default 
-	//copy constructor created by compiler.
+	//Above statement can be used to avoid creation of default copy constructor created by compiler.
 #endif
 
 
@@ -154,7 +153,7 @@ int main()
 	//Call a function
 	DoSomething();
 
-	cin.get();
+	std::cin.get();
 	return 0;
 }	
 
@@ -171,10 +170,11 @@ int main()
    while copying a data pointed by pointer.
 
 5. To avoid any changes being done to the passed object as parameter of a copy constructor,
-   the object reference should be made as constant.
+   the object reference should be made as constant. 
+   Eg. MyClass(const MyClass& source) {...}
 
 6. If an object has dynamically allocated memory then it is compulsory to deallocate it,
-   to avoid memory leaky.
+   to avoid memory leak.
 
 7. Destructor is called whenever an object goes out of that scope.
 
@@ -184,7 +184,7 @@ int main()
 
 10. Destructor cannot be inherited.
 
-11. When a copy constructor is invoked?
+11. In what cases a copy constructor is invoked?
 	a. When an object is created and initialized by an existing object.
 	b. When an object is passed by value to a function.
 	c. When an object is returned from a function.
@@ -194,7 +194,7 @@ int main()
 12. Object passing by value is allowed but it should be avoided as it involves copy 
 	constructor and data copy, which is costly task. Instead pass the object by reference.
 
-13. Common misconception: Constructor is used for allocating and destructor is for
+13. Common misconception: Constructor is used for allocating and destructor is used for
 	deallocating memory. The task of both is not just to manage memory but other resources 
 	as well for example: the files once opened can be closed by using destructor. Similarly
 	other resources like shared memory, socket(unix), etc.
@@ -207,4 +207,8 @@ int main()
 	Note: Need to create a separate file for this.
 	https://www.geeksforgeeks.org/explicitly-defaulted-deleted-functions-c-11/
 
+16. Declaration of copy constructor:
+	Class_name::Class_name(const type &source)  {  }
+
+17. Delegating constructor can be used along with copy constructor.
 ************************************************************************************/
