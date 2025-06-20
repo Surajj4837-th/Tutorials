@@ -168,7 +168,6 @@ public:
 	{
 		cout <<"\nClass1 Move Constructor" << endl;
 	}
-
 	
 };
 
@@ -207,16 +206,20 @@ int main()
 {
 	string obj7("Suraj");
 	Class1 obj6(obj7);
-	Class2 obj5(move(obj6));
+	Class2 obj5(std::move(obj6));
 
 	return 0;
 }
 
 /************************************Summary*****************************************
-1. Move semantics relies on rvalue references.
+1. Move semantics relies on rvalue references. rvalue reference and move semantics are
+   needed for optimizing performance.
 
 2. A move constructor, unlike a copy constructor, can avoid memory reallocation, so 
-   rather than copying the fields of the object, we will move them.
+   rather than copying the fields of the object, it will move them. Rvalue enable move 
+   semantics, which allows the transfer of resources (e.g., memory, file handles) from 
+   one object to another without duplicating them. This is done using move constructors 
+   and move assignment operators.
 
 3. If the field is a primitive type, like int, we just copy it. If the field is a pointer,
    rather than allocate and initialize new memory, we can simply move the pointer and 
@@ -239,7 +242,8 @@ int main()
    datatypes can be anything.
    Between int&& and const int& declaration the int&& is better.
 
-8. Returning a value from a function is not rvalue return, the value is copied while returning.
+8. Returning a value from a function is not rvalue return, the value is copied while 
+   returning.
 
 9. rvalue reference can also be returned from a function provided it should not be a 
    local variable.
@@ -248,4 +252,28 @@ int main()
 	and move constructors, when you store those objects in a container, the STL will 
 	automatically use std::move, automatically taking advantage of move-enabled classes 
 	to eliminate inefficient copies.
+
+11. Sometimes when we execute code the compiler creates unnamed temporary values, 
+	int total {0};
+	total = 100 + 200;
+	100 + 200 is evaluated and 300 stored in an unnamed temp value. 300 is then stored 
+	in the variable total. Then the temp value is discarded. The same happens with objects 
+	as well.
+
+12. Key Steps in Moving Data
+	1. Release Ownership: The source object gives up its ownership of the resource (e.g., 
+	   memory or file handle) without copying it.
+
+	2. Transfer ownership: The destination object takes ownership of the resource.
+
+	3. Nullify or Reset Source: After the resource is moved, the source object is often 
+	   left in a "valid but unspecified" state, and it doesn't own the resource anymore.
+
+13. Copy elison - C++ optimizes copying by itself. Return value optimization(RVO).
+
+14. Instead of making a deep copy, the move constructor
+	1. ‘moves’ the resource.
+	2. Simply copies the address of the resource from source to the current object.
+	3. And, nulls out the pointer in the source pointer.
+	Very efficient.
 ************************************************************************************/
