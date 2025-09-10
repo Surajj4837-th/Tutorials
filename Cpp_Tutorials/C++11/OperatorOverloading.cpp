@@ -68,6 +68,10 @@ int main()
 	cout << Ob1.GetCount() << endl;
 	cout << Ob2.GetCount() << endl;
 
+	MyClass Ob3 = Ob1;	//This is not assignment but initialization of Ob3
+
+	Ob3 = Ob2;	//This is assignemnt, since Ob3 is already initialized.
+
 	cin.get();
 	return 0;
 }
@@ -76,7 +80,7 @@ int main()
 1. Only existing operators like +, ++, /, etc. can be overloaded, no new operator can
    be created like +_, %$, etc and be used for overloading.
 
-2. Number of operands an operators requires cannot be changed eg Ob1 ++ Ob2, not allowed.
+2. Number of operands an operators requires cannot be changed e.g. Ob1 ++ Ob2, not allowed.
 
 3. Precedence of operators cannot be changed.
 
