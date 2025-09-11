@@ -106,10 +106,10 @@ int main()
 
 9. Unary operators are those which take only 1 variable/object as argument, example ++, --.
 
-10. Binary operators are those which take 2 variable/object as argument, example +, -.
-
-11. Prefix unary operator function takes no arguments whereas postfix unary operator 
+10. Prefix unary operator function takes no arguments whereas postfix unary operator 
 	takes 1 argument i.e. dummy parameter to denote the function as postfix.
+
+11. Binary operators are those which take 2 variable/object as argument, example +, -.
 
 12. Operator new, new [], delete and delete[] can also be overloaded.
 
@@ -127,4 +127,14 @@ int main()
 
 17. Operator overloading gives more flexibility to handle operations with user defined 
 	data types.
+
+18. Unary operators as member methods (++, --, -, !)
+
+19. Binary operators as member methods (+,-,==,!=,<,>, etc.)
+
+20. In case of binary operator overlaoding the LHS object calls the operator function.
+
+21. In case of 2 separate class objects being used for binary operator overloading then 
+	a the overloaded function cannot be a member function of any class. It has to be a 
+	friend function of both classes.
 ************************************************************************************/

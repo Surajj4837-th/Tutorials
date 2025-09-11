@@ -180,7 +180,6 @@ public:
 
 int Calculator::FindDistance(const Point& P1, const Point& P2)
 {
-
 	distance = sqrt(((double)P2.XCoord - P1.XCoord) * ((double)P2.XCoord - P1.XCoord)
 		+ ((double)P2.YCoord - P1.YCoord) * ((double)P2.YCoord - P1.YCoord));
 
@@ -221,7 +220,7 @@ int main()
 1. A friend keyword is used by a non member function to access the private, protected 
    and public members of a class.
 
-2. friend function declaration should be done with keyword 'friend' in class' body.
+2. A friend function declaration should be done with keyword 'friend' in class' body.
 
 3. Why to use a friend function?:
    a. Developer do not want to modify a well tested class, so a function is declared a
@@ -238,7 +237,7 @@ int main()
    classes are declared as friends of a class with protected or private data, it lessens
    the value of encapsulation of separate classes in object-oriented programming.
 
-7. Friendship is not mutual. If a class A is friend of B, then B doesn?t become friend
+7. Friendship is not mutual. If a class A is friend of B, then B doesn't become friend
    of A automatically.
 
 8. Friendship is not inherited.

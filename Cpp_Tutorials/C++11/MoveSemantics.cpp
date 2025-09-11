@@ -216,7 +216,7 @@ int main()
    needed for optimizing performance.
 
 2. A move constructor, unlike a copy constructor, can avoid memory reallocation, so 
-   rather than copying the fields of the object, it will move them. Rvalue enable move 
+   rather than copying the fields of the object, it will move them. Rvalue enables move 
    semantics, which allows the transfer of resources (e.g., memory, file handles) from 
    one object to another without duplicating them. This is done using move constructors 
    and move assignment operators.
