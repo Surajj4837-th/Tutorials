@@ -69,6 +69,22 @@ public:
 		return *this;
 	}
 
+	//r value = operator
+	ToyCar& operator=(const ToyCar&& rhs)
+	{
+		cout << "Move assignment operator" << std::endl;
+
+		if (this == &rhs)
+			return *this;
+
+		// deep copy
+		delete[] this->ptrColor;
+		this->ptrColor = new char[std::strlen(rhs.ptrColor) + 1];
+		strcpy(this->ptrColor, rhs.ptrColor);
+
+		return *this;
+	}
+
 };	//End of class
 
 int main()
@@ -106,6 +122,14 @@ int main()
 	 Assignment is a binary operator.
 	 */
 
+	//Move = assignment operator
+	//Used in the case of r value reference, the reglar = operator is used for l values
+	//ToyCar SUV;
+	
+	mini = ToyCar(4, "Orange");	//move = operator called
+	mini.DisplayAttributes();
+	
+	cout << endl;
 	return 0;
 }
 
@@ -128,4 +152,23 @@ int main()
    Assign the new string memory = length of new string + 1
    Copy the data
    Return the object
+
+5. All cases of constructor and assignment operator uses:
+   Suppose there is a class with string member function then following are the cases:
+
+	Mystring a{"Hello"};           // Overloaded constructor
+	a = Mystring{"Hola"};          // Overloaded constructor then move assignment
+	a = "Bonjour";                 // Overloaded constructor then move assignment
+
+
+	Mystring empty;                // no-args/default constructor
+	Mystring larry("Larry");       // overloaded constructor
+	Mystring stooge {larry};       // copy constructor
+	Mystring stooges;              // no-args/default constructor
+
+	empty = stooge;                // copy assignment operator
+								   // stooge is an l-value
+
+	empty = "Funny";               // move assignment operator
+								   // "Funny" is an r-value
 ************************************************************************************/
