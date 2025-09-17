@@ -14,7 +14,7 @@ public:
 
 	Counter()
 	{
-		cout << "Counter()" << endl;
+		cout << "Default Counter()" << endl;
 		count = 0;
 	}
 
@@ -52,14 +52,18 @@ class DownCounter : public Counter		//mode of inheritance
 
 public:
 
-	DownCounter()
+	DownCounter()	//Default base class constructor is called
 	{
-		cout << "Downcounter()" << endl;
+		cout << "Default Downcounter()" << endl;
 		Id = 0;
 	}
 
 	DownCounter(int id, int cnt) : Counter(cnt)		//syntax for calling base parameterized constructor
 	{
+		// First the base constructor is called.
+		// Then the initializer list.
+		// In the end this constructor body.
+
 		cout << "Parameterized Downcounter()" << endl;
 		Id = Id;
 		//count = cnt;
@@ -90,10 +94,14 @@ public:
 
 int main()
 {
+
 	DownCounter D1(1001, 100);
 	cout << D1.getCount() << endl;
 
 	//DownCounter.count = 1;		// compiler error: protected members cannot be accessed
+
+	DownCounter D2;
+	cout << D2.getCount() << endl;
 
 #if 0
 	cout << sizeof(D1) << endl;
@@ -108,7 +116,7 @@ int main()
 #endif
 
 	return 0;
-	cin.get();
+	std::cin.get();
 
 }
 /************************************Summary****************************************
@@ -165,4 +173,21 @@ int main()
 	attributes.
 
 15. Friend class can access public, protected and private members of the base class.
-************************************************************************************/
+
+16. The constructor of base class is invoked first and then the derived class.
+
+17. The destructor of derived class is called first and then base class.
+
+18. A derived class does not inherit:
+	Base class constructor.
+	Base class destructor.
+	Base class overloaded assignment operator.
+	Base class friend function.
+	However the derived class constructor, destructor and overloaded assignment operator
+	can invokr the base class version.
+
+19. Base class constructor is called using the initializer list in the derived class 
+	constructor. First the base constructor is called. Then the initializer list. In 
+	the end this constructor body. If there is no base constructor called then the 
+	defaultconstructor is invoked.
+*******************************s*****************************************************/
