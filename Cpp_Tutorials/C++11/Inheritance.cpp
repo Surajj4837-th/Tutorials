@@ -190,4 +190,11 @@ int main()
 	constructor. First the base constructor is called. Then the initializer list. In 
 	the end this constructor body. If there is no base constructor called then the 
 	defaultconstructor is invoked.
+
+20. Base part of the derived class must be initialized before the derived part. When
+	a derived class object is created, the base class constructor is called first, and
+	then the derived class constructor is called. 
+
+21. Similarly, when a derived class object is destroyed, the derived class destructor
+   	is called first, followed by the base class destructor.
 ***********************************************************************************/
