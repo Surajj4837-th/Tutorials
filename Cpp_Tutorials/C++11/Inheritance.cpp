@@ -197,4 +197,9 @@ int main()
 
 21. Similarly, when a derived class object is destroyed, the derived class destructor
    	is called first, followed by the base class destructor.
+
+22. Inheritance follows 'is-a' relationship. For example, a DownCounter is a Counter.
+	Derived class object can be treated as a base class object but not vice-versa.
+	Due to this property, we can have a base class pointer point to a derived class
+	object.
 ***********************************************************************************/
