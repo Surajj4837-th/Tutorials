@@ -6,24 +6,37 @@ using std::cout;
 using std::endl;
 
 //Smart pointer class
-template <class T> class SmartPtr {
+template <class T> class SmartPtr 
+{
     T* ptr; // Actual pointer
 public:
 
     // Constructor
-    explicit SmartPtr(T* p = NULL) { ptr = p; }
+    explicit SmartPtr(T* p = NULL) 
+    { 
+        ptr = p; 
+    }
  
     // Destructor
-    ~SmartPtr() { delete (ptr); }
+    ~SmartPtr() 
+    { 
+        delete (ptr);
+    }
  
     // Overloading dereferencing operator
-    T& operator*() { return *ptr; }
+    T& operator*() 
+    { 
+        return *ptr; 
+    }
  
     // Overloading arrow operator so that
     // members of T can be accessed
     // like a pointer (useful if T represents
     // a class or struct or union type)
-    T* operator->() { return ptr; }
+    T* operator->() 
+    { 
+        return ptr; 
+    }
 };
 
 
@@ -39,7 +52,10 @@ public:
         breadth = b;
     }
  
-    int area() { return length * breadth; }
+    int area() 
+    { 
+        return length * breadth; 
+    }
 };
 
 
@@ -63,7 +79,6 @@ int main()
  
 	//Prints nothing
 	//cout<< P1->area() <<endl;	//Code Crashes
-
 
 	//shared pointer
 	cout << "-------Shared pointer-------" << endl;
@@ -108,9 +123,10 @@ int main()
    deprecated in C++11. Replaced by unique pointer.
    
 6. unique_ptr - stores one pointer only. We can assign a different object by removing 
-   the current object from the pointer. 
+   the current object from the pointer. When it is destroyed, it deletes the object
+   it points to.
    
-7. shared_ptr - more than one pointer can point to this one object at a time and it’ll 
+7. shared_ptr - more than one pointer can point to this one object at a time and itï¿½ll 
    maintain a Reference Counter.
 
 8. weak_ptr - A weak pointer is a smart pointer that does not take ownership of an object 

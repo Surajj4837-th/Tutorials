@@ -37,7 +37,7 @@ int main()
    a base class because we don't know the implementation, such a class is called as
    abstract class. A class is abstract if it has atleat 1 pure virtual function.
 7. Pure virtual function or abstract function is a virtual function for which we don't
-   have implementation, it is only delare in base class by assigning to 0.
+   have implementation, it is only delared in base class by assigning to 0.
 8. If the derived class does not override the pure virtual function then it also becomes
    abstract class.
 9. Abstract classes cannot be instantiated.
