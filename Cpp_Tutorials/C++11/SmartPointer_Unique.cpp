@@ -152,4 +152,8 @@ int main()
 12. When using a for loop over unique pointer vector, reference is to be used as the 
     unique pointer cannot be copied and when we do not use reference in for loop assignment
     then it tries to copy the unique pointer to the loop variable.
+
+13. Custom deleters can be used with smart pointers to define how the memory should be 
+    deallocated. This is useful when dealing with resources that require special cleanup 
+    procedures, such as file handles or network connections.
 ************************************************************************************/
