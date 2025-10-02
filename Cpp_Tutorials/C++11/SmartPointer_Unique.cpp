@@ -117,11 +117,15 @@ int main()
    cleanup.
       
 4. Problems with normal pointers:
-   - Memory leaks
-   - Dangling pointer
-   - Wild pointers
-   - Buffer overflow due to memory allocation beyond memory block.
-
+   a. Memory leaks: If the developer forgets to delete the memory allocated to 
+      the object then it will lead to memory leaks.
+   b. Dangling pointers: If the developer deletes the object memory but forgets to 
+      set the pointer to nullptr then it will lead to dangling pointer.
+   c. Double deletion: If the developer deletes the same object memory twice then 
+      it will lead to undefined behaviour.
+   d. Not exception safe: If an exception is thrown after the memory allocation but 
+      before the delete statement then it will lead to memory leaks.
+      
 5. auto_ptr - pointer object stores a pointer to a single allocated object. This is 
    deprecated in C++11. Replaced by unique pointer.
    
