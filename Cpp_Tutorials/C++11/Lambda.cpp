@@ -38,7 +38,8 @@ int main()
     lmbda();
 
     //Passing parameters
-    auto add = [](int a, int b) {
+    auto add = [](int a, int b)     //Stateless lambda
+    {
         cout << "Sum = " << a + b << endl;
     };
 
@@ -60,7 +61,8 @@ int main()
     //In following snippet notice -> double, it explicitly defines the return type as 
     //double. So no matter what type of value is returned by the various return statements, 
     //they are all explicitly converted to double type.
-    auto operation = [](int a, int b, std::string op) -> double {
+    auto operation = [](int a, int b, std::string op) -> double     //Stateless lambda
+    {
         if (op == "sum") {
             // returns integer value
             return a + b;
@@ -96,7 +98,8 @@ int main()
     int initial_sum = 100;
 
     // capture initial_sum by value
-    auto add_to_sum = [initial_sum](int num) {
+    auto add_to_sum = [initial_sum](int num)    //Stateful lambda
+    {
         return initial_sum + num;
     };
 
@@ -112,7 +115,8 @@ int main()
     
     int num = 0;
     // [&num] captures num by reference
-    auto increment_by_one = [&num]() {
+    auto increment_by_one = [&num]()    //Stateful lambda
+    {
         cout << "Incrementing num by 1.\n";
         num++;
     };
@@ -125,9 +129,10 @@ int main()
     //Lambda Function as Argument in STL Algorithm
 	vector<int> nums = { 1, 2, 3, 4, 5, 8, 10, 12 };
 
-	int even_count = count_if(nums.begin(), nums.end(), [](int num) {
+	int even_count = count_if(nums.begin(), nums.end(), [](int num)     //Stateless lambda
+    {
 		return num % 2 == 0;
-		});
+	});
 
     cout << "There are " << even_count << " even numbers.";
 
@@ -136,7 +141,7 @@ int main()
     //Another example of the STL and Lambda function.
     vector<int> v{ 4, 1, 3, 5, 2, 3, 1, 7 };
 
-    //printVector(v);
+    printVector(v);
 
     return 0;
 
@@ -163,4 +168,18 @@ int main()
       Capture by reference
       Capture by value
       Capture by both (mixed capture)
+
+6. We need to use lamda when the amount of code is small and not going to be reused
+   anywhere else.
+
+7. Lambda expressions are often used in conjunction with STL algorithms to provide
+   custom behavior for operations like sorting, filtering, and transforming data.
+
+8. Stateless lambda: A lambda that does not capture any variables from its enclosing 
+   scope, [].
+
+9. Stateful lambda: A lambda that captures variables from its enclosing scope, either
+   by value or by reference, [x, &y].
+
+10. The compiler implements a function object (functor) for each lambda expression.
 ************************************************************************************/
