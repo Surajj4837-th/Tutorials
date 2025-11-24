@@ -1,4 +1,6 @@
-//Enum class
+//EnumClass.cpp
+//Demonstration of enum class in C++11
+
 #include <iostream>
 
 using std::cout;

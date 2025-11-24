@@ -1,4 +1,6 @@
-// Data types: unsigned and float
+//Datatype_float.cpp
+// Data types: unsigned and float in C++11
+
 #include <iostream>
 #include <cstdint>  //For fixed size integers
 #include <iomanip>  //For steprecision()
@@ -15,7 +17,7 @@ int main()
     std::int16_t int32_a;
     std::int64_t int64_a;
     
-    //----------------------------------fast and least ints----------------------------------
+    //----------------------------------fast and least ints------------------------------
 
     std::int_least8_t least8_a;
     std::int_least16_t least16_a;
@@ -39,7 +41,7 @@ int main()
     --sometype; // This code will produce different results depending on 
                 // whether std::uint_fast16_t is 16, 32, or 64 bits.
 
-    //----------------------------------Unsigned numbers----------------------------------
+    //----------------------------------Unsigned numbers---------------------------------
 
     unsigned int a = 20;
     int b = 30;
@@ -60,7 +62,9 @@ int main()
 
     //----------------------------------decimal----------------------------------
     int x{5}; // 5 means integer
-    double y{5.0}; // 5.0 is a floating point literal (no suffix 'f' means double type by default)
+    double y{5.0}; // 5.0 is a floating point literal 
+    // (no suffix 'f' means double type by default)
+
     float z{5.0f}; // 5.0 is a floating point literal, 'f' suffix means float type
     double electronCharge { 1.6e-19 };  //scientific notation
     
@@ -71,7 +75,7 @@ int main()
     
     //When outputting floating point numbers, std::cout has a default precision of 6.
     //This can be overridden by using std::setprecision()
-    std::cout << std::setprecision(16);                            // show 16 digits of precision
+    std::cout << std::setprecision(16);                    // show 16 digits of precision
     std::cout << 3.33333333333333333333333333333333333333f <<'\n'; // f suffix means float
 
 
@@ -131,8 +135,8 @@ int main()
 
 5. To avoid wrap around errors use correct data types or type casting operators. Best 
    practice:
-        - Favor signed numbers over unsigned numbers for holding quantities (even quantities 
-            that should be non-negative) and mathematical operations. 
+        - Favor signed numbers over unsigned numbers for holding quantities (even 
+            quantities that should be non-negative) and mathematical operations. 
         - Avoid mixing signed and unsigned numbers.
 
 6. Unsigned numbers are required when dealing with bit manipulation and in some specific 
@@ -144,7 +148,8 @@ int main()
    so that the compiler implementers could pick a size for int that performs best on the 
    target computer architecture.
 
-8. Fixed width integers were introduced to guarantee same size integers on any architecture.
+8. Fixed width integers were introduced to guarantee same size integers on any 
+   architecture.
    
 9. But fixed width integers can be slow on some architectures which are designed to 
    work fast on wider types. To solve this least and fast integers were introduced which 

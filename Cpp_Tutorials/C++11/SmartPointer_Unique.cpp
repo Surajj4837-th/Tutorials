@@ -1,4 +1,6 @@
-//Smart pointers
+//C++11/SmartPointer_Unique.cpp
+//Smart pointers in C++11 using unique_ptr
+
 #include <iostream>
 #include <memory>
 #include <vector>

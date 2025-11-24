@@ -1,4 +1,5 @@
-//Type casting operators
+// C++11/TypeCastingOperators.cpp
+//Type casting operators in C++11
 #include <iostream>
 
 #define STATIC_CAST			0
@@ -386,7 +387,7 @@ int main()
 5. To work on dynamic_cast there must be one virtual function in the base class. A 
    dynamic_cast works only polymorphic base class because it uses this information to 
    decide safe downcasting. If there is no virtual function then the compiler throws an
-   error: “Source type is not polymorphic”.
+   error: ï¿½Source type is not polymorphicï¿½.
 
 6. Downcasting: Casting a base class pointer (or reference) to a derived class pointer 
    (or reference) is known as downcasting.
@@ -400,13 +401,13 @@ int main()
 
 10. const_cast can be used to change non-const class members inside a const member function.
 
-11. const_cast can be used to pass const data to a function that doesn’t receive const.
+11. const_cast can be used to pass const data to a function that doesnï¿½t receive const.
 	
 12.	It is fine to modify a value which is not initially declared as const. However 
 	updating the variable that is declared as const will lead to undefined behavior.
 
-13. const_cast is considered safer than simple type casting. It’s safer in the sense 
-	that the casting won’t happen if the type of cast is not same as original object.
+13. const_cast is considered safer than simple type casting. Itï¿½s safer in the sense 
+	that the casting wonï¿½t happen if the type of cast is not same as original object.
 
 14. const_cast can also be used to cast away volatile attribute.
 

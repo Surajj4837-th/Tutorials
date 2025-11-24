@@ -1,3 +1,6 @@
+//C++11/Slicing.cpp
+//Demonstration of object slicing in C++11
+
 #include "Slicing.h"
 
 using std::cout;

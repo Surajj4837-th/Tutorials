@@ -1,4 +1,6 @@
-//Override specifier
+// Modern_C++/Programs/11_FinalSpecifier.cpp
+// Override specifier and Final specifier in C++17
+
 #include <iostream>
 
 using namespace std;
@@ -24,7 +26,7 @@ public:
 class Another: public Derived 
 {
 public:
-    virtual void say_hello()  const override         // Error cannot: override final method
+    virtual void say_hello()  const override       // Error cannot: override final method
     {
         std::cout << "Hello - I'm a Another class object" << std::endl;
     }
@@ -59,4 +61,17 @@ int main()
    in derived classes.
 
 3. This is used for performance optimization and to avoid unintentional overrides.
+
+4. In the above example, if we try to override the say_hello method in the Another
+   class, the compiler will generate an error because it is marked as final in the 
+   Derived class.
+
+5. This helps in maintaining the intended behavior of the class hierarchy
+   and prevents accidental modifications.
+
+6. The override specifier ensures that the method is indeed overriding a base class
+   method, providing an additional layer of safety.
+
+7. Using final and override specifiers enhances code readability and maintainability
+   by clearly indicating the developer's intentions.
 ***********************************************************************************/

@@ -1,4 +1,6 @@
-//Operator Overloading
+//C++11/OperatorOverloading.cpp
+//Operator Overloading in C++11
+
 #include <iostream>
 
 using std::cout;
@@ -36,7 +38,8 @@ public:
 		*/
 	}
 
-	void operator++(int)		//x -> dummy argument just to differentiate the function definition
+	//x -> dummy argument just to differentiate the function definition for postfix notation
+	void operator++(int) 
 	{
 		cout << "Postfix Operator++()" << endl;
 		++count;
@@ -61,7 +64,7 @@ int main()
 	Ob2 = ++Ob1;
 	/*
 	Ob2 = Ob1.operator++()
-	Here Ob1 calls the ++ operator hence 'this' pointer will point to Ob1 and the argument 
+	Here Ob1 calls the ++ operator hence 'this' pointer will point to Ob1 and the argument
 	members accessed in function will be of Ob1.	
 	*/
 
@@ -80,7 +83,7 @@ int main()
 1. Only existing operators like +, ++, /, etc. can be overloaded, no new operator can
    be created like +_, %$, etc and be used for overloading.
 
-2. Number of operands an operators requires cannot be changed e.g. Ob1 ++ Ob2, not allowed.
+2. Number of operands an operator requires cannot be changed e.g. Ob1 ++ Ob2, not allowed.
 
 3. Precedence of operators cannot be changed.
 
@@ -104,7 +107,7 @@ int main()
 8. Operator functions are special fuction to whom the number of parameters to be passed
    cannot be user defined.
 
-9. Unary operators are those which take only 1 variable/object as argument, example ++, --.
+9. Unary operators are those which take only 1 variable/object as argument, eg. ++, --.
 
 10. Prefix unary operator function takes no arguments whereas postfix unary operator 
 	takes 1 argument i.e. dummy parameter to denote the function as postfix.

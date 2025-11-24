@@ -1,3 +1,6 @@
+//FunctionOverriding.h
+//Demonstration of function overriding in C++11
+
 #include<iostream>
 
 class animal

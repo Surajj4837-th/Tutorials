@@ -1,4 +1,6 @@
-// Pointers
+// Pointers.cpp
+// Demonstration of pointers in C++11
+
 #include <iostream>
 
 using std::cout;
@@ -22,19 +24,17 @@ int main()
     int* ptr3 = nullptr;
 
 
-    //----------------------------------Pointer to const value----------------------------------
+    //----------------------------------Pointer to const value--------------------------
     const int y{ 5 };
     const int* ptr4 { &y };      //pointer to const
 
-    //*ptr4 = 6;    // not allowed: we can't change a const value
-
-
+    //*ptr4 = 6; // not allowed: we can't change a const value through a pointer to const
 
     //----------------------------------const pointer----------------------------------
     //A const pointer is a pointer whose address can not be changed after initialization.
     int z{ 5 };
     int* const ptr5 { &z }; // const after the asterisk means this is a const pointer
-    //ptr5 = &x; //ERROR
+    //ptr5 = &x; //ERROR 
     z = 10; //Allowed
 
 
@@ -50,12 +50,13 @@ int main()
 
     // std::cout << *voidPtr << '\n'; // illegal: dereference of void pointer
 
-    int* intPtr{ static_cast<int*>(voidPtr) };  //type casting should be used for dereferencing.
+    int* intPtr{ static_cast<int*>(voidPtr) };  
+    //type casting should be used for dereferencing.
 
     //voidPtr++; //ILLIGAL
 
     
-    //----------------------------------pointer to a pointer----------------------------------
+    //----------------------------------pointer to a pointer-----------------------------
     int** ptrptr; // pointer to a pointer to an int
     int val = 90;
     int* ptr = &val;
@@ -65,7 +66,7 @@ int main()
 
 
 
-    //----------------------------------arrays of pointer----------------------------------
+    //----------------------------------arrays of pointer--------------------------------
     int** array { new int*[10] }; // allocate an array of 10 int pointers
     //int** array { new int[10][5] }; // WON'T WORK
 
@@ -109,7 +110,7 @@ int main()
 
 10. A non-const pointer can be assigned another address to change what it is pointing at 
 
-11. A const pointer always points to the same address, and this address can not be changed.
+11. A const ptr always points to the same address, and this address can not be changed.
 
 12. A pointer to a non-const value can change the value it is pointing to. These can 
     not point to a const value.
@@ -127,7 +128,8 @@ int main()
 16. You can not set a pointer to a pointer directly to a value. This is because the 
     address of operator(&) requires an lvalue, but &value is an rvalue.
 
-17. Allocation of memory to a 2D array of pointer requires a loop and so does deallocation.
+17. Allocation of memory to a 2D array of pointer requires a loop and so does  its
+    deallocation.
 
 18. Because allocating and deallocating two-dimensional arrays is complex and easy to 
     mess up, it’s often easier to “flatten” a two-dimensional array of size x by y

@@ -1,7 +1,7 @@
-//Storage class specifier
+// C++11/StorageClassSpecifier.cpp
+// Storage class specifier in C++11
 
 #include "StorageClassSpecifier.h"
-#include <iostream>
 
 using std::cout;
 using std::endl;
@@ -179,15 +179,15 @@ int main()
 8. Multiple declarations of extern variable is allowed within the file. This is not 
    the case with automatic variables.
 
-9. extern variable says to compiler  ” go outside my scope and you will find the 
-   definition of the variable that I declared.”
+9. extern variable says to compiler  ï¿½ go outside my scope and you will find the 
+   definition of the variable that I declared.ï¿½
 
 10. When a function is declared or defined, the extern keyword is implicitly assumed.
 
 11. Eg. of an extern is: decalre a variable in a.h file with extern keyword, define it 
 	in b.c file and use/call it in c.c file, provided both .c file include a.h file.
 
-12.	When extern is used with a variable, it’s only declared, not defined. As an exception, 
+12.	When extern is used with a variable, itï¿½s only declared, not defined. As an exception, 
 	when an extern variable is declared with initialization, it is taken as the definition 
 	of the variable as well.
 
@@ -220,7 +220,7 @@ int main()
 	declared as register still just have automatic storage.
 
 22. Sometimes there is a requirement to modify one or more data members of class/struct 
-	through const function even though you don’t want the function to update other members 
+	through const function even though you donï¿½t want the function to update other members 
 	of class/struct. This task can be easily performed by using the mutable keyword.
 
 23. The keyword mutable is mainly used to allow a particular data member of const object 

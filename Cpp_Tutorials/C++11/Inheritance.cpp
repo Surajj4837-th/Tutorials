@@ -1,4 +1,5 @@
-#//Stack implementation using Class
+//Inheritance.cpp
+//Stack implementation using Class Inheritance in C++11
 
 #include"Class.h"
 

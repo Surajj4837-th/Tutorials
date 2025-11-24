@@ -1,4 +1,6 @@
-//Use of rvalue reference
+//C++11/RvalueReference.cpp
+//Use of rvalue reference and move semantics in C++11
+
 #include <iostream>
 
 using std::cout;
@@ -44,6 +46,6 @@ int main()
 2. Rvalues are the objects which do not have any address.
 
 3. When objects are passed around, especially large containers or dynamically allocated 
-   resources, copying them can be expensive in terms of time and memory. Rvalue references 
+   resources, copying them can be expensive in terms of time and memory. Rvalue references
    allow moving these objects instead of copying them, which is faster and more efficient.
 ************************************************************************************/

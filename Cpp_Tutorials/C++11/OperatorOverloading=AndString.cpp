@@ -1,4 +1,6 @@
+//C++11/OperatorOverloading=.cpp
 //= operator overloading and string copy
+
 #include <iostream>
 
 using std::cout;
@@ -57,7 +59,8 @@ public:
 		This will cause error if the memory available is less in ptrColor.
 		Example if the earlier string was "Red", new string -> "White".
 		More meory is required.
-		To solve this deallocate the earlier memory and reallocate a new memory as per requirement.
+		To solve this deallocate the earlier memory and reallocate a new memory 
+		as per requirement.
 		*/
 
 		delete [] ptrColor;
@@ -81,7 +84,8 @@ public:
 			This will cause error if the memory available is less in ptrColor.
 			Example if the earlier string was "Red", new string -> "White".
 			More meory is required.
-			To solve this deallocate the earlier memory and reallocate a new memory as per requirement.
+			To solve this deallocate the earlier memory and reallocate a new memory 
+			as per requirement.
 			*/
 
 			delete [] ptrColor;

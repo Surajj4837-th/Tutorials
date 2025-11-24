@@ -1,3 +1,6 @@
+//Class.h
+//Class Declaration in C++11
+
 #include <iostream>
 
 #if 1   //More readable class declaration

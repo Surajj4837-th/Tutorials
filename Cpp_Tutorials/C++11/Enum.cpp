@@ -1,4 +1,6 @@
-//Enum
+//Enum.cpp
+//Demonstration of enum in C++11
+
 #include <iostream>
 
 using std::cout;
@@ -53,7 +55,8 @@ void main()
 	};
 
 	//Casting is required to do OR operation
-	drink Person1 = static_cast<drink>(static_cast<int>(drink::Water) | static_cast<int>(drink::Lemon_juice));
+	drink Person1 = static_cast<drink>
+			(static_cast<int>(drink::Water) | static_cast<int>(drink::Lemon_juice));
 
 	cout << "Drink order of Person1: " << Person1 << endl;
 

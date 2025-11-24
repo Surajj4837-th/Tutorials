@@ -1,4 +1,6 @@
-//Smart pointers
+//C++11/SmartPointer_Shared.cpp
+//Smart pointers in C++11 using shared_ptr
+
 #include <iostream>
 #include <memory>
 #include <vector>

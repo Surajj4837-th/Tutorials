@@ -1,4 +1,6 @@
-//Use of this pointer
+// C++11/ThisPointer.cpp
+//Use of this pointer in C++11
+
 #include <iostream>
 
 using std::cout;

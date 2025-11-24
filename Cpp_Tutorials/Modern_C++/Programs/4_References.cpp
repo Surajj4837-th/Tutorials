@@ -1,6 +1,7 @@
-// Section 12
-// References
-// Please see the section 11 examples for references as function paramters
+// Modern_C++/Programs/4_References.cpp
+// References in C++17
+// Please see the section 11 examples for references as function paramters 
+// and return types in functions. 
 #include <iostream>
 #include <string>
 #include <vector>
@@ -44,7 +45,7 @@ int main()
     cout << endl;
     return 0;
 }
-/*******************************************************************************************
+/*****************************************************************************************
 1. An alias for a variable.
 
 2. Must be initialized to a variable when declared.
@@ -55,5 +56,6 @@ int main()
 
 5. Very useful as function parameters.
 
-6. Might be helpful to think of a reference as a constant pointer that is automatically dereferenced.
-******************************************************************************************/
+6. Might be helpful to think of a reference as a constant pointer that is automatically 
+   dereferenced.
+*****************************************************************************************/

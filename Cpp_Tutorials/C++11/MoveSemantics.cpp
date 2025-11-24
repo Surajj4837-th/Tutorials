@@ -1,3 +1,6 @@
+//C++11/MoveSemantics.cpp
+//Move semantics in C++11
+
 #if 0
 //Move semantics
 
@@ -36,7 +39,8 @@ public:
 		name = new char[strlen(obj.name) + 1];
 		name = obj.name;
 
-		obj.name = nullptr;		//This is necessary step, as the address is copid to new object
+		obj.name = nullptr; 
+		//This is necessary step, as the address is copid to new object
 	}
 
 	//Copy constructor: allocate and 
@@ -184,7 +188,8 @@ public:
 	{
 		cout <<"\nParameterized Constructor" << endl;
 	}
-	//This is illigal since the compiler cannot dishtinguish between this and the move ctor.
+	//This is illigal since the compiler cannot dishtinguish between
+	// this and the move ctor.
 	*/
 
 	//copy ctor

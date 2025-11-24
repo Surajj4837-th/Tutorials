@@ -1,4 +1,6 @@
-//Override specifier
+// Modern_C++/Programs/10_Override.cpp
+// Override specifier in C++17
+
 #include <iostream>
 
 class Base 
@@ -40,13 +42,21 @@ int main()
     return 0;
 }
 
-/************************************Summary****************************************
+/************************************Summary*********************************************
 1. Override specifier is used in the derived class to indicate that a member function
-   is meant to override a base class function.
+   is meant to override a base class function. 
 
 2. The function signature (name, parameters, and constness) in the derived class
    must exactly match the base class function being overridden using virtual keyword.
    Sometimes when the programmer intends to override a base class function but makes
    a mistake in the function signature, the base class function is hidden instead of
    being overridden. This can lead to unexpected behavior.
-***********************************************************************************/
+
+3. By using the override specifier, the compiler will generate an error if the function
+   does not correctly override a base class function. This helps catch errors at compile
+   time rather than at runtime.
+
+4. In the above example, if we mistakenly change the signature of say_hello in the
+   Derived class (for example, by changing the constness or parameters), the compiler will 
+   generate an error because it will not match any virtual function in the Base class.
+****************************************************************************************/

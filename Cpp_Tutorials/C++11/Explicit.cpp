@@ -1,4 +1,7 @@
-//Use of explicit keyword
+//Explicit.cpp
+//Use of explicit keyword in constructor
+//Demonstration of explicit keyword in C++11
+
 #include <iostream>
 
 using std::cout;
@@ -33,7 +36,8 @@ int main ()
 	DoBar (42);				//Valid without explicit
 	/*
 	The argument is not a Foo object, but an int. However, there exists a constructor 
-	for Foo that takes an int so this constructor can be used to convert the parameter to the correct type.
+	for Foo that takes an int so this constructor can be used to convert the parameter 
+  to the correct type.
 
 	The compiler is allowed to do this once for each parameter.
 	*/
@@ -45,7 +49,7 @@ int main ()
 2. Prefixing the explicit keyword to the constructor prevents the compiler from using 
    that constructor for implicit conversions.
 
-3. In above example if the keyword 'explicit' is used before constructor then the function 
+3. In above example if the keyword 'explicit' is used before constructor then the function
    call will give error.  It is now necessary to call for conversion explicitly with 
    DoBar (Foo (42)).
 

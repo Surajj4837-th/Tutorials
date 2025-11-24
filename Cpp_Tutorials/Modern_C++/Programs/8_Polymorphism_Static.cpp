@@ -1,4 +1,6 @@
-//Compile time polymorphism (Static)
+// Modern_C++/Programs/8_Polymorphism_Static.cpp
+//Compile time polymorphism (Static) in C++17
+
 #include <iostream>
 #include <memory>
 
@@ -58,4 +60,8 @@ int main()
 2. At comple time, the compiler determines which function to call based on the 
    argument types. This is known as early binding or static binding or compile-time
    polymorphism.
+
+3. In the above example, the function greetings is overloaded to accept different types
+   of arguments (Base and Derived). The appropriate version of the function is selected
+   at compile time based on the type of the argument passed.
 ***********************************************************************************/

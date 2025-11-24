@@ -1,5 +1,7 @@
-#include <iostream>
+//C++11/Slicing.h
+//Demonstration of object slicing in C++11
 
+#include <iostream>
 
 class Employee
 {

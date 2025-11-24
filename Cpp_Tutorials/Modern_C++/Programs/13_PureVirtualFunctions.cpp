@@ -1,4 +1,6 @@
-//Pure virtual functions and abstract classesss
+// Modern_C++/Programs/13_PureVirtualFunctions.cpp
+// Pure virtual functions and abstract classes in C++17
+
 #include <iostream>
 #include <vector>
 
@@ -132,4 +134,25 @@ int main()
    If we want to print any information of the objects then print function can be 
    declared as pure virtual function in the base class. This will ensure that every 
    derived class must implement the print function.
+
+8. Abstract classes can have data members and member functions (non-pure virtual
+   functions) as well. 
+
+9. Abstract classes can have constructors and destructors as well. The derived class
+   constructor will call the base class constructor first followed by derived class
+   constructor. The derived class destructor will call the derived class destructor
+   first followed by base class destructor.
+
+10. Abstract classes are used to achieve polymorphism.
+
+11. Abstract classes can have pointers and references of the base class type pointing
+    to derived class objects to achieve polymorphism.
+
+12. In the above example, Shape is an abstract base class with pure virtual functions
+    draw and rotate. Open_Shape and Closed_Shape are also abstract classes derived
+    from Shape. Line, Circle, and Square are concrete classes that implement the
+    pure virtual functions.
+
+14. The DrawAllShapes function takes a vector of Shape pointers and calls the draw
+    method on each shape, demonstrating polymorphism.
 ***********************************************************************************/

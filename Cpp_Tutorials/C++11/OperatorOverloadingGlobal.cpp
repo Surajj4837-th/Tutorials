@@ -1,4 +1,6 @@
-//Global operator function
+//C++11/OperatorOverloadingGlobal.cpp
+//Global operator function overloading in C++11
+
 #include <iostream>
 
 using std::cout;
@@ -33,7 +35,8 @@ public:
 		return *this;
 	}
 
-	MyClass& operator++(int x)		//x -> dummy argument just to differentiate the function definition
+	MyClass& operator++(int x)		
+	//x -> dummy argument just to differentiate the function definition
 	{
 		cout << "Postfix Operator++()" << endl;
 		++count;
@@ -70,7 +73,8 @@ int main()
 
 	--Ob1;
 	/*
-		If the operator function was declared as a member function then the call would have been converted as
+		If the operator function was declared as a member function then the call 
+		would have been converted as
 		Ob1.operator--();
 
 		But now as the operator is a global funtion then the call will be converted as

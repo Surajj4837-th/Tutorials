@@ -1,4 +1,6 @@
-//Binary operator overloading
+//C++11/OperatorOverloadingBinary.cpp
+//Binary operator overloading in C++11
+
 #include <iostream>
 
 using std::cout;

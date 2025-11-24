@@ -1,3 +1,6 @@
+//FunctionOverriding.cpp
+//Demonstration of function overriding in C++11
+
 #include "FunctionOverriding.h"
 
 using std::cout;

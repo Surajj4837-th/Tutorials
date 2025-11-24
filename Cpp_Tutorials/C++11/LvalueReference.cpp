@@ -1,4 +1,6 @@
-//Use of Reference/alias
+//LvalueReference.cpp
+//Use of Reference/alias in C++11
+
 #include <iostream>
 
 using std::cin;
@@ -72,8 +74,9 @@ int main()
 	//getSquare(b) = 1000;
 	//This command works and b gets value 1000.
 	//This works but should not be used as it confuses and may create unintended results.
-	//When a function returns a reference, it returns an implicit pointer to its return value. 
-	//This way, a function can be used on the left side of an assignment statement.
+	//When a function returns a reference, it returns an implicit pointer to its return 
+	// value. This way, a function can be used on the left side of an assignment
+	// statement.
 
 	//b = getSquare(10);
 	//This results in an error because function getSquare is expecting a refernce

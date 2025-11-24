@@ -1,4 +1,6 @@
-// Copy constructor and operator=
+// Modern_C++/Programs/7_InheritanceCopyMoveConstructor.cpp
+// Copy constructor and operator= in inheritance in C++17
+
 #include <iostream>
 
 using namespace std;
@@ -22,9 +24,11 @@ public:
 	Base(const Base& other) : value{ other.value }
 	{
 		// other will be provided by the derived class copy constructor
-		// The data has to be copied from the base part of the derived object as done below
+		// The data has to be copied from the base part of the derived object as 
+		// done below.
 		// Slicing happens here, the other is a derived object but once it is passed 
-		// to the base class, the derived part is sliced off and only the base part remains
+		// to the base class, the derived part is sliced off and only the base part 
+		// remains.
 
 		cout << "Base copy constructor" << endl;
 	}
@@ -32,9 +36,10 @@ public:
 	Base& operator=(const Base& rhs)	//Base class copy constructor
 	{
 		// rhs will be provided by the derived class copy constructor
-		// The data has to be copied from the base part of the derived object as done below
-		// Slicing happens here, the rhs is a derived object but once it is passed to the base class
-		// the derived part is sliced off and only the base part remains
+		// The data has to be copied from the base part of the derived object as done 
+		// below.
+		// Slicing happens here, the rhs is a derived object but once it is passed to the
+		// base class the derived part is sliced off and only the base part remains
 
 		cout << "Base operator=" << endl;
 		if (this == &rhs)
@@ -68,7 +73,8 @@ public:
 	}
 
 	Derived(const Derived& other)			//Derived class copy constructor
-		: Base(other), doubled_value{ other.doubled_value }		// Base class copy constructor is invoked
+		: Base(other), doubled_value{ other.doubled_value }		
+		// Base class copy constructor is invoked
 	{
 		cout << "Derived copy constructor" << endl;
 	}

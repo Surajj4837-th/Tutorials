@@ -1,3 +1,6 @@
+//Basics.cpp
+//Demonstration of basic input output in C++11
+
 #include <iostream>
 
 using std::cout;
@@ -31,7 +34,8 @@ int main()
 
 	cin >> num;
 	//cin is a standard library of object istream
-	//extraction operator '>>' extracts the entry done on keyboard and provides it to the program
+	//extraction operator '>>' extracts the entry done on keyboard and provides it to the 
+	//program
 
 	cout << "Square of "<< num <<" is "<< num*num << endl;
 	//no need of format specifier

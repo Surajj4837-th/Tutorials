@@ -1,4 +1,7 @@
-//Use of Copy Constructor and Destructor
+//CopyConstructor.cpp
+//Use of Copy Constructor and Destructor in a class
+//Demonstration of copy constructor and destructor in C++11
+
 #include <string.h>
 #include <iostream>
 
@@ -195,9 +198,9 @@ int main()
 	constructor and data copy, which is costly task. Instead pass the object by reference.
 
 13. Common misconception: Constructor is used for allocating and destructor is used for
-	deallocating memory. The task of both is not just to manage memory but other resources 
-	as well for example: the files once opened can be closed by using destructor. Similarly
-	other resources like shared memory, socket(unix), etc.
+	deallocating memory. The task of both is not just to manage memory but other resources
+	as well for example: the files once opened can be closed by using destructor. 
+	Similarly other resources like shared memory, socket(unix), etc.
 
 14. The objects in a function are saved in stack and thus while destroying also they
     are destroyed in FILO fashion.

@@ -13,7 +13,8 @@
 
 
 1. Compile Time Polymorphism
-   Function and operator overloading are both functions and the function call resolution is done by compiler.
+   Function and operator overloading are both functions and the function call resolution is done 
+   by compiler.
 	
 	a. Function overloading-
 
@@ -24,9 +25,11 @@
 		- Number of arguments
 		- Type of arguments
 		- Same arguments but different order
-		- const object invokes const function and non-const object invokes non-const function
+		- const object invokes const function and non-const object invokes non-const 
+		  function
 		
-		Which cases are invalid and create ambiguity for compiler in choosing the function definition?
+		Which cases are invalid and create ambiguity for compiler in choosing the 
+		function definition?
 		- Example 1: Overloading with References vs Values (Too Similar)
 				void doSomething(int x);
 				void doSomething(int& x);
@@ -34,18 +37,19 @@
 			Above declarations are not allowed.
 
 		- Example 2: Overloading by Return Type Only 
-		Why function overloading is not done by considering the change in return type of a function?
+		Why function overloading is not done by considering the change in return type 
+		of a function?
 		- Because the developer may or may not use the return type.
 
 				int sum(int a, int b);
 				void sum(int a, int b);
 		
-		In both the cases, it is not compulsory for the developer to use the returned data. This 
-		creates ambiguity for the compiler.
+		In both the cases, it is not compulsory for the developer to use the returned 
+		data. This creates ambiguity for the compiler.
 
 		- Example 3: Overloading That Leads to Ambiguity (e.g., Default Arguments)
 			void display(int x);
-			void display(int x, int y = 10);  // ⚠️ Ambiguous call: display(5);
+			void display(int x, int y = 10);  // Ambiguous call: display(5);
 
 b. Operator Overloading
 
@@ -55,8 +59,8 @@ b. Operator Overloading
 	class Trainee;
 	++Trainee;	//Compiler doesn't know what to do
 	
-	Operator overloading says if an operator with a primitive data type is allowed then it should 
-	also be allowed with an user defined data type.
+	Operator overloading says if an operator with a primitive data type is allowed 
+	then it should also be allowed with an user defined data type.
 	i.e. if ++a is allowed then ++Trainee should also be allowed.
 
 1. Run Time Polymorphism

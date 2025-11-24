@@ -1,4 +1,6 @@
-// Queue
+// C++11/STL_Queue.cpp
+// Queue in STL in C++11
+
 #include <iostream>
 #include <queue>
 

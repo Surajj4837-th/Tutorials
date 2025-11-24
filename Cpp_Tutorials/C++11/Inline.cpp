@@ -1,4 +1,6 @@
-//Use of Inline
+//Inline.cpp
+//Use of Inline functions in C++11
+
 #include <iostream>
 
 using std::cout;
@@ -84,6 +86,6 @@ int main()
 6. Whichever functions defined in the class are automatically made inline. Thus big
    functions should be defined outside to avoid automatically being declared inline.
 
-7. How to verify if the function is made inline or not? By comparing the size of executable 
-   generated when function is declared as inline and otherwise.
+7. How to verify if the function is made inline or not? By comparing the size of 
+   executable generated when function is declared as inline and otherwise.
 ************************************************************************************/

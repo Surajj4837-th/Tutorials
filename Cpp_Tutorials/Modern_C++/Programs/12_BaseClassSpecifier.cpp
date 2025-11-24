@@ -1,4 +1,5 @@
-//Base class references
+// Modern_C++/Programs/12_BaseClassSpecifier.cpp
+// Base class references in C++17
 #include <iostream>
 
 // This class uses dynamic polymorphism for the withdraw method
@@ -88,4 +89,10 @@ int main()
    c. We don't have to use the address of operator (&) when passing arguments.
    d. Lifetime of references is managed automatically, in contrast to pointers where
       we have to manage memory manually.
+
+4. Base class references can be more intuitive and easier to read in certain contexts,
+   especially when dealing with function parameters.
+
+5. Both base class pointers and references can be used to achieve polymorphism,
+   and the choice between them often depends on the specific use case and coding style.
 ***********************************************************************************/

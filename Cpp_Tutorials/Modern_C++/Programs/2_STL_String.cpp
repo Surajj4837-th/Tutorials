@@ -1,3 +1,6 @@
+// Modern_C++/Programs/2_STL_String.cpp
+// Demonstration of string in C++17
+
 #include <iostream>
 #include <iomanip>
 #include <string>   // important!
@@ -33,7 +36,8 @@ int main()
     cout << "\nComparison" << "\n------------------------------------------" << endl;
     
     cout << boolalpha;          
-    //The statement cout << boolalpha; tells the output stream to print boolean values as true or false instead of 1 or 0.
+    // The statement cout << boolalpha; tells the output stream to print 
+    // boolean values as true or false instead of 1 or 0.
 
     cout << s1 << " == " << s5 << ": " << (s1 == s5) << endl; // True    Apple == Apple
     cout << s1 << " == " << s2 << ": " << (s1 == s2) << endl; // False   Apple != Banana
@@ -123,7 +127,8 @@ int main()
     s1.clear();
     cout << "After clear() s1 is now: " << s1 << endl; // is a test
 
-    // getline used to take complete input including spaces, cin ignores text after first space
+    // getline used to take complete input including spaces, 
+    // cin ignores text after first space
     cout << "\ngetline" << "\n------------------------------------------" << endl;
 
     string full_name{};
@@ -142,7 +147,7 @@ int main()
     cout << "Enter the word to find: ";
     cin >> word;
 
-    size_t position = s1.find(word); // Returns string::npos if the charachter is not found
+    size_t position = s1.find(word); //Returns string::npos if the charachter is not found
 
     if (position != string::npos)
         cout << "Found '" << word << "' at position: " << position << endl;
@@ -153,7 +158,7 @@ int main()
     return 0;
 }
 
-/*******************************************************************************************
+/*****************************************************************************************
 1. C style strings are fix in size, C++ strings (std::string) are dynamic in size.
 
 2. These can work with string extraction and insertion operators.
@@ -164,23 +169,25 @@ int main()
 
 5. C++ strings are always initialized, no garbage values are there in empty declaration.
 
-6. In the C++ string, assignment "=" operator can be used to assign a string to another variable,
-   in case of C style string, we will need strcpy() instead.
+6. In the C++ string, assignment "=" operator can be used to assign a string to another 
+   variable, in case of C style string, we will need strcpy() instead.
 
-7. The strcat() in C is used to concatenate strings, in C++ this is replaced by + operator.
+7. The strcat() in C is used to concatenate strings, in C++ this is replaced by 
+   '+' operator.
 
 8. Two C style strings cannot be concatenated, eg: string str = "hello" + "world";
-   However there can be a combination of strings and variable, eg: string str = "hello" + str1 + "world";\
+   However there can be a combination of strings and variable, 
+   eg: string str = "hello" + str1 + "world";\
 
 9. at() method to access the string values use bound check.
 
 10. Comparing string operators: ==, !=, >, >=, <, <=.
     The objects are compared charachter by charachter lexically.
-    Lexicographical comparison, the decision is made as soon as a difference is found between 
-    corresponding characters i.e. whole string is not compared.
+    Lexicographical comparison, the decision is made as soon as a difference is found 
+    between corresponding characters i.e. whole string is not compared.
     A < Z, A < a since capital letters come before lower case in ASCII table.
-    These cannot be used in case the comparison is between C style strings, atleast 1 has to
-    be C++ style string.
+    These cannot be used in case the comparison is between C style strings, at least 
+    1 has to be C++ style string.
 
 11. Find charachters in string using find() and rfind().
 
@@ -188,7 +195,7 @@ int main()
 
 13. length() tells the number of charachters in a string.
 
-14. getline() used to take complete input including spaces, cin ignores text after first space.
-    There is a 3rd argument in getline which is a limiter, getline will read till the limiter
-    in the provided text.
-*******************************************************************************************/
+14. getline() used to take complete input including spaces, cin ignores text after first 
+    space. There is a 3rd argument in getline which is a limiter, getline will read till 
+    the limiter in the provided text.
+*****************************************************************************************/

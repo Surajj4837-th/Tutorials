@@ -1,5 +1,6 @@
-// Section 17
-// Weak Pointers
+// C++11/SmartPointer_Weak.cpp
+// Weak Pointers in C++11 using weak_ptr
+
 #include <iostream>
 #include <memory>
 

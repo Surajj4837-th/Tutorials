@@ -1,3 +1,6 @@
+// C++11/VirtualFunction.h
+// Virtual function in C++11
+
 #include <iostream>
 
 class Base

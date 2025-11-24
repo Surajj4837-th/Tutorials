@@ -1,5 +1,6 @@
-// Section 14
-// Overloaded insertion and extraction operators
+// C++11/OperatorOverloadingStreamOperator.cpp
+// Overloaded insertion and extraction operators in C++11
+
 #include <iostream>
 #include <cstring>
 

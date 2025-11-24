@@ -1,4 +1,6 @@
-//Requirement of = operator overloading
+//C++11/OperatorOverloading=.cpp
+//Requirement of = operator overloading in C++11
+
 #include <iostream>
 #include <cstring>
 
@@ -116,7 +118,8 @@ int main()
 	/*
 	 In case the = is not overloaded then the mini and ambulance wll have same pointer.
 	 Destructor for ambulance is called first.
-	 Next the destructor of mini is called but the pointer pointed by the mini color is already destroyed.
+	 Next the destructor of mini is called but the pointer pointed by the mini color 
+	 is already destroyed.
 	 Crash happens in this case along with memory leak.
 	 To solve this operator overloading is required for '=' operator.
 	 Assignment is a binary operator.

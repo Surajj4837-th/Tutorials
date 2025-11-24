@@ -1,4 +1,6 @@
-//Friend Function
+//C++11/FriendFunction.cpp
+//Friend Function in C++11
+
 #include <iostream>
 #include <math.h>
 
@@ -247,7 +249,8 @@ int main()
    forward declaration.
 
 10. Why forward declaration is necessary?
-	The compiler should know no spelling mistake is done or no parameter mismatch is there.
+	The compiler should know no spelling mistake is done or no parameter mismatch is 
+	there.
 
 11. Any variable/function/class declaration does not allocate memory. Memory is allocated
 	only after definition is encountered.

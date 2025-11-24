@@ -1,3 +1,6 @@
+// Modern_C++/Programs/1_Strings.cpp
+// Demonstration of string handling in C++17
+
 #include <iostream>
 #include <cstring> // for c-style string functions
 #include <cctype>  // for character-based functions
@@ -22,8 +25,11 @@ int main()
     cin >> last_name;
     cout << "-------------------------------" << endl;
 
-    cout << "Hello, " << first_name << " your first name has " << strlen(first_name) << " characters" << endl;
-    cout << "and your last name, " << last_name << " has " << strlen(last_name) << " characters" << endl;
+    cout << "Hello, " << first_name << " your first name has " 
+    << strlen(first_name) << " characters" << endl;
+
+    cout << "and your last name, " << last_name << " has " 
+    << strlen(last_name) << " characters" << endl;
 
     strcpy(full_name, first_name); // copy first_name to full_name
     strcat(full_name, " ");        // concatenate full_name and a space
@@ -33,7 +39,8 @@ int main()
 
 #if 0
     cout << "Enter your full name: ";
-    cin >> full_name;               // Logical error: full name has blank spaces, cin operator will not take input after a blank space.
+    cin >> full_name;       // Logical error: full name has blank spaces,
+                            // cin operator will not take input after a blank space.
 
     cout << "Your full name is " << full_name << endl;
 #endif

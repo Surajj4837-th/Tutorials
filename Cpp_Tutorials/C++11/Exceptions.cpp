@@ -1,4 +1,6 @@
-// Exceptions
+// Exceptions.cpp
+// Demonstration of exceptions in C++11
+
 #include <iostream>
 #include <cmath>
 
@@ -30,14 +32,16 @@ int main()
         // Any exceptions of type int thrown within the above try block get sent here
         std::cerr << "We caught an int exception with value: " << x << '\n';
     }
-    catch (double) // no variable name since we don't use the exception itself in the catch block below
+    catch (double) 
+    // no variable name since we don't use the exception itself in the catch block below
     {
         // Any exceptions of type double thrown within the above try block get sent here
         std::cerr << "We caught an exception of type double" << '\n';
     }
     catch (const std::string&) // catch classes by const reference
     {
-        // Any exceptions of type std::string thrown within the above try block get sent here
+        // Any exceptions of type std::string thrown within 
+        // the above try block get sent here
         std::cerr << "We caught an exception of type std::string" << '\n';
     }
 
@@ -62,8 +66,9 @@ int main()
     }
 
 
-    //----------------------------------Exception from a called function-----------------------------------
-    try // Look for exceptions that occur within try block and route to attached catch block(s)
+    //----------------------------------Exception from a called function------------------
+    try 
+    //Look for exceptions that occur within try block and route to attached catch block(s)
     {
         int x = -1;
         double d = mySqrt(x);
@@ -75,7 +80,7 @@ int main()
     }
 
 
-    //----------------------------------catch-all handler-----------------------------------
+    //----------------------------------catch-all handler---------------------------------
     
     try
 	{

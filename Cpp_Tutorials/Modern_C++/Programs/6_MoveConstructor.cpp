@@ -1,5 +1,6 @@
-// Section 13
-// Move Constructor 
+// Modern_C++/Programs/6_MoveConstructor.cpp
+// Move Constructor in C++17
+
 #include <iostream>
 #include <vector>
 
@@ -66,3 +67,19 @@ int main() {
     return 0;
 }
 
+/*****************************************************************************************
+1. Move constructor is used to move resources from one object to another instead of 
+   copying.
+
+2. Move constructor is called when an object is initialized from a temporary object 
+   (r-value).
+
+3. Move constructor takes a non-const r-value reference as its parameter.
+
+4. In move constructor, the resource pointer is copied from the source object to the new
+   object, and the source object's pointer is set to nullptr to avoid double deletion.
+   
+5. Using move semantics can significantly improve performance by eliminating unnecessary
+   deep copies, especially for objects that manage dynamic resources like memory or file 
+   handles.
+*****************************************************************************************/

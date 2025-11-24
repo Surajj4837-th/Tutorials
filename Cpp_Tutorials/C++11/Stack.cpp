@@ -1,4 +1,5 @@
-//Stack implementation using Structure
+// C++11/Stack.cpp
+//Stack implementation using Structure in C++11
 
 #include "Class.h"
 

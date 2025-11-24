@@ -1,4 +1,6 @@
-// Deque
+// C++11/STL_Deque.cpp
+// Deque in STL in C++11
+
 #include <iostream>
 #include <deque>
 

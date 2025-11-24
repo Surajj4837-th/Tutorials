@@ -1,3 +1,6 @@
+// C++11/VirtualFunction.cpp
+// Virtual function in C++11
+
 #include "VirtualFunction.h"
 
 int main()

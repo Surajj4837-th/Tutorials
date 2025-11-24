@@ -1,3 +1,6 @@
+//DefaultValues.cpp
+//Demonstration of default values in function parameters in C++11
+
 #include <iostream>
 
 using std::cout;
@@ -49,8 +52,8 @@ void Function(int a, int b, int c)		//Declaration done in header file.
 	a. Use default values only in function declaration, if there is only function 
 	   definition present then we can use default values there also but it should be 
 	   placed before main function.
-	b. Compiler assigns the values to parameters from left to right, thus default 
-	   value parameters to be kept at the end of the parameter list i.e. to the right side.
+	b. Compiler assigns the values to parameters from left to right, thus default value 
+	   parameters to be kept at the end of the parameter list i.e. to the right side.
 	c. If developer wants to assign a default value to a parameter in the middle or
 	   in the begining of the parameter list then the parameters to the right of it 
 	   should also be provided with default values.

@@ -1,4 +1,6 @@
-//Boolean
+//Datatype_bool.cpp
+//Boolean datatype in C++11
+
 #include <iostream>
 
 using std::cout;

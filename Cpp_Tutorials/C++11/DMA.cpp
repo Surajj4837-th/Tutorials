@@ -48,8 +48,9 @@ public:
 int main()
 {
 	int arr[5];									//Local variable created on Stack
-	int *ptr = (int *)malloc(5 * sizeof(int));	//ptr is created on Stack as it is a local variable
-												//and malloc allocates memory on Heap.
+	int *ptr = (int *)malloc(5 * sizeof(int));	
+	// ptr is created on Stack as it is a local variable and 
+	// malloc allocates memory on Heap.
 	ptr[1] = 10;
 	cout << *(ptr+1) << endl;
 	free(ptr);						//delete the allocated memory, ptr remains till EOF
@@ -65,9 +66,10 @@ int main()
 	
 	/*
 	delete [] ptr2;
-	Compiler tries to deallocate the entire block of memory but we have shifted the pointer
-	from its initial pointing location, it will try to delete 5 memory locations from current
-	position which is a logical error. This is detected by some compiler and warning is given in runtime.
+	Compiler tries to deallocate the entire block of memory but we have shifted the 
+	pointer	from its initial pointing location, it will try to delete 5 memory locations 
+	from current position which is a logical error. This is detected by some compiler 
+	and warning is given in runtime.
 	*/
 	
 	/* 

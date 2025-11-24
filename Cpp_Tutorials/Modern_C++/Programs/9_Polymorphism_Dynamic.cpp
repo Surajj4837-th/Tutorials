@@ -1,4 +1,6 @@
-//Run time polymorphism (Dynamic)
+// Modern_C++/Programs/9_Polymorphism_Dynamic.cpp
+//Run time polymorphism (Dynamic) in C++17
+
 #include <iostream>
 #include <vector>
 
@@ -89,7 +91,7 @@ int main()
     return 0;
 }
 
-/************************************Summary****************************************
+/************************************Summary*********************************************
 1. For dynamic polymorphism:
    a. Inheritance must be there.
    b. Base class reference or pointer must be used to refer to derived class object.
@@ -120,4 +122,32 @@ int main()
    base class part of derived class object is created first, followed by the derived
    class part. When the object is destroyed, the derived class destructor is called 
    first, followed by the base class destructor.
-***********************************************************************************/
+
+8. Virtual functions use a mechanism called the virtual table (vtable) to support 
+   dynamic dispatch. Each class with virtual functions has its own vtable, which is 
+   essentially a lookup table of function pointers. When a virtual function is called 
+   on an object, the program uses the vtable to determine the correct function to call 
+   based on the actual type of the object at runtime.
+
+9. Dynamic polymorphism introduces a slight performance overhead due to the 
+   additional indirection required to look up the function in the vtable. However, 
+   this overhead is generally negligible compared to the benefits of flexibility 
+   and maintainability that dynamic polymorphism provides.
+
+10. Dynamic polymorphism is a powerful feature of C++ that enables flexible and 
+    extensible code through runtime method resolution, allowing developers to 
+    implement polymorphic behavior in their applications.
+
+11. In the above example, we created a base class Account with a virtual function 
+    withdraw(). The derived classes Checking, Savings, and Trust override the 
+    withdraw() function to provide their specific implementations.
+
+12. In the main() function, we created base class pointers pointing to derived
+    class objects. When we called the withdraw() function using these pointers,
+    the appropriate derived class version of the function was executed based on
+    the actual object type at runtime, demonstrating dynamic polymorphism.
+
+13. Finally, we deleted the objects using the base class pointers. Since the base
+    class destructor is virtual, the derived class destructors were called first,
+    followed by the base class destructor, ensuring proper cleanup of resources.
+****************************************************************************************/

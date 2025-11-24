@@ -1,4 +1,5 @@
-//Use of const data members
+//Use of const data members and const member functions in a class
+//Also demonstration of static member variables and static member functions
 
 #include <iostream>
 

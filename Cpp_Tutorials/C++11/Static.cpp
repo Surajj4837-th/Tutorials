@@ -1,5 +1,6 @@
-//Use of Static data members
-//Static local variables in a function are initialised 
+//C++11/Static.cpp
+//Use of Static data members in a class in C++11
+//Static local variables in a function are initialised
 //only once and remain alive even after loop ends.
 #include <iostream>
 

@@ -1,4 +1,6 @@
 //Use of constructor
+//Demonstration of constructor in C++11
+
 #include <iostream>
 
 using std::cout;

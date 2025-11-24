@@ -1,3 +1,6 @@
+//LAndRValue.cpp
+//Demonstration of l-value and r-value in C++11
+
 #include <iostream>
 
 using std::cout;
@@ -15,7 +18,8 @@ int main()
 	int& c = a;
 	c = 10;			//l-value rference can be updated
 
-	std::cout << std::boolalpha;		//To print true and false instead of 1 and 0 respectively.
+	std::cout << std::boolalpha; 
+	//To print true and false instead of 1 and 0 respectively.
 
 	std::cout << (&c == &a) << std::endl;
 
@@ -25,7 +29,8 @@ int main()
 
 	std::string name = "Frank";		// "Frank" is an r-value
 
-	int max_num = std::max(20,30); // std::max(20,30) is an r-value, since it returns a non-addressable result.
+	int max_num = std::max(20,30); 
+	// std::max(20,30) is an r-value, since it returns a non-addressable result.
 
 	// r-value reference
 	int&& rref = 90;
@@ -53,7 +58,7 @@ int main()
    - A unary-indirection (*) expression that does not refer to an array
    - An l-value expression in parentheses.
    - A const object (a non-modifiable l-value).
-   - The result of indirection through a pointer, provided that it isn?t a function pointer.
+   - The result of indirection through a pointer, provided that it isn't a function ptr
    - The result of member access through pointer(-> or .)
 
 3. r-value refers to data value that is stored at some address in memory. 
